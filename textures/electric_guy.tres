@@ -1,0 +1,29 @@
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://cn161eihukqxf"]
+
+[ext_resource type="Texture2D" uid="uid://r013qt7ukcai" path="res://textures/testElectricSprite.png" id="1_higrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ci1"]
+atlas = ExtResource("1_higrg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmvgx"]
+atlas = ExtResource("1_higrg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq2wr"]
+atlas = ExtResource("1_higrg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxift"]
+atlas = ExtResource("1_higrg")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+frames = 4
+frame_0/texture = SubResource("AtlasTexture_65ci1")
+frame_1/texture = SubResource("AtlasTexture_pmvgx")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("AtlasTexture_fq2wr")
+frame_2/duration = 1.0
+frame_3/texture = SubResource("AtlasTexture_hxift")
+frame_3/duration = 1.0
