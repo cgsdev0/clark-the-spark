@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=14 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
 [ext_resource type="PackedScene" uid="uid://sygg676thw7p" path="res://scripts/network_test.glb" id="2_jlnjx"]
@@ -52,6 +52,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usmps"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -187,3 +189,31 @@ script = ExtResource("4_8goul")
 [node name="Camera3D" type="Camera3D" parent="network_test"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.75, 3.5)
 script = ExtResource("5_ftnol")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 15.75, -23.125)
+visible = false
+collision_layer = 2
+collision_mask = 2
+size = Vector3(1, 1, 0.75)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_usmps")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 18.75, -21.125)
+visible = false
+collision_layer = 2
+collision_mask = 2
+size = Vector3(0.75, 0.5, 0.75)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_usmps")

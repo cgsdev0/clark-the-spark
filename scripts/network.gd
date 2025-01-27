@@ -38,7 +38,13 @@ var cached = -Vector3.FORWARD
 
 func get_normal(i):
 	var n = connections[i].size()
-	if n <= 1:
+	if n == 0:
+		return cached
+	if n == 1:
+		var next: Vector3 = (nodes[i] - nodes[connections[i][0]]).normalized()
+		next = next.rotated(Vector3.UP, PI / 2.0)
+		if next != Vector3.UP && next != Vector3.DOWN:
+			cached = next
 		return cached
 	if n == 2:
 		var a = nodes[i]
@@ -49,6 +55,8 @@ func get_normal(i):
 		var next = ab.cross(ac)
 		if next != Vector3.UP && next != Vector3.DOWN:
 			cached = next
+		else:
+			cached = -(ab + ac).normalized()
 		return cached
 	var a = nodes[connections[i][0]]
 	var b = nodes[connections[i][1]]
@@ -61,8 +69,8 @@ func get_normal(i):
 	return cached
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	# DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 2.0), Color.RED, 0.05)
+func _physics_process(delta):
+	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 2.0), Color.RED, 0.05)
 	$Camera3D.destination = to_global(nodes[current] + get_normal(current) * 3.0)
 	$Camera3D.target = to_global(nodes[current])
 	var input = Vector2.ZERO
@@ -85,27 +93,48 @@ func _process(delta):
 		for n in connections[current]:
 			var diff = nodes[current] - nodes[n]
 			var rotated = -diff.x
-			print($Camera3D.target_rotation)
-			if $Camera3D.target_rotation > PI / 4.0 && $Camera3D.target_rotation < 3 * PI / 4.0:
+			# print($Camera3D.target_rotation)
+			if $Camera3D.target_rotation > PI / 3.0 && $Camera3D.target_rotation < 2 * PI / 3.0:
 				rotated = diff.z
-			elif $Camera3D.target_rotation >= 3 * PI / 4.0 && $Camera3D.target_rotation < 5 * PI / 4.0:
+			elif $Camera3D.target_rotation >= PI / 6.0 && $Camera3D.target_rotation < PI / 3.0:
+				print("A")
+				rotated = diff.x - diff.z # ???
+			elif $Camera3D.target_rotation >= 5 * PI / 6.0 && $Camera3D.target_rotation < 7 * PI / 6.0:
 				rotated = diff.x
-			elif $Camera3D.target_rotation >= 5 * PI / 4.0 && $Camera3D.target_rotation < 7 * PI / 4.0:
+			elif $Camera3D.target_rotation >= 2 * PI / 3.0 && $Camera3D.target_rotation < 5 * PI / 6.0:
+				print("B")
+				rotated = diff.x + diff.z
+			elif $Camera3D.target_rotation >= 4 * PI / 3.0 && $Camera3D.target_rotation < 5 * PI / 3.0:
 				rotated = -diff.z
+			elif $Camera3D.target_rotation >= 7 * PI / 6.0 && $Camera3D.target_rotation < 4 * PI / 3.0:
+				print("C")
+				rotated = -diff.x + diff.z # ???
+			elif $Camera3D.target_rotation >= 5 * PI / 3.0 && $Camera3D.target_rotation < 11 * PI / 6.0:
+				print("D")
+				rotated = -diff.x - diff.z
 			diff = Vector2(rotated, diff.y)
-			print("considering ", n)
+			# print("considering ", n)
 			if diff.normalized() == input:
 				while connections[n].size() == 2:
+					var space = get_world_3d().direct_space_state
+					var params = PhysicsPointQueryParameters3D.new()
+					# params.collision_mask = 2
+					params.collide_with_areas = true
+					params.position = to_global(nodes[n])
+					print(params.position)
+					if !space.intersect_point(params).is_empty():
+						print("BONK")
+						break
 					path.push_back(nodes[n])
-					print(connections[n])
+					# print(connections[n])
 					var a = connections[n][0]
 					var b = connections[n][1]
 					var prev = n
 					n = a if current != a else b
-					print("MOVING FROM ", current, " TO ", n)
+					# print("MOVING FROM ", current, " TO ", n)
 					current = prev
 					get_normal(current)
-				print("MOVING FROM ", current, " TO ", n)
+				# print("MOVING FROM ", current, " TO ", n)
 				current = n
 				get_normal(current)
 				path.push_back(nodes[n])
