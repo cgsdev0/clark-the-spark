@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://daelcbmmf7j6d"
-path="res://.godot/imported/house_wires.gltf-c088ad9cc089a140b5fbaabb82c01315.scn"
+uid="uid://cdq08i8c1n342"
+path="res://.godot/imported/House.gltf-81bfb3bc133a7e9ed6a89e3e0228c0b0.scn"
 
 [deps]
 
-source_file="res://House Model/house_wires.gltf"
-dest_files=["res://.godot/imported/house_wires.gltf-c088ad9cc089a140b5fbaabb82c01315.scn"]
+source_file="res://models/house/House.gltf"
+dest_files=["res://.godot/imported/House.gltf-81bfb3bc133a7e9ed6a89e3e0228c0b0.scn"]
 
 [params]
 
