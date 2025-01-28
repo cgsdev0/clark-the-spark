@@ -45,6 +45,7 @@ move_down={
 [layer_names]
 
 3d_physics/layer_2="Operable"
+3d_physics/layer_3="Ceilings"
 
 [rendering]
 

@@ -10,17 +10,17 @@ func add_connection(edges, a, b):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var cube: MeshInstance3D = find_child("Cube")
+	var cube: MeshInstance3D = find_child("Grid")
 	var mesh: ArrayMesh = cube.mesh
 	var data = mesh.surface_get_arrays(0)
 	nodes = data[0]
 	var edges = data[12]
-	print(nodes)
+	# print(nodes)
 	
 	for i in range(0, edges.size(), 2):
 		add_connection(edges, i, i+1)
 		add_connection(edges, i+1, i)
-	print(connections)
+	# print(connections)
 	
 	$PlayerPath.curve.clear_points()
 	$PlayerPath.curve.add_point(nodes[1])
@@ -38,6 +38,13 @@ var cached = -Vector3.FORWARD
 
 func get_normal(i):
 	var n = connections[i].size()
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 4
+	params.position = to_global(nodes[i])
+	if !space.intersect_point(params).is_empty():
+		cached = Vector3.UP
+		return cached
 	if n == 0:
 		return cached
 	if n == 1:
@@ -70,8 +77,13 @@ func get_normal(i):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 2.0), Color.RED, 0.05)
-	$Camera3D.destination = to_global(nodes[current] + get_normal(current) * 3.0)
+	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
+	var normal = get_normal(current)
+	if normal == Vector3.UP:
+		$Camera3D.ceiling = true
+	else:
+		$Camera3D.ceiling = false
+	$Camera3D.destination = to_global(nodes[current] + get_normal(current) * 1.5)
 	$Camera3D.target = to_global(nodes[current])
 	var input = Vector2.ZERO
 	if Input.is_action_just_pressed("move_down"):
@@ -112,18 +124,24 @@ func _physics_process(delta):
 			elif $Camera3D.target_rotation >= 5 * PI / 3.0 && $Camera3D.target_rotation < 11 * PI / 6.0:
 				print("D")
 				rotated = -diff.x - diff.z
-			diff = Vector2(rotated, diff.y)
+			var adjusted = Vector2(rotated, diff.y).normalized()
+			if $Camera3D.ceiling:
+				print("we on ceilin")
+				adjusted = Vector2(diff.z, -diff.x).normalized()
 			# print("considering ", n)
-			if diff.normalized() == input:
+			print(adjusted)
+			print(input)
+			if adjusted.distance_squared_to(input) < 0.001:
+				print("cooking")
 				while connections[n].size() == 2:
 					var space = get_world_3d().direct_space_state
 					var params = PhysicsPointQueryParameters3D.new()
-					# params.collision_mask = 2
+					params.collision_mask = 2
 					params.collide_with_areas = true
 					params.position = to_global(nodes[n])
-					print(params.position)
+					# print(params.position)
 					if !space.intersect_point(params).is_empty():
-						print("BONK")
+						# print("BONK")
 						break
 					path.push_back(nodes[n])
 					# print(connections[n])
@@ -150,6 +168,6 @@ func _physics_process(delta):
 				tween = get_tree().create_tween()
 				tween.set_ease(Tween.EASE_IN_OUT)
 				tween.set_trans(Tween.TRANS_QUAD)
-				tween.tween_property($PlayerPath/Player, "progress_ratio", 1.0, 0.05 * path_length)
+				tween.tween_property($PlayerPath/Player, "progress_ratio", 1.0, 0.25 * path_length)
 				tween.tween_callback(clear_tween)
 				break
