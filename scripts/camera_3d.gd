@@ -44,8 +44,8 @@ func _process(delta):
 		target_pitch = -PI / 2.0
 	else:
 		target_pitch = -PI / 9.0
-	global_rotation.y = based_lerp_angle(global_rotation.y, target_rotation, delta, 4.0)
-	global_rotation.x = based_lerp_angle(global_rotation.x, target_pitch, delta, 4.0)
-	global_position.x = based_lerp(global_position.x, destination.x, delta, 4.0)
-	global_position.z = based_lerp(global_position.z, destination.z, delta, 4.0)
-	global_position.y = based_lerp(global_position.y, target_y + (10.0 if ceiling else 0.0), delta, 4.0)
+	global_rotation.y = based_lerp_angle(global_rotation.y, target_rotation, delta, 3.0)
+	global_rotation.x = based_lerp_angle(global_rotation.x, target_pitch, delta, 3.0)
+	global_position.x = based_lerp(global_position.x, destination.x, delta, 3.0)
+	global_position.z = based_lerp(global_position.z, destination.z, delta, 3.0)
+	global_position.y = based_lerp(global_position.y, target_y + (10.0 if ceiling else 0.0), delta, 3.0)
