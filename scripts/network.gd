@@ -7,7 +7,24 @@ func add_connection(edges, a, b):
 	if edges[a] not in connections:
 		connections[edges[a]] = []
 	connections[edges[a]].push_back(edges[b])
+
+const wire_thickness = 0.04
+
+func create_cube_mesh(pos: Vector3):
+	var cube = CSGBox3D.new()
+	cube.size = Vector3(wire_thickness, wire_thickness, wire_thickness)
+	$WireMesh.add_child(cube)
+	cube.position = pos
 	
+func create_edge_mesh(a: Vector3, b: Vector3):
+	var cube = CSGBox3D.new()
+	var diff = (b - a)
+	var dx = max(abs(diff.x) - wire_thickness, wire_thickness)
+	var dy = max(abs(diff.y) - wire_thickness, wire_thickness)
+	var dz = max(abs(diff.z) - wire_thickness, wire_thickness)
+	cube.size = Vector3(dx, dy, dz)
+	$WireMesh.add_child(cube)
+	cube.position = (a + b) / 2.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var cube: MeshInstance3D = find_child("Grid")
@@ -15,9 +32,14 @@ func _ready():
 	var data = mesh.surface_get_arrays(0)
 	nodes = data[0]
 	var edges = data[12]
+	cube.hide()
 	# print(nodes)
 	
+	for node in nodes:
+		create_cube_mesh(node)
+	
 	for i in range(0, edges.size(), 2):
+		create_edge_mesh(nodes[edges[i]], nodes[edges[i+1]])
 		add_connection(edges, i, i+1)
 		add_connection(edges, i+1, i)
 	# print(connections)
@@ -172,7 +194,7 @@ func _physics_process(delta):
 				for p in path:
 					path_length += (p - start).length()
 					start = p
-					curve.add_point(p)
+					curve.add_point(p + get_normal(current) * 0.1)
 				$PlayerPath/Player.progress = 0.0
 				tween = get_tree().create_tween()
 				tween.set_ease(Tween.EASE_IN_OUT)

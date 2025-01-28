@@ -5,10 +5,10 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_nnckb")
-shader_parameter/spherePos = null
+shader_parameter/spherePos = Vector3(-25.365, 24.405, -6.885)
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
-shader_parameter/borderSize = 0.214
-shader_parameter/sphereRadius = 3.0
+shader_parameter/borderSize = 0.119
+shader_parameter/sphereRadius = 2.5
 shader_parameter/noiseSpeed = 1.2
-shader_parameter/noiseStrength = 0.35
+shader_parameter/noiseStrength = 0.13
 shader_parameter/noiseSize = 1.161

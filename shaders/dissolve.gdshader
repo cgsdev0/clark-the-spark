@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode cull_disabled;
 
 float saturate (float s){
     return clamp(s,0,1);
@@ -113,11 +114,13 @@ void fragment() {
 	float sdfSphere = sdSphere(p, sphereRadius);
 	sdfSphere += snoise(p*noiseSize+TIME*noiseSpeed) * noiseStrength;
 	float borderDist = smoothstep(0.0, borderSize, sdfSphere);
-	if (sdfSphere < 0.0) discard;
+	if (sdfSphere < 0.0 && FRONT_FACING) discard;
 	vec3 albColor = texture(_albedo, UV).rgb;
 	vec3  bcol = borderColor;
-	ALBEDO = mix(bcol, albColor, borderDist);
-	EMISSION = (mix(bcol * 7.0, vec3(0.0), borderDist));
+	if (FRONT_FACING) {
+		ALBEDO = mix(bcol, albColor, borderDist);
+		EMISSION = (mix(bcol * 7.0, vec3(0.0), borderDist));
+	}
 }
 
 //void light() {
