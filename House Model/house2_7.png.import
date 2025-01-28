@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyp1caoy23sjn"
-path="res://.godot/imported/house2_0.png-7d7bd7e506980758de873d82f5083937.ctex"
+uid="uid://8n1atpjpo085"
+path="res://.godot/imported/house2_7.png-9b04c39a67f29ce8a7ecb3c414b8d158.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "048f219feb19b40d24c96b64c0cbe54d"
 }
 
 [deps]
 
-source_file="res://House Model/house2_0.png"
-dest_files=["res://.godot/imported/house2_0.png-7d7bd7e506980758de873d82f5083937.ctex"]
+source_file="res://House Model/house2_7.png"
+dest_files=["res://.godot/imported/house2_7.png-9b04c39a67f29ce8a7ecb3c414b8d158.ctex"]
 
 [params]
 
