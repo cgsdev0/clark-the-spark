@@ -36,6 +36,15 @@ func clear_tween():
 
 var cached = -Vector3.FORWARD
 
+func maybe_flip(i, normal):
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 8
+	params.position = to_global(nodes[i] + normal)
+	if !space.intersect_point(params).is_empty():
+		return normal
+	return -normal
+	
 func get_normal(i):
 	var n = connections[i].size()
 	var space = get_world_3d().direct_space_state
@@ -61,7 +70,7 @@ func get_normal(i):
 		var ac = (c - a).normalized()
 		var next = ab.cross(ac)
 		if next != Vector3.UP && next != Vector3.DOWN:
-			cached = next
+			cached = maybe_flip(i, next)
 		else:
 			cached = -(ab + ac).normalized()
 		return cached
@@ -72,7 +81,7 @@ func get_normal(i):
 	var ac = (c - a).normalized()
 	var next = ab.cross(ac)
 	if next != Vector3.UP && next != Vector3.DOWN:
-		cached = next
+		cached = maybe_flip(i, next)
 	return cached
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
