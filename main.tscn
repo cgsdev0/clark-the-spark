@@ -80,7 +80,7 @@ visible = false
 [node name="upstairs_walls" parent="blockbench_export/Node/house/upstairs" index="0"]
 surface_material_override/0 = ExtResource("2_sbecc")
 
-[node name="tall_lamp" parent="blockbench_export/Node/house/downstairs/living room" index="4"]
+[node name="tall_lamp" parent="blockbench_export/Node/house/downstairs/living room" index="2"]
 script = ExtResource("3_aewuu")
 electric = true
 
