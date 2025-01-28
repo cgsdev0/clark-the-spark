@@ -108,7 +108,14 @@ func get_normal(i):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
+	if electrified && Input.is_action_just_pressed("pop") && !is_instance_valid(tween):
+		electrified.kill()
+		electrified = null
+		tween = get_tree().create_tween()
+		tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
+		tween.tween_callback(clear_tween)
+		
+	# DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
 	var normal = get_normal(current)
 	if normal == Vector3.UP:
 		$Camera3D.ceiling = true
@@ -164,14 +171,14 @@ func _physics_process(delta):
 			print(input)
 			if adjusted.distance_squared_to(input) < 0.001:
 				print("cooking")
+				if electrified:
+					electrified.electrified = false
+					electrified = null
 				while connections[n].size() == 2:
-					var space = get_world_3d().direct_space_state
-					var params = PhysicsPointQueryParameters3D.new()
-					params.collision_mask = 2
-					params.collide_with_areas = true
-					params.position = to_global(nodes[n])
+					# make sure we stop at operators
+					var operable = find_operable(nodes[n])
 					# print(params.position)
-					if !space.intersect_point(params).is_empty():
+					if operable:
 						# print("BONK")
 						break
 					path.push_back(nodes[n])
@@ -197,8 +204,29 @@ func _physics_process(delta):
 					curve.add_point(p + get_normal(current) * 0.1)
 				$PlayerPath/Player.progress = 0.0
 				tween = get_tree().create_tween()
+				tween.parallel().tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
 				tween.set_ease(Tween.EASE_IN_OUT)
 				tween.set_trans(Tween.TRANS_QUAD)
-				tween.tween_property($PlayerPath/Player, "progress_ratio", 1.0, 0.25 * path_length)
+				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, 0.25 * path_length)
+				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
+				if operable:
+					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)
+					electrified = operable
+					tween.tween_callback(func(): operable.electrified = true)
 				tween.tween_callback(clear_tween)
 				break
+
+var electrified = null
+func find_operable(pos: Vector3):
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 2
+	params.collide_with_areas = true
+	params.position = to_global(pos)
+	var res = space.intersect_point(params)
+	if res.is_empty():
+		return null
+	var candidate = res[0].collider.get_parent()
+	if candidate.dead:
+		return null
+	return candidate
