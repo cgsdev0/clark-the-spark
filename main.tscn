@@ -1,13 +1,28 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=25 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
+[ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
+[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
 [ext_resource type="Texture2D" uid="uid://r013qt7ukcai" path="res://textures/testElectricSprite.png" id="3_vup4x"]
 [ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
+[ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="4_s1mw2"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgryk"]
+render_priority = 0
+shader = ExtResource("3_e6etu")
+shader_parameter/invert = true
+shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
+shader_parameter/borderSize = 0.1
+shader_parameter/sphereRadius = 2.0
+shader_parameter/noiseSpeed = 0.7
+shader_parameter/noiseStrength = 0.1
+shader_parameter/noiseSize = 1.2
+shader_parameter/_albedo = ExtResource("4_s1mw2")
 
 [sub_resource type="Curve3D" id="Curve3D_vqcuc"]
 _data = {
@@ -78,6 +93,12 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="house" parent="level" instance=ExtResource("1_awue5")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="wireframe2" parent="level/house" instance=ExtResource("2_g10u3")]
+
+[node name="downstairs_walls" parent="level/house/wireframe2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qgryk")
 
 [node name="house_wires" parent="level" instance=ExtResource("2_43qd7")]
 script = ExtResource("1_jqye8")
@@ -167,3 +188,5 @@ environment = ExtResource("7_1sx5j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.965926, 0.12941, -0.224144, 0, 0.866025, 0.5, 0.258819, -0.482963, 0.836516, 0, 0, 0)
+
+[editable path="level/house/wireframe2"]

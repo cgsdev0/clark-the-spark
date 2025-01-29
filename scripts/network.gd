@@ -228,7 +228,7 @@ func _physics_process(delta):
 				if operable:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)
 					electrified = operable
-					tween.tween_callback(func(): operable.electrified = true)
+					tween.parallel().tween_callback(func(): operable.electrified = true)
 				tween.tween_callback(clear_tween)
 				break
 

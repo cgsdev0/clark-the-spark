@@ -85,7 +85,7 @@ varying vec3 wVex;
 
 void vertex() {
 	wVex = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	VERTEX *= 1.01;
+	VERTEX *= 1.02;
 	// Called for every vertex the material is visible on.
 }
 
