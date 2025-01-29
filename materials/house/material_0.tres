@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ddh1ohayemmij"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ddh1ohayemmij"]
+
+[ext_resource type="Texture2D" uid="uid://b6fbnsliigwjp" path="res://textures/cabinets.png" id="1_hofox"]
 
 [resource]
 resource_name = "material_0"
@@ -6,3 +8,4 @@ transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_texture = ExtResource("1_hofox")

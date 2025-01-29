@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bomn7udu7xpsp"]
 
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="1_nnckb"]
-[ext_resource type="Texture2D" uid="uid://djrkb7ejmgrp" path="res://models/house/house2_5.png" id="2_ud71l"]
+[ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="2_b85de"]
 
 [resource]
 render_priority = 0
@@ -13,4 +13,4 @@ shader_parameter/sphereRadius = 2.0
 shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
-shader_parameter/_albedo = ExtResource("2_ud71l")
+shader_parameter/_albedo = ExtResource("2_b85de")

@@ -1,24 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=8 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_5ai5g"]
 [ext_resource type="Material" uid="uid://bomn7udu7xpsp" path="res://materials/walls.tres" id="2_u14tk"]
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_m0fm7"]
-[ext_resource type="Texture2D" uid="uid://djrkb7ejmgrp" path="res://models/house/house2_5.png" id="4_tphmx"]
 [ext_resource type="Script" path="res://scripts/fades.gd" id="7_5o68q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvulu"]
-render_priority = 0
-shader = ExtResource("3_m0fm7")
-shader_parameter/invert = true
-shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
-shader_parameter/borderSize = 0.1
-shader_parameter/sphereRadius = 2.0
-shader_parameter/noiseSpeed = 0.7
-shader_parameter/noiseStrength = 0.1
-shader_parameter/noiseSize = 1.2
-shader_parameter/_albedo = ExtResource("4_tphmx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgant"]
 size = Vector3(0.453018, 0.447372, 0.306213)
@@ -29,114 +15,84 @@ size = Vector3(0.453018, 0.307312, 0.306213)
 [node name="blockbench_export" instance=ExtResource("1_bdfnr")]
 script = ExtResource("2_4fvik")
 
-[node name="wireframe" parent="." index="0" instance=ExtResource("2_5ai5g")]
-
-[node name="downstairs_walls" parent="wireframe" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_rvulu")
-
-[node name="cylinder" parent="Node/house/upstairs/hallway" index="0"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/hallway/cylinder" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/hallway/cylinder/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145384, 0)
-shape = SubResource("BoxShape3D_fgant")
-
-[node name="radiator" parent="Node/house/upstairs/bedroom" index="0"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bedroom/radiator" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/radiator/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.552503, 0.300568, 0.189545)
-shape = SubResource("BoxShape3D_m0fo0")
-
-[node name="cylinder2" parent="Node/house/upstairs/bedroom" index="10"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bedroom/cylinder2" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/cylinder2/StaticBody3D" index="0"]
+[node name="Node_house_downstairs_living room_cylinder8_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138372, 0)
 shape = SubResource("BoxShape3D_fgant")
 
-[node name="upstairs_walls" parent="Node/house/upstairs" index="2"]
-surface_material_override/0 = ExtResource("2_u14tk")
-
-[node name="radiator2" parent="Node/house/upstairs/bathroom" index="0"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bathroom/radiator2" index="0"]
+[node name="Node_house_downstairs_living room_cylinder8#StaticBody3D" type="StaticBody3D" parent="." index="1"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bathroom/radiator2/StaticBody3D" index="0"]
+[node name="Node_house_downstairs_living room_cylinder7_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138372, 0)
+shape = SubResource("BoxShape3D_fgant")
+
+[node name="Node_house_downstairs_living room_cylinder7#StaticBody3D" type="StaticBody3D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Node_house_downstairs_laundry room_cylinder5_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
+shape = SubResource("BoxShape3D_fgant")
+
+[node name="Node_house_downstairs_laundry room_cylinder5#StaticBody3D" type="StaticBody3D" parent="." index="5"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Node_house_downstairs_laundry room_cylinder4_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
+shape = SubResource("BoxShape3D_fgant")
+
+[node name="Node_house_downstairs_laundry room_cylinder4#StaticBody3D" type="StaticBody3D" parent="." index="7"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Node_house_upstairs_bathroom_cylinder3_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
+shape = SubResource("BoxShape3D_fgant")
+
+[node name="Node_house_upstairs_bathroom_cylinder3#StaticBody3D" type="StaticBody3D" parent="." index="9"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Node_house_upstairs_bathroom_radiator2_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.552503, 0.300568, 0.189545)
 shape = SubResource("BoxShape3D_m0fo0")
 
-[node name="cylinder3" parent="Node/house/upstairs/bathroom" index="1"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bathroom/cylinder3" index="0"]
+[node name="Node_house_upstairs_bathroom_radiator2#StaticBody3D" type="StaticBody3D" parent="." index="11"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bathroom/cylinder3/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
+[node name="Node_house_upstairs_bedroom_cylinder2_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138372, 0)
 shape = SubResource("BoxShape3D_fgant")
 
-[node name="cylinder4" parent="Node/house/downstairs/laundry room" index="2"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/cylinder4" index="0"]
+[node name="Node_house_upstairs_bedroom_cylinder2#StaticBody3D" type="StaticBody3D" parent="." index="13"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/laundry room/cylinder4/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
-shape = SubResource("BoxShape3D_fgant")
+[node name="Node_house_upstairs_bedroom_radiator_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.552503, 0.300568, 0.189545)
+shape = SubResource("BoxShape3D_m0fo0")
 
-[node name="cylinder5" parent="Node/house/downstairs/laundry room" index="3"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/cylinder5" index="0"]
+[node name="Node_house_upstairs_bedroom_radiator#StaticBody3D" type="StaticBody3D" parent="." index="15"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/laundry room/cylinder5/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
+[node name="Node_house_upstairs_hallway_cylinder_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145384, 0)
 shape = SubResource("BoxShape3D_fgant")
 
-[node name="cylinder6" parent="Node/house/downstairs/laundry room" index="4"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/cylinder6" index="0"]
+[node name="Node_house_upstairs_hallway_cylinder#StaticBody3D" type="StaticBody3D" parent="." index="17"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/laundry room/cylinder6/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
-shape = SubResource("BoxShape3D_fgant")
+[node name="wireframe" parent="." index="18" instance=ExtResource("2_5ai5g")]
 
-[node name="downstairs_walls" parent="Node/house/downstairs" index="2"]
+[node name="upstairs_walls" parent="Node/house/upstairs" index="3"]
 surface_material_override/0 = ExtResource("2_u14tk")
 
-[node name="radiator3" parent="Node/house/downstairs/living room" index="6"]
+[node name="radiator3" parent="Node/house/downstairs/living room" index="5"]
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -148,28 +104,19 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514942, 0.300568, 0.380527)
 shape = SubResource("BoxShape3D_m0fo0")
 
-[node name="cylinder7" parent="Node/house/downstairs/living room" index="14"]
+[node name="cylinder6" parent="Node/house/downstairs/laundry room" index="2"]
 script = ExtResource("7_5o68q")
 electric = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/living room/cylinder7" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/cylinder6" index="0"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/cylinder7/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138372, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/laundry room/cylinder6/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106863, 0)
 shape = SubResource("BoxShape3D_fgant")
 
-[node name="cylinder8" parent="Node/house/downstairs/living room" index="15"]
-script = ExtResource("7_5o68q")
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/living room/cylinder8" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/cylinder8/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138372, 0)
-shape = SubResource("BoxShape3D_fgant")
+[node name="downstairs_walls" parent="Node/house/downstairs" index="4"]
+surface_material_override/0 = ExtResource("2_u14tk")
 
 [editable path="wireframe"]
