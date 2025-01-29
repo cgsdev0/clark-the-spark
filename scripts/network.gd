@@ -97,7 +97,6 @@ func get_normal(i):
 		return cached
 	if n == 1:
 		var next: Vector3 = (nodes[i] - nodes[connections[i][0]]).normalized()
-		next = next.rotated(Vector3.UP, PI / 2.0)
 		if next != Vector3.UP && next != Vector3.DOWN:
 			cached = next.normalized()
 		return cached
@@ -186,7 +185,7 @@ func _physics_process(delta):
 			# print("considering ", n)
 			print(adjusted)
 			print(input)
-			if adjusted.distance_squared_to(input) < 0.001:
+			if adjusted.distance_squared_to(input) < 0.001 || connections[current].size() == 1:
 				print("cooking")
 				if electrified:
 					electrified.electrified = false

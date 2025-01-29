@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=15 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
@@ -26,6 +26,43 @@ shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
 shader_parameter/_albedo = ExtResource("5_i8omy")
+
+[sub_resource type="Animation" id="Animation_dv425"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8rjcj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahuuo"]
+_data = {
+"RESET": SubResource("Animation_8rjcj"),
+"spin": SubResource("Animation_dv425")
+}
 
 [node name="blockbench_export" instance=ExtResource("1_bdfnr")]
 script = ExtResource("2_4fvik")
@@ -107,6 +144,9 @@ collision_mask = 0
 [node name="downstairs_walls" parent="wireframe" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_6jpxn")
 
+[node name="upstairs" parent="Node/house" index="0"]
+visible = false
+
 [node name="upstairs_walls" parent="Node/house/upstairs" index="3"]
 surface_material_override/0 = ExtResource("2_u14tk")
 
@@ -124,6 +164,14 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/radiator3/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514942, 0.300568, 0.380527)
 shape = SubResource("BoxShape3D_m0fo0")
+
+[node name="cylinder4" parent="Node/house/downstairs/living room" index="13"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.03125, 1.29688, -0.65625)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/house/downstairs/living room/cylinder4" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_ahuuo")
+}
 
 [node name="cylinder6" parent="Node/house/downstairs/laundry room" index="2"]
 script = ExtResource("7_5o68q")
