@@ -36,6 +36,7 @@ func _process(delta):
 	
 	
 	# move
+	print(destination)
 	var diff = target - destination
 	var xz = Vector2(diff.x, -diff.z)
 	target_rotation = fposmod(xz.angle() - PI / 2.0, 2 * PI)

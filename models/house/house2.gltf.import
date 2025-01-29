@@ -23,7 +23,7 @@ meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
-meshes/force_disable_compression=false
+meshes/force_disable_compression=true
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
@@ -35,43 +35,43 @@ _subresources={
 "materials": {
 "material_0": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_0.tres"
+"use_external/path": "res://materials/house/material_0.tres"
 },
 "material_1": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_1.tres"
+"use_external/path": "res://materials/house/material_1.tres"
 },
 "material_2": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_2.tres"
+"use_external/path": "res://materials/house/material_2.tres"
 },
 "material_3": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_3.tres"
+"use_external/path": "res://materials/house/material_3.tres"
 },
 "material_4": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_4.tres"
+"use_external/path": "res://materials/house/material_4.tres"
 },
 "material_5": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_5.tres"
+"use_external/path": "res://materials/house/material_5.tres"
 },
 "material_6": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_6.tres"
+"use_external/path": "res://materials/house/material_6.tres"
 },
 "material_7": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_7.tres"
+"use_external/path": "res://materials/house/material_7.tres"
 },
 "material_8": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_8.tres"
+"use_external/path": "res://materials/house/material_8.tres"
 },
 "material_9": {
 "use_external/enabled": true,
-"use_external/path": "res://House Model/material_9.tres"
+"use_external/path": "res://materials/house/material_9.tres"
 }
 }
 }

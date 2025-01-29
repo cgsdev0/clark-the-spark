@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dim2428cdap85"]
+
+[ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
+[ext_resource type="Material" uid="uid://bomn7udu7xpsp" path="res://materials/walls.tres" id="2_u14tk"]
+
+[node name="blockbench_export" instance=ExtResource("1_bdfnr")]
+
+[node name="upstairs_walls" parent="Node/house/upstairs" index="2"]
+surface_material_override/0 = ExtResource("2_u14tk")
+
+[node name="downstairs_walls" parent="Node/house/downstairs" index="2"]
+surface_material_override/0 = ExtResource("2_u14tk")

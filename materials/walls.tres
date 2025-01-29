@@ -1,14 +1,16 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bomn7udu7xpsp"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bomn7udu7xpsp"]
 
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="1_nnckb"]
+[ext_resource type="Texture2D" uid="uid://djrkb7ejmgrp" path="res://models/house/house2_5.png" id="2_ud71l"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_nnckb")
-shader_parameter/spherePos = Vector3(-25.365, 24.405, -6.885)
+shader_parameter/spherePos = Vector3(-23.39, 22.815, -12.325)
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
-shader_parameter/borderSize = 0.119
-shader_parameter/sphereRadius = 2.5
-shader_parameter/noiseSpeed = 1.2
-shader_parameter/noiseStrength = 0.13
-shader_parameter/noiseSize = 1.161
+shader_parameter/borderSize = 0.1
+shader_parameter/sphereRadius = 2.0
+shader_parameter/noiseSpeed = 0.7
+shader_parameter/noiseStrength = 0.1
+shader_parameter/noiseSize = 1.2
+shader_parameter/_albedo = ExtResource("2_ud71l")

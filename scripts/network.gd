@@ -25,6 +25,7 @@ func create_edge_mesh(a: Vector3, b: Vector3):
 	cube.size = Vector3(dx, dy, dz)
 	$WireMesh.add_child(cube)
 	cube.position = (a + b) / 2.0
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var cube: MeshInstance3D = find_child("Grid")
@@ -82,7 +83,7 @@ func get_normal(i):
 		var next: Vector3 = (nodes[i] - nodes[connections[i][0]]).normalized()
 		next = next.rotated(Vector3.UP, PI / 2.0)
 		if next != Vector3.UP && next != Vector3.DOWN:
-			cached = next
+			cached = next.normalized()
 		return cached
 	if n == 2:
 		var a = nodes[i]
@@ -92,7 +93,7 @@ func get_normal(i):
 		var ac = (c - a).normalized()
 		var next = ab.cross(ac)
 		if next != Vector3.UP && next != Vector3.DOWN:
-			cached = maybe_flip(i, next)
+			cached = maybe_flip(i, next.normalized())
 		else:
 			cached = -(ab + ac).normalized()
 		return cached
@@ -103,7 +104,7 @@ func get_normal(i):
 	var ac = (c - a).normalized()
 	var next = ab.cross(ac)
 	if next != Vector3.UP && next != Vector3.DOWN:
-		cached = maybe_flip(i, next)
+		cached = maybe_flip(i, next.normalized())
 	return cached
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,12 +116,13 @@ func _physics_process(delta):
 		tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
 		tween.tween_callback(clear_tween)
 		
-	# DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
+	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
 	var normal = get_normal(current)
 	if normal == Vector3.UP:
 		$Camera3D.ceiling = true
 	else:
 		$Camera3D.ceiling = false
+	print(get_normal(current))
 	$Camera3D.destination = to_global(nodes[current] + get_normal(current) * 1.5)
 	$Camera3D.target = to_global(nodes[current])
 	var input = Vector2.ZERO
