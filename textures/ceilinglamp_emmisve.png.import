@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccv6ye65r3cgk"
-path.s3tc="res://.godot/imported/wireframe_Image_5.png-a43b72d3545913e0bd6a37f6c1b35e2d.s3tc.ctex"
+uid="uid://doxej46y21sf6"
+path.s3tc="res://.godot/imported/ceilinglamp_emmisve.png-18c5551ce5d1060ea1b8ac6040121add.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/house/wireframe_Image_5.png"
-dest_files=["res://.godot/imported/wireframe_Image_5.png-a43b72d3545913e0bd6a37f6c1b35e2d.s3tc.ctex"]
+source_file="res://textures/ceilinglamp_emmisve.png"
+dest_files=["res://.godot/imported/ceilinglamp_emmisve.png-18c5551ce5d1060ea1b8ac6040121add.s3tc.ctex"]
 
 [params]
 
