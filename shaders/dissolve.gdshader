@@ -94,7 +94,8 @@ float snoise(vec3 v){
 //--- end noise
 
 
-uniform vec3 spherePos;
+global uniform vec3 spherePos;
+uniform bool invert;
 uniform vec3 borderColor: source_color;
 uniform float borderSize;
 uniform float sphereRadius;
@@ -114,7 +115,8 @@ void fragment() {
 	float sdfSphere = sdSphere(p, sphereRadius);
 	sdfSphere += snoise(p*noiseSize+TIME*noiseSpeed) * noiseStrength;
 	float borderDist = smoothstep(0.0, borderSize, sdfSphere);
-	if (sdfSphere < 0.0 && FRONT_FACING) discard;
+	if (!invert && sdfSphere < 0.0 && FRONT_FACING) discard;
+	if (invert && (sdfSphere > 0.0)) discard;
 	vec3 albColor = texture(_albedo, UV).rgb;
 	vec3  bcol = borderColor;
 	if (FRONT_FACING) {

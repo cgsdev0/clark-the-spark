@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=21 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
+[ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
 
 [sub_resource type="Curve3D" id="Curve3D_vqcuc"]
 _data = {
@@ -58,18 +59,25 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1cdg"]
 size = Vector3(5.75, 0.25, 6.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rr8xi"]
+size = Vector3(5.75, 2, 6.5)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_758qb"]
-size = Vector3(5, 1.25, 2.75)
+size = Vector3(5, 3.08789, 2.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyp3d"]
-size = Vector3(2.5, 1.25, 2)
+size = Vector3(2.74658, 3.21716, 1.89502)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a42ev"]
+size = Vector3(2.74658, 3.21716, 1.80896)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="level" type="Node3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.75, 19.75, -14.75)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="house" parent="level" instance=ExtResource("1_awue5")]
+unique_name_in_owner = true
 
 [node name="house_wires" parent="level" instance=ExtResource("2_43qd7")]
 script = ExtResource("1_jqye8")
@@ -98,33 +106,61 @@ transform = Transform3D(0.2, 0, 0, 0, 0.193185, 0.0517638, 0, -0.0517638, 0.1931
 script = ExtResource("5_ftnol")
 
 [node name="WireMesh" type="Node3D" parent="level/house_wires"]
+unique_name_in_owner = true
 
-[node name="CeilingA" type="StaticBody3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.75, 19.75, -14.75)
+[node name="Upstairs" type="Node3D" parent="level/house_wires/WireMesh"]
+
+[node name="CeilingA" type="StaticBody3D" parent="level"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingA"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/CeilingA"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 1.675, -0.75)
 shape = SubResource("BoxShape3D_p1cdg")
 
-[node name="RoomA" type="StaticBody3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.75, 19.75, -14.75)
+[node name="Upstairs" type="StaticBody3D" parent="level"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("7_fp1ht")
+zone = "upstairs"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Upstairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 2.81, -0.75)
+shape = SubResource("BoxShape3D_rr8xi")
+
+[node name="CeilingB" type="StaticBody3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0143156, 1.77164, 0.0028739)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/CeilingB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 1.675, -0.75)
+shape = SubResource("BoxShape3D_p1cdg")
+
+[node name="RoomA" type="StaticBody3D" parent="level"]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomA"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.875, -0.625)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/RoomA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.71338, -0.625)
 shape = SubResource("BoxShape3D_758qb")
 
-[node name="RoomB" type="StaticBody3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.75, 19.75, -14.75)
+[node name="RoomB" type="StaticBody3D" parent="level"]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomB"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -3)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/RoomB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6579, -3)
 shape = SubResource("BoxShape3D_jyp3d")
+
+[node name="RoomB2" type="StaticBody3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.6)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/RoomB2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6579, -3.06303)
+shape = SubResource("BoxShape3D_a42ev")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_1sx5j")

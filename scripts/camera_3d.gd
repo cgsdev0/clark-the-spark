@@ -34,9 +34,18 @@ func _process(delta):
 	if result.has("collider"):
 		result.collider.get_parent().fade_out(delta)
 	
+	# toggle upstairs
+	params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 32
+	params.position = target
+	result = space.intersect_point(params)
+	var zone = "downstairs"
+	if !result.is_empty():
+		zone = result[0].collider.zone
+	%house.show_upstairs(zone == "upstairs")
+	%WireMesh/Upstairs.visible = zone == "upstairs"
 	
 	# move
-	print(destination)
 	var diff = target - destination
 	var xz = Vector2(diff.x, -diff.z)
 	target_rotation = fposmod(xz.angle() - PI / 2.0, 2 * PI)
@@ -49,4 +58,6 @@ func _process(delta):
 	global_rotation.x = based_lerp_angle(global_rotation.x, target_pitch, delta, 3.0)
 	global_position.x = based_lerp(global_position.x, destination.x, delta, 3.0)
 	global_position.z = based_lerp(global_position.z, destination.z, delta, 3.0)
-	global_position.y = based_lerp(global_position.y, target_y + (10.0 if ceiling else 0.0), delta, 3.0)
+	global_position.y = based_lerp(global_position.y, target_y + 
+		(10.0 if ceiling else 0.0) +
+		(8.0 if zone == "upstairs" else 0.0), delta, 3.0)

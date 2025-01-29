@@ -13,8 +13,21 @@ const wire_thickness = 0.04
 func create_cube_mesh(pos: Vector3):
 	var cube = CSGBox3D.new()
 	cube.size = Vector3(wire_thickness, wire_thickness, wire_thickness)
-	$WireMesh.add_child(cube)
+	if test_upstairs(to_global(pos)):
+		$WireMesh/Upstairs.add_child(cube)
+	else:
+		$WireMesh.add_child(cube)
 	cube.position = pos
+
+func test_upstairs(point: Vector3):
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 32
+	params.position = point
+	var result = space.intersect_point(params)
+	if !result.is_empty():
+		return result[0].collider.zone == "upstairs"
+	return false
 	
 func create_edge_mesh(a: Vector3, b: Vector3):
 	var cube = CSGBox3D.new()
@@ -23,7 +36,10 @@ func create_edge_mesh(a: Vector3, b: Vector3):
 	var dy = max(abs(diff.y) - wire_thickness, wire_thickness)
 	var dz = max(abs(diff.z) - wire_thickness, wire_thickness)
 	cube.size = Vector3(dx, dy, dz)
-	$WireMesh.add_child(cube)
+	if test_upstairs(to_global(a)) && test_upstairs(to_global(b)):
+		$WireMesh/Upstairs.add_child(cube)
+	else:
+		$WireMesh.add_child(cube)
 	cube.position = (a + b) / 2.0
 	
 # Called when the node enters the scene tree for the first time.
@@ -122,8 +138,7 @@ func _physics_process(delta):
 		$Camera3D.ceiling = true
 	else:
 		$Camera3D.ceiling = false
-	print(get_normal(current))
-	$Camera3D.destination = to_global(nodes[current] + get_normal(current) * 1.5)
+	$Camera3D.destination = to_global(nodes[current] + normal * 1.5)
 	$Camera3D.target = to_global(nodes[current])
 	var input = Vector2.ZERO
 	if Input.is_action_just_pressed("move_down"):
@@ -209,7 +224,7 @@ func _physics_process(delta):
 				tween.parallel().tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
 				tween.set_ease(Tween.EASE_IN_OUT)
 				tween.set_trans(Tween.TRANS_QUAD)
-				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, 0.25 * path_length)
+				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, max(0.33 * path_length, 0.33))
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
 				if operable:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)

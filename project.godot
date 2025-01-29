@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/stretch/aspect="keep_height"
 
+[global_group]
+
+upstairs=""
+
 [input]
 
 move_up={
@@ -57,8 +61,16 @@ pop={
 3d_physics/layer_3="Ceilings"
 3d_physics/layer_4="Rooms"
 3d_physics/layer_5="Fades"
+3d_physics/layer_6="Zones"
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[shader_globals]
+
+spherePos={
+"type": "vec3",
+"value": Vector3(-23.2, 22.81, -12.3)
+}

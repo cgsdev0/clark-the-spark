@@ -6,7 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_nnckb")
-shader_parameter/spherePos = Vector3(-23.39, 22.815, -12.325)
+shader_parameter/invert = false
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
 shader_parameter/sphereRadius = 2.0
