@@ -71,6 +71,7 @@ pop={
 3d_physics/layer_4="Rooms"
 3d_physics/layer_5="Fades"
 3d_physics/layer_6="Zones"
+3d_physics/layer_7="Override"
 
 [rendering]
 
