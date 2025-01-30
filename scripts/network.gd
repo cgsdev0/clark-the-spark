@@ -167,6 +167,7 @@ func _physics_process(delta):
 		charging = false
 		Events.meter_angry.emit()
 		$PlayerPath/Player/ChargeSound.stop()
+		$PlayerPath/Player/FailSound.play()
 		require_release = true
 	if Input.is_action_just_released("pop"):
 		require_release = false
@@ -184,6 +185,7 @@ func _physics_process(delta):
 			else:
 				$PlayerPath/Player/ChargeSound.play()
 	if !Input.is_action_pressed("pop") && charging:
+		# $PlayerPath/Player/FailSound.play()
 		charging = false
 		$PlayerPath/Player/ChargeSound.stop()
 	if charging:

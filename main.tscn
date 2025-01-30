@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=34 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
 [ext_resource type="AudioStream" uid="uid://b1lolpi0yakw5" path="res://audio/sfx/charge.ogg" id="9_aee73"]
 [ext_resource type="AudioStream" uid="uid://mnogvlqkynih" path="res://audio/sfx/pop1.ogg" id="10_jev0h"]
+[ext_resource type="AudioStream" uid="uid://bwjmwoenejvhn" path="res://audio/sfx/fail.ogg" id="10_lwet4"]
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
 [ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 
@@ -148,12 +149,17 @@ script = ExtResource("4_8goul")
 [node name="ChargeSound" type="AudioStreamPlayer" parent="level/house_wires/PlayerPath/Player"]
 stream = ExtResource("9_aee73")
 
+[node name="FailSound" type="AudioStreamPlayer" parent="level/house_wires/PlayerPath/Player"]
+stream = ExtResource("10_lwet4")
+volume_db = -4.0
+
 [node name="PopSound" type="AudioStreamPlayer" parent="level/house_wires/PlayerPath/Player"]
 stream = SubResource("AudioStreamRandomizer_yu5ii")
 
 [node name="Camera3D" type="Camera3D" parent="level/house_wires"]
 process_priority = -2
 transform = Transform3D(0.2, 0, 0, 0, 0.193185, 0.0517638, 0, -0.0517638, 0.193185, 0.6, 1.35, -0.55)
+near = 1.0
 script = ExtResource("5_ftnol")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="level/house_wires/Camera3D"]
