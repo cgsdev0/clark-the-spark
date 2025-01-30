@@ -12,6 +12,7 @@ const wire_thickness = 0.04
 
 func create_cube_mesh(pos: Vector3):
 	var cube = CSGBox3D.new()
+	cube.material = preload("res://materials/wires.tres")
 	cube.size = Vector3(wire_thickness, wire_thickness, wire_thickness)
 	if test_upstairs(to_global(pos)):
 		$WireMesh/Upstairs.add_child(cube)
@@ -31,6 +32,7 @@ func test_upstairs(point: Vector3):
 	
 func create_edge_mesh(a: Vector3, b: Vector3):
 	var cube = CSGBox3D.new()
+	cube.material = preload("res://materials/wires.tres")
 	var diff = (b - a)
 	var dx = max(abs(diff.x) - wire_thickness, wire_thickness)
 	var dy = max(abs(diff.y) - wire_thickness, wire_thickness)
@@ -136,17 +138,69 @@ func get_normal(i):
 
 var can_buffer = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+var charging = false
+var charge_time = 3.0
+
+func pop():
+	charging = false
+	electrified.kill()
+	Events.add_score(50)
+	electrified = null
+	$PlayerPath/Player/ChargeSound.stop()
+	tween = get_tree().create_tween()
+	tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
+	tween.tween_callback(clear_tween)
+	$PlayerPath/Player/PopSound.play()
+
+var charge_timer = 0.0
+var max_charge_time = 2.9
+var is_possible = true
+var require_release = false
+
 func _physics_process(delta):
-	if electrified && Input.is_action_just_pressed("pop") && !is_instance_valid(tween):
-		electrified.kill()
-		Events.add_score(50)
-		electrified = null
-		tween = get_tree().create_tween()
-		tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
-		tween.tween_callback(clear_tween)
+	if charging:
+		charge_timer += delta
+		if Events.charge >= 100.0 && is_possible:
+			pop()
+	if charge_timer > min(max_charge_time, 2.9) && charging && !is_possible:
+		charging = false
+		Events.meter_angry.emit()
+		$PlayerPath/Player/ChargeSound.stop()
+		require_release = true
+	if Input.is_action_just_released("pop"):
+		require_release = false
+	if Input.is_action_pressed("pop") && !charging && Events.charge == 0.0:
+		if electrified && !is_instance_valid(tween) && !require_release:
+			Events.meter_calm.emit()
+			charging = true
+			charge_timer = 0.0
+			charge_time = electrified.get_charge_time()
+			max_charge_time = electrified.get_max_charge_time()
+			is_possible = electrified.is_possible()
+			print("TIME: ", charge_time)
+			if charge_time == 0.0:
+				pop()
+			else:
+				$PlayerPath/Player/ChargeSound.play()
+	if !Input.is_action_pressed("pop") && charging:
+		charging = false
+		$PlayerPath/Player/ChargeSound.stop()
+	if charging:
+		Events.charge += delta * 100.0 / charge_time
+	else:
+		Events.charge -= delta * 200.0
+	Events.charge = clampf(Events.charge, 0.0, 100.0)
+	#if electrified && Input.is_action_just_pressed("pop") && !is_instance_valid(tween):
+		#electrified.kill()
+		#Events.add_score(50)
+		#electrified = null
+		#$PlayerPath/Player/ChargeSound.play()
+		#tween = get_tree().create_tween()
+		#tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
+		#tween.tween_callback(clear_tween)
 		
-	DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
+	# DebugDraw3D.draw_arrow(to_global(nodes[current]), to_global(nodes[current] + get_normal(current) * 1.0), Color.RED, 0.05)
 	var normal = get_normal(current)
 	if normal == Vector3.UP:
 		$Camera3D.ceiling = true
@@ -243,7 +297,7 @@ func _physics_process(delta):
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
-				if operable:
+				if operable && !operable.dead:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)
 					electrified = operable
 					tween.parallel().tween_callback(func(): operable.electrified = true)
@@ -261,6 +315,6 @@ func find_operable(pos: Vector3):
 	if res.is_empty():
 		return null
 	var candidate = res[0].collider.get_parent()
-	if candidate.dead:
+	if candidate.dead && !candidate.mandatory:
 		return null
 	return candidate

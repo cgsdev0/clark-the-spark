@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2061krotxm6g"
-path="res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"
+uid="uid://f12ksl6yrehp"
+path="res://.godot/imported/newtreadmill.png-8200ae4a3cda180820dd252cfe189851.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/meter.png"
-dest_files=["res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"]
+source_file="res://textures/newtreadmill.png"
+dest_files=["res://.godot/imported/newtreadmill.png-8200ae4a3cda180820dd252cfe189851.ctex"]
 
 [params]
 
