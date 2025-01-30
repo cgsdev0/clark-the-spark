@@ -11,6 +11,7 @@ enum Electric {
 @export var electric = false
 @export var electrified = false
 @export var fades = false
+@export var solid_while_alive = false
 var dead = false
 var mat: StandardMaterial3D
 
@@ -43,7 +44,10 @@ func fade_out(delta):
 
 var speed = 5.0
 
+var dead_timer = 0.0
 func _process(delta):
+	if dead:
+		dead_timer += delta
 	match type:
 		Electric.CEILING_FAN:
 			rotate_y(delta * speed)
@@ -58,4 +62,6 @@ func _process(delta):
 		mat.albedo_color.a += delta * 2.5
 		if electrified:
 			mat.albedo_color.a += delta * 6.0
+		if solid_while_alive && (!dead || dead_timer < 2.0):
+			mat.albedo_color.a = 1.0
 		mat.albedo_color.a = clampf(mat.albedo_color.a, 0.4, 1.0)

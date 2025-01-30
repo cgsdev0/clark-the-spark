@@ -95,6 +95,16 @@ func get_normal(i):
 		return cached
 	if n == 0:
 		return cached
+	space = get_world_3d().direct_space_state
+	params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 64
+	params.position = to_global(nodes[i])
+	var result = space.intersect_point(params)
+	if !result.is_empty():
+		var obj = result[0].collider
+		var node = obj.find_child("Forward")
+		if is_instance_valid(node):
+			return node.global_basis.z.normalized()
 	if n == 1:
 		var next: Vector3 = (nodes[i] - nodes[connections[i][0]]).normalized()
 		if next != Vector3.UP && next != Vector3.DOWN:
@@ -107,10 +117,12 @@ func get_normal(i):
 		var ab = (b - a).normalized()
 		var ac = (c - a).normalized()
 		var next = ab.cross(ac)
-		if next != Vector3.UP && next != Vector3.DOWN:
+		if next != Vector3.UP && next != Vector3.DOWN && next != Vector3.ZERO:
 			cached = maybe_flip(i, next.normalized())
 		else:
-			cached = -(ab + ac).normalized()
+			next = -(ab + ac).normalized()
+			if next != Vector3.ZERO:
+				cached = next
 		return cached
 	var a = nodes[connections[i][0]]
 	var b = nodes[connections[i][1]]
@@ -164,7 +176,7 @@ func _physics_process(delta):
 				rotated = diff.z
 			elif $Camera3D.target_rotation >= PI / 6.0 && $Camera3D.target_rotation < PI / 3.0:
 				print("A")
-				rotated = diff.x - diff.z # ???
+				rotated = -diff.x + diff.z # ???
 			elif $Camera3D.target_rotation >= 5 * PI / 6.0 && $Camera3D.target_rotation < 7 * PI / 6.0:
 				rotated = diff.x
 			elif $Camera3D.target_rotation >= 2 * PI / 3.0 && $Camera3D.target_rotation < 5 * PI / 6.0:
@@ -174,7 +186,7 @@ func _physics_process(delta):
 				rotated = -diff.z
 			elif $Camera3D.target_rotation >= 7 * PI / 6.0 && $Camera3D.target_rotation < 4 * PI / 3.0:
 				print("C")
-				rotated = -diff.x + diff.z # ???
+				rotated = diff.x - diff.z # ???
 			elif $Camera3D.target_rotation >= 5 * PI / 3.0 && $Camera3D.target_rotation < 11 * PI / 6.0:
 				print("D")
 				rotated = -diff.x - diff.z
@@ -217,7 +229,7 @@ func _physics_process(delta):
 				for p in path:
 					path_length += (p - start).length()
 					start = p
-					curve.add_point(p + get_normal(current) * 0.1)
+					curve.add_point(p + get_normal(current) * 0.05)
 				$PlayerPath/Player.progress = 0.0
 				tween = get_tree().create_tween()
 				tween.parallel().tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)

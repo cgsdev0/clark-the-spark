@@ -116,13 +116,16 @@ material = SubResource("StandardMaterial3D_dl8xo")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="level/house_wires/PlayerPath/Player"]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+pixel_size = 0.007
 billboard = 1
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_44bef")
 frame_progress = 0.0348298
 script = ExtResource("4_8goul")
 
 [node name="Camera3D" type="Camera3D" parent="level/house_wires"]
+process_priority = -2
 transform = Transform3D(0.2, 0, 0, 0, 0.193185, 0.0517638, 0, -0.0517638, 0.193185, 0.6, 1.35, -0.55)
 script = ExtResource("5_ftnol")
 
