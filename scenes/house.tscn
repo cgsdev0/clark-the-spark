@@ -1,8 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=23 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
 [ext_resource type="Material" uid="uid://bomn7udu7xpsp" path="res://materials/walls.tres" id="2_u14tk"]
+[ext_resource type="Material" uid="uid://dr2k245qyd52i" path="res://materials/light_on.tres" id="3_5bxs3"]
+[ext_resource type="Material" uid="uid://bw2ikrljnxkek" path="res://materials/small_lamp_on.tres" id="4_twsyo"]
 [ext_resource type="Material" uid="uid://mtnywgiqha1f" path="res://materials/fan_on.tres" id="5_njuex"]
 [ext_resource type="Material" uid="uid://b30mhplkw0adq" path="res://materials/ceiling.tres" id="5_vmpl2"]
 [ext_resource type="Script" path="res://scripts/fades.gd" id="7_5o68q"]
@@ -54,18 +56,27 @@ points = PackedVector3Array(0.534289, 0.3117, 0.522771, 0.253137, 0.1711, 0.3382
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)
 script = ExtResource("2_4fvik")
 
-[node name="upstairs_walls" parent="Node/house/upstairs" index="0"]
-surface_material_override/0 = ExtResource("2_u14tk")
+[node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="1"]
+surface_material_override/0 = ExtResource("3_5bxs3")
 
-[node name="bedrooom_ceiling_fan" parent="Node/house/upstairs/bedroom" index="10"]
+[node name="upstairs_hallway_light" parent="Node/house/upstairs/hallway" index="0"]
+surface_material_override/0 = ExtResource("3_5bxs3")
+
+[node name="upstairs_hallway_small_lamp" parent="Node/house/upstairs/hallway" index="1"]
+surface_material_override/0 = ExtResource("4_twsyo")
+
+[node name="bedroom_small_lamp_left" parent="Node/house/upstairs/bedroom" index="3"]
+surface_material_override/0 = ExtResource("4_twsyo")
+
+[node name="bedroom_small_lamp_right" parent="Node/house/upstairs/bedroom" index="4"]
+surface_material_override/0 = ExtResource("4_twsyo")
+
+[node name="bedrooom_ceiling_fan" parent="Node/house/upstairs/bedroom" index="12"]
 transform = Transform3D(-4.37115e-08, 0, -1, 0, 1, 0, 1, 0, -4.37115e-08, 1.95313, -1.03527, -4.5)
 surface_material_override/0 = ExtResource("5_njuex")
 
-[node name="downstairs_walls" parent="Node/house/downstairs" index="0"]
+[node name="upstairs_walls" parent="Node/house/upstairs" index="3"]
 surface_material_override/0 = ExtResource("2_u14tk")
-
-[node name="downstairs_ceiling" parent="Node/house/downstairs" index="3"]
-surface_material_override/0 = ExtResource("5_vmpl2")
 
 [node name="livingroom_tv" parent="Node/house/downstairs/living room" index="2"]
 script = ExtResource("7_5o68q")
@@ -85,6 +96,7 @@ shape = SubResource("ConvexPolygonShape3D_cdtw4")
 transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0)
 
 [node name="livingroom_small_lamp" parent="Node/house/downstairs/living room" index="3"]
+surface_material_override/0 = ExtResource("4_twsyo")
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -94,6 +106,13 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/livingroom_small_lamp/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_560as")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node/house/downstairs/living room/livingroom_small_lamp" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 6.46235e-27, 0, 0, 1, 0, 0.739489, 0)
+visible = false
+light_color = Color(1, 0.961333, 0.71, 1)
+light_energy = 0.077
+omni_range = 10.0
 
 [node name="livingroom_tall_lamp" parent="Node/house/downstairs/living room" index="4"]
 script = ExtResource("7_5o68q")
@@ -178,22 +197,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/left_stereo/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_5hhu3")
 
-[node name="livingroom_ceiling_fan" parent="Node/house/downstairs/living room" index="13"]
-transform = Transform3D(-4.37115e-08, 0, -1, 0, 1, 0, 1, 0, -4.37115e-08, 0.046875, 1.27161, -0.65625)
-surface_material_override/0 = ExtResource("5_njuex")
-script = ExtResource("7_5o68q")
-type = 1
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/living room/livingroom_ceiling_fan" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/livingroom_ceiling_fan/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
-shape = SubResource("CylinderShape3D_o6m6w")
-
-[node name="kitchen_ceiling_fan" parent="Node/house/downstairs/living room" index="14"]
+[node name="kitchen_ceiling_fan" parent="Node/house/downstairs/living room" index="13"]
 transform = Transform3D(-4.37115e-08, 0, -1, 0, 1, 0, 1, 0, -4.37115e-08, 2.76563, 1.26787, -2.1875)
 surface_material_override/0 = ExtResource("5_njuex")
 script = ExtResource("7_5o68q")
@@ -208,7 +212,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211689, 0)
 shape = SubResource("CylinderShape3D_o6m6w")
 
-[node name="livingroom_dvdplayer" parent="Node/house/downstairs/living room" index="15"]
+[node name="livingroom_dvdplayer" parent="Node/house/downstairs/living room" index="14"]
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -218,6 +222,28 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/livingroom_dvdplayer/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_tmqfk")
+
+[node name="livingroom_ceiling_fan" parent="Node/house/downstairs/living room" index="15"]
+transform = Transform3D(-4.37115e-08, 0, -1, 0, 1, 0, 1, 0, -4.37115e-08, 0.046875, 1.27161, -0.65625)
+surface_material_override/0 = ExtResource("5_njuex")
+script = ExtResource("7_5o68q")
+type = 1
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/living room/livingroom_ceiling_fan" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/living room/livingroom_ceiling_fan/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
+shape = SubResource("CylinderShape3D_o6m6w")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node/house/downstairs/living room/livingroom_ceiling_fan" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101291, 0)
+visible = false
+light_color = Color(1, 0.961333, 0.71, 1)
+light_energy = 0.077
+omni_range = 2.158
 
 [node name="dryer" parent="Node/house/downstairs/laundry room" index="0"]
 script = ExtResource("7_5o68q")
@@ -247,6 +273,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_oqnfc")
 
 [node name="laundry_room_light_right" parent="Node/house/downstairs/laundry room" index="2"]
+surface_material_override/0 = ExtResource("3_5bxs3")
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -259,6 +286,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_o6m6w")
 
 [node name="laundry_room_light_left" parent="Node/house/downstairs/laundry room" index="3"]
+surface_material_override/0 = ExtResource("3_5bxs3")
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -271,6 +299,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_o6m6w")
 
 [node name="downstairs_hallway_light" parent="Node/house/downstairs/laundry room" index="4"]
+surface_material_override/0 = ExtResource("3_5bxs3")
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -331,3 +360,9 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/kitchen/microwave/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_iv0j2")
+
+[node name="downstairs_ceiling" parent="Node/house/downstairs" index="4"]
+surface_material_override/0 = ExtResource("5_vmpl2")
+
+[node name="downstairs_walls" parent="Node/house/downstairs" index="5"]
+surface_material_override/0 = ExtResource("2_u14tk")

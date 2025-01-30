@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmvc1tjdr4r"
-path="res://.godot/imported/washingmachine.png-582e4833816be66851ef3de500c1489c.ctex"
+uid="uid://dddkj6jne02yp"
+path="res://.godot/imported/ceilinglight_emmissive.png-f6ab29bc6790d943487689ba861bc3cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/washingmachine.png"
-dest_files=["res://.godot/imported/washingmachine.png-582e4833816be66851ef3de500c1489c.ctex"]
+source_file="res://textures/ceilinglight_emmissive.png"
+dest_files=["res://.godot/imported/ceilinglight_emmissive.png-f6ab29bc6790d943487689ba861bc3cf.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

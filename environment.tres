@@ -8,3 +8,8 @@ sky_material = SubResource("ProceduralSkyMaterial_kfpic")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_y5th4")
+ambient_light_source = 2
+ambient_light_color = Color(0.299547, 0.299547, 0.299547, 1)
+tonemap_mode = 2
+ssao_radius = 0.33
+ssao_intensity = 16.0

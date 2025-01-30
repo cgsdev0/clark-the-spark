@@ -29,9 +29,9 @@ func _ready():
 	if get_surface_override_material(0) != null:
 		mat = get_surface_override_material(0)
 	else:
-		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
 		mat.cull_mode = BaseMaterial3D.CULL_BACK
-		mat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+		mat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_OPAQUE_ONLY
 	mat = mat.duplicate()
 	if get_surface_override_material(0) != null:
 		set_surface_override_material(0, mat)

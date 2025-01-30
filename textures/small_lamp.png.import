@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmvc1tjdr4r"
-path="res://.godot/imported/washingmachine.png-582e4833816be66851ef3de500c1489c.ctex"
+uid="uid://pqgu56ecvd60"
+path="res://.godot/imported/small_lamp.png-f0ab6e4e9c8ecd0725fc2af2eb59da1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/washingmachine.png"
-dest_files=["res://.godot/imported/washingmachine.png-582e4833816be66851ef3de500c1489c.ctex"]
+source_file="res://textures/small_lamp.png"
+dest_files=["res://.godot/imported/small_lamp.png-f0ab6e4e9c8ecd0725fc2af2eb59da1d.ctex"]
 
 [params]
 

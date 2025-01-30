@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dr2k245qyd52i"]
+
+[ext_resource type="Texture2D" uid="uid://doip7v7dtb0n8" path="res://textures/ceilinglight.png" id="1_r7bpf"]
+[ext_resource type="Texture2D" uid="uid://dddkj6jne02yp" path="res://textures/ceilinglight_emmissive.png" id="2_b50cf"]
+
+[resource]
+resource_name = "material_3"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_r7bpf")
+emission_enabled = true
+emission_texture = ExtResource("2_b50cf")
+texture_filter = 0
+texture_repeat = false

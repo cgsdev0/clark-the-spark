@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled, depth_draw_always;
+render_mode cull_disabled, depth_draw_always, diffuse_toon;
 
 float saturate (float s){
     return clamp(s,0,1);
@@ -126,8 +126,3 @@ void fragment() {
 		ALBEDO = albColor;
 	}
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
