@@ -3,6 +3,7 @@ extends MeshInstance3D
 
 enum Electric {
 	GENERIC,
+	ALARM_CLOCK,
 	CEILING_FAN,
 	CEILING_LIGHT,
 	TALL_LAMP,
@@ -22,22 +23,23 @@ enum Electric {
 
 var values = {
 	# points gained, min needed, pop threshold, max time
-	Electric.GENERIC: [50, 0, 100, 2.8],
-	Electric.CEILING_FAN: [50, 100, 1200, 1.0],
-	Electric.CEILING_LIGHT: [50, 0, 1000, 1.0],
-	Electric.TALL_LAMP: [50, 0, 100, 1.0],
-	Electric.SHORT_LAMP: [50, 0, 100, 1.0],
-	Electric.TV: [50, 0, 100, 2.8],
-	Electric.COMPUTER: [50, 0, 100, 2.8],
-	Electric.FRIDGE: [500, 500, 2000, 2.8],
-	Electric.MICROWAVE: [50, 0, 100, 2.8],
-	Electric.OVEN: [50, 0, 100, 2.8],
-	Electric.DRYER: [50, 0, 100, 2.8],
-	Electric.WASHER: [50, 0, 100, 2.8],
-	Electric.CONSOLE: [50, 0, 100, 2.8],
-	Electric.RADIATOR: [50, 0, 100, 2.8],
-	Electric.SPEAKER: [50, 0, 100, 2.8],
-	Electric.TREADMILL: [50, 0, 100, 2.8],
+	Electric.GENERIC: [5, 0, 5000, 1.0],
+	Electric.ALARM_CLOCK: [5, 0, 5000, 1.0],
+	Electric.CEILING_LIGHT: [5, 0, 5000, 1.0],
+	Electric.TALL_LAMP: [5, 0, 5000, 1.0],
+	Electric.SHORT_LAMP: [5, 0, 5000, 1.0],
+	Electric.SPEAKER: [50, 20, 10000, 1.5],
+	Electric.CEILING_FAN: [50, 20, 5000, 1.0],
+	Electric.TV: [60, 40, 12000, 2.0],
+	Electric.CONSOLE: [100, 100, 8000, 1.0],
+	Electric.RADIATOR: [300, 300, 11000, 2.0],
+	Electric.COMPUTER: [325, 300, 10000, 1.8],
+	Electric.TREADMILL: [300, 600, 20000, 2.0],
+	Electric.FRIDGE: [400, 1000, 20000, 2.8],
+	Electric.MICROWAVE: [500, 800, 20000, 2.0],
+	Electric.WASHER: [500, 2000, 20000, 1.5],
+	Electric.DRYER: [1000, 2000, 20000, 2.5],
+	Electric.OVEN: [1500, 1000, 50000, 2.8],
 }
 
 @export var type: Electric = Electric.GENERIC
@@ -60,17 +62,21 @@ func is_possible():
 func get_max_charge_time():
 	var d = values[type]
 	return d[3]
+
+func get_reward():
+	var d = values[type]
+	return d[0]
 	
 func get_charge_time():
 	var d = values[type]
 	if Events.score >= d[2]:
 		return 0.0
 	if Events.score < d[1]:
-		var t = unlerp(0.0, d[1], max(Events.score, 10.0))
-		return d[3] / t
+		var t = unlerp(0.0, d[1], max(Events.score, 1.0))
+		return d[3] / clampf(t, 0.15, 0.9)
 	var t = unlerp(d[1], d[2], Events.score)
 	print("T: ", t)
-	return lerp(d[3], 0.2, t)
+	return lerp(d[3], 0.25, t)
 	
 func kill():
 	#var anim = find_child("AnimationPlayer")

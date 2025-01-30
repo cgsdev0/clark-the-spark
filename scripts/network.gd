@@ -144,8 +144,8 @@ var charge_time = 3.0
 
 func pop():
 	charging = false
+	Events.add_score(electrified.get_reward())
 	electrified.kill()
-	Events.add_score(50)
 	electrified = null
 	$PlayerPath/Player/ChargeSound.stop()
 	tween = get_tree().create_tween()
