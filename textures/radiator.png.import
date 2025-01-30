@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2061krotxm6g"
-path="res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"
+uid="uid://s3ldb0f3pf2k"
+path="res://.godot/imported/radiator.png-b7eb00016e3caa050922c2903ff2d00a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/meter.png"
-dest_files=["res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"]
+source_file="res://textures/radiator.png"
+dest_files=["res://.godot/imported/radiator.png-b7eb00016e3caa050922c2903ff2d00a.ctex"]
 
 [params]
 

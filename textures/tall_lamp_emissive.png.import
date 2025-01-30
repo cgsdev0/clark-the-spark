@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2061krotxm6g"
-path="res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"
+uid="uid://c8r5hcjw226xg"
+path="res://.godot/imported/tall_lamp_emissive.png-8767c99d05eaf4f757a4496a62a1d87a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/meter.png"
-dest_files=["res://.godot/imported/meter.png-9b911a97a05a8f899d42ee27cdf2420e.ctex"]
+source_file="res://textures/tall_lamp_emissive.png"
+dest_files=["res://.godot/imported/tall_lamp_emissive.png-8767c99d05eaf4f757a4496a62a1d87a.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

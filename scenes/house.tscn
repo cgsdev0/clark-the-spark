@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=26 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
@@ -8,6 +8,20 @@
 [ext_resource type="Material" uid="uid://mtnywgiqha1f" path="res://materials/fan_on.tres" id="5_njuex"]
 [ext_resource type="Material" uid="uid://b30mhplkw0adq" path="res://materials/ceiling.tres" id="5_vmpl2"]
 [ext_resource type="Script" path="res://scripts/fades.gd" id="7_5o68q"]
+[ext_resource type="Material" uid="uid://doy2qx22pnn8i" path="res://materials/tall_lamp_on.tres" id="8_pbbbk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmqo4"]
+size = Vector3(0.51297, 1.15576, 0.378784)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o6m6w"]
+height = 0.299958
+radius = 0.127587
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eflm5"]
+size = Vector3(0.585693, 0.447266, 0.438477)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4t28c"]
+points = PackedVector3Array(-0.773132, 0.0986606, 0.225372, -0.322583, 0.597477, 0.366377, -0.324321, 0.586568, 0.375, -0.820175, 0.580128, 0.329756, -0.320225, 0.599758, 0.206081, -0.324321, 0.16663, 0.375, -0.859897, 0.088981, 0.360275, -0.320225, 0.0986606, 0.225372, -0.773132, 0.599758, 0.206081, -0.771632, 0.586568, 0.375, -0.262381, 0.551564, 0.350647, -0.773132, 0.156483, 0.206081, -0.869558, 0.088981, 0.302435, -0.320225, 0.156483, 0.206081, -0.332134, 0.110495, 0.345866, -0.771632, 0.16663, 0.375, -0.773132, 0.609438, 0.215727, -0.879219, 0.185369, 0.32171, -0.320225, 0.088981, 0.235018, -0.262381, 0.541936, 0.312081, -0.830976, 0.580501, 0.312081, -0.320225, 0.609438, 0.215727, -0.772595, 0.596919, 0.366212, -0.869558, 0.175741, 0.350647, -0.773132, 0.088981, 0.235018, -0.811715, 0.088981, 0.360275, -0.274967, 0.580298, 0.329783, -0.869558, 0.175741, 0.302435, -0.859897, 0.175741, 0.360275, -0.262381, 0.541936, 0.341001, -0.866048, 0.100094, 0.338944)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cdtw4"]
 points = PackedVector3Array(-0.346669, -0.210997, -0.0442, 0.461539, 0.491973, 0.0843708, -0.446034, 0.491973, 0.0843708, 0.40116, -0.188736, 0.190317, 0.40116, -0.188736, -0.0517651, -0.3703, -0.188736, 0.190317, -0.476365, 0.507213, -0.00636276, 0.491965, 0.50714, -0.00636276, -0.476365, -0.0828561, 0.0692762, -0.242181, 0.353679, 0.121936, 0.491965, -0.0828561, 0.0692762, 0.38323, -0.217268, 0.1848, -0.3703, -0.188736, -0.0517651, 0.257818, 0.353639, 0.121927, -0.353065, -0.217268, 0.1848, -0.476365, -0.0828561, -0.00636276, 0.491965, -0.0828561, -0.00636276, 0.376575, -0.210997, -0.0442, -0.017086, 0.204913, 0.143973)
@@ -17,9 +31,6 @@ points = PackedVector3Array(-0.126493, 0.657222, -0.00506731, -0.126066, 0.65734
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rnvl5"]
 points = PackedVector3Array(0.127112, 0.65957, 0.0430814, -0.136744, 0.645737, -0.0263195, -0.136744, 0.645737, 0.0153064, 0.0993232, -0.00694442, -0.0263195, -0.0534057, -0.00694442, 0.098656, 0.0715617, 0.67349, -0.123544, -0.0534057, -0.00694442, -0.0957449, -0.0534057, 0.881857, 0.0569812, 0.0715617, 0.645737, 0.126456, -0.0811671, 0.65957, -0.123544, -0.0672728, 0.67349, 0.126456, 0.0576674, -0.00694442, 0.098656, 0.0576674, 0.881857, -0.0540946, -0.108956, -0.00694442, -0.0124197, 0.0576674, -0.00694442, -0.0957449, 0.141033, 0.67349, -0.0124197, 0.0576674, 0.867937, 0.0569812, -0.0811671, 0.881857, -0.0124197, 0.0993232, -0.00694442, 0.0292061, -0.0950615, -0.00694442, 0.0430814, -0.0950615, 0.65957, 0.098656, 0.113218, 0.645737, -0.0679699, -0.0811671, -0.00694442, -0.0679699, 0.0854288, 0.867937, 0.0153064, 0.0715617, 0.67349, 0.126456, -0.0359163, 0.843504, -0.0619782, 0.141033, 0.645737, 0.0153064, 0.0715617, -0.00694442, -0.0818696, -0.0811671, 0.881857, 0.0153064, 0.0854288, 0.67349, 0.112531, -0.108956, -0.00694442, 0.0153064, 0.0854288, -0.00694442, 0.0569812)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gmqo4"]
-size = Vector3(0.51297, 1.15576, 0.378784)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pqwt0"]
 points = PackedVector3Array(0.518944, 0.353438, -0.15396, -0.718832, -2.77556e-17, -0.245631, -0.726207, -0.0623971, -0.1875, -0.760665, 0.20411, 0.187237, 0.570337, -0.0625, 0.177107, 0.562632, -2.77556e-17, -0.245631, -0.687874, 0.343426, -0.249151, 0.604465, 0.20411, 0.187237, -0.726537, -0.0625, 0.177107, 0.572363, 0.302736, -0.249129, 0.570007, -0.0623971, -0.1875, 0.562632, -2.77556e-17, 0.214895, -0.717905, 0.353438, -0.175282, -0.703126, 0.159638, 0.209251, -0.718832, -2.77556e-17, 0.214895, -0.760665, 0.310761, -0.175282, 0.604465, 0.310761, -0.175282, 0.531674, 0.343426, -0.249151, 0.546926, 0.159638, 0.209251, -0.675278, 0.353438, -0.15396, -0.728563, 0.302736, -0.249129, 0.561705, 0.353438, -0.175282)
@@ -32,10 +43,6 @@ points = PackedVector3Array(-0.524652, 0.282211, -0.259052, 0.473497, 0.750066, 
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5hhu3"]
 points = PackedVector3Array(0.125, 0.482168, 0.106709, -0.124332, 9.15072e-05, -0.1094, -0.0992812, -0.0249562, -0.1094, -0.0995115, -0.0255702, 0.107873, -0.124625, 0.484775, 0.107878, 0.100787, 0.508613, -0.109138, 0.125, 0.00217913, -0.108464, -0.124332, 0.484208, -0.1094, 0.125, 0.00217913, 0.106688, -0.124592, -0.000409786, 0.107849, 0.125, 0.482168, -0.108485, -0.0995164, 0.509884, 0.107879, 0.100781, -0.0242963, 0.107356, 0.100781, -0.0242963, -0.109132, 0.100787, 0.508613, 0.107362, -0.0992812, 0.509256, -0.1094)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_o6m6w"]
-height = 0.299958
-radius = 0.127587
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tmqfk"]
 points = PackedVector3Array(0.258247, 0.218, 0.341619, 0.258247, 0.218, 0.521024, 0.248512, 0.284355, 0.335231, 0.531653, 0.218, 0.341619, 0.541359, 0.284355, 0.527412, 0.541359, 0.284355, 0.335231, 0.248512, 0.284355, 0.527412, 0.531653, 0.218, 0.521024, 0.5391, 0.234277, 0.52591, 0.53793, 0.238872, 0.3375)
@@ -56,14 +63,67 @@ points = PackedVector3Array(0.534289, 0.3117, 0.522771, 0.253137, 0.1711, 0.3382
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)
 script = ExtResource("2_4fvik")
 
+[node name="bathroom_radiator" parent="Node/house/upstairs/bathroom" index="0"]
+script = ExtResource("7_5o68q")
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bathroom/bathroom_radiator" index="0"]
+collision_layer = 66
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bathroom/bathroom_radiator/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463274, 0.635515, 0.107936)
+shape = SubResource("BoxShape3D_gmqo4")
+
+[node name="Forward" type="Marker3D" parent="Node/house/upstairs/bathroom/bathroom_radiator/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705395, 1.04865, 0.263043)
+
 [node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="1"]
 surface_material_override/0 = ExtResource("3_5bxs3")
 
 [node name="upstairs_hallway_light" parent="Node/house/upstairs/hallway" index="0"]
 surface_material_override/0 = ExtResource("3_5bxs3")
+script = ExtResource("7_5o68q")
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/hallway/upstairs_hallway_light" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/hallway/upstairs_hallway_light/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
+shape = SubResource("CylinderShape3D_o6m6w")
 
 [node name="upstairs_hallway_small_lamp" parent="Node/house/upstairs/hallway" index="1"]
 surface_material_override/0 = ExtResource("4_twsyo")
+script = ExtResource("7_5o68q")
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/hallway/upstairs_hallway_small_lamp" index="0"]
+collision_layer = 66
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/hallway/upstairs_hallway_small_lamp/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705661, 0.236316)
+shape = SubResource("BoxShape3D_eflm5")
+
+[node name="Forward" type="Marker3D" parent="Node/house/upstairs/hallway/upstairs_hallway_small_lamp/StaticBody3D" index="1"]
+transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0.922073, 0)
+
+[node name="bedroom_radiator" parent="Node/house/upstairs/bedroom" index="0"]
+script = ExtResource("7_5o68q")
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bedroom/bedroom_radiator" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/bedroom_radiator/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.121908)
+shape = SubResource("ConvexPolygonShape3D_4t28c")
 
 [node name="bedroom_small_lamp_left" parent="Node/house/upstairs/bedroom" index="3"]
 surface_material_override/0 = ExtResource("4_twsyo")
@@ -115,6 +175,7 @@ light_energy = 0.077
 omni_range = 10.0
 
 [node name="livingroom_tall_lamp" parent="Node/house/downstairs/living room" index="4"]
+surface_material_override/0 = ExtResource("8_pbbbk")
 script = ExtResource("7_5o68q")
 electric = true
 
@@ -249,7 +310,6 @@ omni_range = 2.158
 script = ExtResource("7_5o68q")
 electric = true
 fades = true
-solid_while_alive = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/dryer" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, 0.269305)
@@ -263,7 +323,6 @@ shape = SubResource("ConvexPolygonShape3D_oqnfc")
 script = ExtResource("7_5o68q")
 electric = true
 fades = true
-solid_while_alive = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/house/downstairs/laundry room/washer" index="0"]
 collision_layer = 18
@@ -314,6 +373,7 @@ shape = SubResource("CylinderShape3D_o6m6w")
 [node name="fridge" parent="Node/house/downstairs/kitchen" index="0"]
 process_priority = 2
 script = ExtResource("7_5o68q")
+type = 7
 electric = true
 fades = true
 
@@ -361,8 +421,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/kitchen/microwave/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_iv0j2")
 
-[node name="downstairs_ceiling" parent="Node/house/downstairs" index="4"]
-surface_material_override/0 = ExtResource("5_vmpl2")
-
-[node name="downstairs_walls" parent="Node/house/downstairs" index="5"]
+[node name="downstairs_walls" parent="Node/house/downstairs" index="3"]
 surface_material_override/0 = ExtResource("2_u14tk")
+
+[node name="downstairs_ceiling" parent="Node/house/downstairs" index="6"]
+surface_material_override/0 = ExtResource("5_vmpl2")
