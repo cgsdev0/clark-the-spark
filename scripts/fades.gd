@@ -50,7 +50,7 @@ var values = {
 @export var solid_while_alive = false
 @export var mandatory = false
 var dead = false
-var mat: StandardMaterial3D
+var mats: Array[StandardMaterial3D] = []
 
 func unlerp(from: float, to: float, value: float) -> float:
 	return (value - from) / (to - from)
@@ -83,27 +83,31 @@ func kill():
 	#if is_instance_valid(anim):
 		#anim.pause()
 	dead = true
-	mat.emission_enabled = false
+	for mat in mats:
+		mat.emission_enabled = false
 	electrified = false
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mat = mesh.surface_get_material(0)
-	if get_surface_override_material(0) != null:
-		mat = get_surface_override_material(0)
-	else:
-		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
-		mat.cull_mode = BaseMaterial3D.CULL_BACK
-		mat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_OPAQUE_ONLY
-	mat = mat.duplicate()
-	if get_surface_override_material(0) != null:
-		set_surface_override_material(0, mat)
-	else:
-		mesh.surface_set_material(0, mat)
+	for i in mesh.get_surface_count():
+		var mat = mesh.surface_get_material(i)
+		if get_surface_override_material(i) != null:
+			mat = get_surface_override_material(i)
+		else:
+			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+			mat.cull_mode = BaseMaterial3D.CULL_BACK
+			mat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_OPAQUE_ONLY
+		mat = mat.duplicate()
+		if get_surface_override_material(i) != null:
+			set_surface_override_material(i, mat)
+		else:
+			mesh.surface_set_material(i, mat)
+		mats.push_back(mat)
 
 func fade_out(delta):
 	if fades:
-		mat.albedo_color.a -= delta * 5.0
+		for mat in mats:
+			mat.albedo_color.a -= delta * 5.0
 
 var speed = 5.0
 
@@ -118,13 +122,16 @@ func _process(delta):
 				speed = move_toward(speed, 0.1, delta * 2.0)
 			
 	if electrified && electric:
-		mat.next_pass = preload("res://materials/electrified.tres")
+		for mat in mats:
+			mat.next_pass = preload("res://materials/electrified.tres")
 	else:
-		mat.next_pass = null
+		for mat in mats:
+			mat.next_pass = null
 	if fades:
-		mat.albedo_color.a += delta * 2.5
-		if electrified:
-			mat.albedo_color.a += delta * 6.0
-		if solid_while_alive && (!dead || dead_timer < 2.0):
-			mat.albedo_color.a = 1.0
-		mat.albedo_color.a = clampf(mat.albedo_color.a, 0.4, 1.0)
+		for mat in mats:
+			mat.albedo_color.a += delta * 2.5
+			if electrified:
+				mat.albedo_color.a += delta * 6.0
+			if solid_while_alive && (!dead || dead_timer < 2.0):
+				mat.albedo_color.a = 1.0
+			mat.albedo_color.a = clampf(mat.albedo_color.a, 0.4, 1.0)

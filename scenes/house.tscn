@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=32 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
@@ -37,6 +37,9 @@ points = PackedVector3Array(0.0766229, 0.243969, 0.0469, -0.0768208, 0.243956, -
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tmqfk"]
 points = PackedVector3Array(0.258247, 0.218, 0.341619, 0.258247, 0.218, 0.521024, 0.248512, 0.284355, 0.335231, 0.531653, 0.218, 0.341619, 0.541359, 0.284355, 0.527412, 0.541359, 0.284355, 0.335231, 0.248512, 0.284355, 0.527412, 0.531653, 0.218, 0.521024, 0.5391, 0.234277, 0.52591, 0.53793, 0.238872, 0.3375)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yf2ha"]
+points = PackedVector3Array(-0.444275, 0.68365, 0.441144, 0.482989, 0.548799, 0.47696, 0.502973, 0.1719, 0.50477, 0.502973, 0.1719, -1.02037, -0.592976, 0.1719, 0.50477, -0.544206, 0.409088, -0.956744, 0.454203, 0.409088, -0.956744, -0.592976, 0.1719, -1.02037, 0.304475, 0.708649, 0.366229, -0.61907, 0.558815, 0.41612, -0.14482, 0.658704, 0.0417027, -0.36746, 0.6875, 0.479558, -0.394366, 0.708649, 0.366229, -0.584645, 0.293235, -1.00878, 0.47927, 0.583814, 0.366229, 0.277561, 0.6875, 0.479558, 0.492919, 0.293684, -1.00638, 0.0797715, 0.658704, 0.0417027, -0.576712, 0.549608, 0.482136, -0.544206, 0.60876, 0.366229, 0.379339, 0.658704, 0.366229, 0.454203, 0.60876, 0.41612, 0.154635, 0.658704, 0.0667265, -0.219684, 0.658704, 0.0667265)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cdtw4"]
 points = PackedVector3Array(-0.346669, -0.210997, -0.0442, 0.461539, 0.491973, 0.0843708, -0.446034, 0.491973, 0.0843708, 0.40116, -0.188736, 0.190317, 0.40116, -0.188736, -0.0517651, -0.3703, -0.188736, 0.190317, -0.476365, 0.507213, -0.00636276, 0.491965, 0.50714, -0.00636276, -0.476365, -0.0828561, 0.0692762, -0.242181, 0.353679, 0.121936, 0.491965, -0.0828561, 0.0692762, 0.38323, -0.217268, 0.1848, -0.3703, -0.188736, -0.0517651, 0.257818, 0.353639, 0.121927, -0.353065, -0.217268, 0.1848, -0.476365, -0.0828561, -0.00636276, 0.491965, -0.0828561, -0.00636276, 0.376575, -0.210997, -0.0442, -0.017086, 0.204913, 0.143973)
@@ -250,6 +253,17 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/bedrooom_ceiling_fan/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_o6m6w")
+
+[node name="bed" parent="Node/house/upstairs/bedroom" index="15"]
+script = ExtResource("7_5o68q")
+fades = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/house/upstairs/bedroom/bed" index="0"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/bed/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_yf2ha")
 
 [node name="upstairs_walls" parent="Node/house/upstairs" index="3"]
 surface_material_override/0 = ExtResource("2_u14tk")
