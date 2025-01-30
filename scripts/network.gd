@@ -133,11 +133,14 @@ func get_normal(i):
 	if next != Vector3.UP && next != Vector3.DOWN:
 		cached = maybe_flip(i, next.normalized())
 	return cached
-	
+
+var can_buffer = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if electrified && Input.is_action_just_pressed("pop") && !is_instance_valid(tween):
 		electrified.kill()
+		Events.add_score(50)
 		electrified = null
 		tween = get_tree().create_tween()
 		tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
@@ -162,7 +165,7 @@ func _physics_process(delta):
 		input = Vector2.RIGHT
 
 	if input != Vector2.ZERO:
-		if buffered.size() < 2:
+		if buffered.size() < 1 && can_buffer:
 			buffered.push_back(input)
 		
 	if !buffered.is_empty() && !is_instance_valid(tween):
@@ -231,11 +234,14 @@ func _physics_process(delta):
 					start = p
 					curve.add_point(p + get_normal(current) * 0.05)
 				$PlayerPath/Player.progress = 0.0
+				can_buffer = false
 				tween = get_tree().create_tween()
 				tween.parallel().tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
 				tween.set_ease(Tween.EASE_IN_OUT)
 				tween.set_trans(Tween.TRANS_QUAD)
-				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, max(0.33 * path_length, 0.33))
+				var dur = max(0.33 * path_length, 0.33)
+				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
+				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
 				if operable:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)

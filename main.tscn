@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=32 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
+[ext_resource type="Shader" path="res://shaders/post.gdshader" id="10_7m1xx"]
+[ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgryk"]
 render_priority = 0
@@ -71,6 +73,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7ha7r"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 11.0
+dof_blur_amount = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkx17"]
+render_priority = -10
+shader = ExtResource("10_7m1xx")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.92549)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 0.5
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_6dfqq"]
+material = SubResource("ShaderMaterial_xkx17")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5wwl"]
+size = Vector3(0.1, 0.1, 0.1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1cdg"]
 size = Vector3(5.75, 0.25, 6.5)
 
@@ -86,6 +116,9 @@ size = Vector3(2.74658, 3.21716, 1.89502)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a42ev"]
 size = Vector3(2.74658, 3.21716, 1.80896)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_7kg8m"]
+viewport_path = NodePath("Control/SubViewport")
+
 [node name="Node3D" type="Node3D"]
 
 [node name="level" type="Node3D" parent="."]
@@ -96,6 +129,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="wireframe2" parent="level/house" instance=ExtResource("2_g10u3")]
+visible = false
 
 [node name="downstairs_walls" parent="level/house/wireframe2" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qgryk")
@@ -127,12 +161,29 @@ script = ExtResource("4_8goul")
 [node name="Camera3D" type="Camera3D" parent="level/house_wires"]
 process_priority = -2
 transform = Transform3D(0.2, 0, 0, 0, 0.193185, 0.0517638, 0, -0.0517638, 0.193185, 0.6, 1.35, -0.55)
+attributes = SubResource("CameraAttributesPractical_7ha7r")
 script = ExtResource("5_ftnol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level/house_wires/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.235652)
+visible = false
+mesh = SubResource("QuadMesh_6dfqq")
 
 [node name="WireMesh" type="Node3D" parent="level/house_wires"]
 unique_name_in_owner = true
 
 [node name="Upstairs" type="Node3D" parent="level/house_wires/WireMesh"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level/house_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703682, 2.39664, 0.718412)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/house_wires/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/house_wires/StaticBody3D"]
+shape = SubResource("BoxShape3D_q5wwl")
 
 [node name="CeilingA" type="StaticBody3D" parent="level"]
 collision_layer = 4
@@ -190,6 +241,48 @@ shape = SubResource("BoxShape3D_a42ev")
 environment = ExtResource("7_1sx5j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.965926, 0.12941, -0.224144, 0, 0.866025, 0.5, 0.258819, -0.482963, 0.836516, 0, 0, 0)
+transform = Transform3D(-0.362972, 0.792697, -0.489778, 0.0741282, 0.548525, 0.832842, 0.928847, 0.265992, -0.25786, -12.1994, 4.05649, -4.52207)
+light_energy = 0.7
+shadow_opacity = 0.68
+directional_shadow_split_1 = 0.08
+directional_shadow_split_2 = 0.18
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.98
+anchor_top = 1.0
+anchor_right = 0.98
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_7kg8m")
+
+[node name="SubViewport" type="SubViewport" parent="Control"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(128, 128)
+
+[node name="Node2D" parent="Control/SubViewport" instance=ExtResource("13_5ll0k")]
 
 [editable path="level/house/wireframe2"]
