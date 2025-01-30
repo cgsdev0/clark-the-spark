@@ -85,6 +85,15 @@ func maybe_flip(i, normal):
 	if !space.intersect_point(params).is_empty():
 		return normal
 	return -normal
+
+func is_point_in_ceiling(pos: Vector3) -> bool:
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 4
+	params.position = pos
+	if !space.intersect_point(params).is_empty():
+		return true
+	return false
 	
 func get_normal(i):
 	var n = connections[i].size()
@@ -158,6 +167,8 @@ var max_charge_time = 2.9
 var is_possible = true
 var require_release = false
 
+var radius = 2.0
+
 func _physics_process(delta):
 	if charging:
 		charge_timer += delta
@@ -206,8 +217,30 @@ func _physics_process(delta):
 	var normal = get_normal(current)
 	if normal == Vector3.UP:
 		$Camera3D.ceiling = true
+		
 	else:
 		$Camera3D.ceiling = false
+	
+	# ceiling stuff
+	# toggle upstairs
+	var space = get_world_3d().direct_space_state
+	var params = PhysicsPointQueryParameters3D.new()
+	params.collision_mask = 32
+	params.position = $PlayerPath/Player/AnimatedSprite3D.global_position
+	var result = space.intersect_point(params)
+	var zone = "downstairs"
+	if !result.is_empty():
+		zone = result[0].collider.zone
+	if zone != "upstairs":
+		%house.show_upstairs(false)
+		%WireMesh/Upstairs.visible = false
+	
+	if is_point_in_ceiling($PlayerPath/Player/AnimatedSprite3D.global_position):
+		radius -= delta * 6.0
+	else:
+		radius += delta * 6.0
+	radius = clampf(radius, 0.0, 2.0)
+	RenderingServer.global_shader_parameter_set("sphereRadius", radius)
 	$Camera3D.destination = to_global(nodes[current] + normal * 1.5)
 	$Camera3D.target = to_global(nodes[current])
 	var input = Vector2.ZERO

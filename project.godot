@@ -105,5 +105,25 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 spherePos={
 "type": "vec3",
-"value": Vector3(-23.2, 22.81, -12.3)
+"value": Vector3(0, 0, 0)
+}
+spherePos2={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+spherePos3={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+spherePos4={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+spherePos5={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+sphereRadius={
+"type": "float",
+"value": 8.315
 }

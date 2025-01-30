@@ -42,8 +42,9 @@ func _process(delta):
 	var zone = "downstairs"
 	if !result.is_empty():
 		zone = result[0].collider.zone
-	%house.show_upstairs(zone == "upstairs")
-	%WireMesh/Upstairs.visible = zone == "upstairs"
+	if zone == "upstairs":
+		%house.show_upstairs(true)
+		%WireMesh/Upstairs.visible = true
 	
 	# move
 	var diff = target - destination

@@ -95,10 +95,14 @@ float snoise(vec3 v){
 
 
 global uniform vec3 spherePos;
+global uniform vec3 spherePos2;
+global uniform vec3 spherePos3;
+global uniform vec3 spherePos4;
+global uniform vec3 spherePos5;
 uniform bool invert;
 uniform vec3 borderColor: source_color;
 uniform float borderSize;
-uniform float sphereRadius;
+global uniform float sphereRadius;
 uniform float noiseSpeed;
 uniform float noiseStrength;
 uniform float noiseSize;
@@ -113,6 +117,10 @@ void vertex() {
 void fragment() {
 	vec3 p = wVex - spherePos;
 	float sdfSphere = sdSphere(p, sphereRadius);
+	sdfSphere = min(sdSphere(wVex - spherePos2, sphereRadius), sdfSphere);
+	sdfSphere = min(sdSphere(wVex - spherePos3, sphereRadius), sdfSphere);
+	sdfSphere = min(sdSphere(wVex - spherePos4, sphereRadius), sdfSphere);
+	sdfSphere = min(sdSphere(wVex - spherePos5, sphereRadius), sdfSphere);
 	sdfSphere += snoise(p*noiseSize+TIME*noiseSpeed) * noiseStrength;
 	float borderDist = smoothstep(0.0, borderSize, sdfSphere);
 	if (!invert && sdfSphere < 0.0 && FRONT_FACING) discard;

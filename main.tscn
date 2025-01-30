@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=35 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
 [ext_resource type="AudioStream" uid="uid://b1lolpi0yakw5" path="res://audio/sfx/charge.ogg" id="9_aee73"]
+[ext_resource type="Script" path="res://scripts/trail.gd" id="9_nwkxw"]
 [ext_resource type="AudioStream" uid="uid://mnogvlqkynih" path="res://audio/sfx/pop1.ogg" id="10_jev0h"]
 [ext_resource type="AudioStream" uid="uid://bwjmwoenejvhn" path="res://audio/sfx/fail.ogg" id="10_lwet4"]
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
@@ -23,7 +24,6 @@ shader = ExtResource("3_e6etu")
 shader_parameter/invert = true
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
-shader_parameter/sphereRadius = 2.0
 shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
@@ -145,6 +145,35 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_44bef")
 frame_progress = 0.0348298
 script = ExtResource("4_8goul")
+
+[node name="Trail" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+
+[node name="Trail2" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos2"
+
+[node name="Trail3" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos3"
+
+[node name="Trail4" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2/Trail3"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos4"
+
+[node name="Trail5" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2/Trail3/Trail4"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos5"
 
 [node name="ChargeSound" type="AudioStreamPlayer" parent="level/house_wires/PlayerPath/Player"]
 stream = ExtResource("9_aee73")
