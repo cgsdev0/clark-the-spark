@@ -71,5 +71,6 @@ func _process(delta):
 	global_position.x = based_lerp(global_position.x, destination.x, delta, 3.0)
 	global_position.z = based_lerp(global_position.z, destination.z, delta, 3.0)
 	global_position.y = based_lerp(global_position.y, target_y + 
+		get_parent().y_offset +
 		(10.0 if ceiling else 0.0) +
 		(8.0 if zone == "upstairs" else 0.0), delta, 3.0)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=47 format=3 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
+[ext_resource type="PackedScene" uid="uid://fa7it7yoyoki" path="res://scenes/office.tscn" id="1_m4ami"]
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
@@ -18,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
 [ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 [ext_resource type="PackedScene" uid="uid://cjwidnaabjnak" path="res://models/house/to_office.gltf" id="15_q6lad"]
+[ext_resource type="PackedScene" uid="uid://c11fyemminal8" path="res://models/house/office_wires.gltf" id="16_tsksg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgryk"]
 render_priority = 0
@@ -29,6 +31,9 @@ shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
 shader_parameter/_albedo = ExtResource("4_s1mw2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5wwl"]
+size = Vector3(0.35957, 0.281934, 0.472363)
 
 [sub_resource type="Curve3D" id="Curve3D_vqcuc"]
 _data = {
@@ -87,8 +92,32 @@ stream_1/stream = ExtResource("11_kcvd8")
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q5wwl"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fsq8"]
+size = Vector3(9.8956, 0.407715, 13.435)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eyadc"]
+size = Vector3(4.82751, 2.30395, 7.92358)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7jf57"]
+size = Vector3(2.62067, 2.30395, 2.16296)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ag5an"]
+size = Vector3(2.62067, 2.30395, 2.7171)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5f641"]
+size = Vector3(4.39716, 2.30395, 2.91083)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2da14"]
+size = Vector3(4.39716, 2.30395, 1.83871)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g3jyw"]
+size = Vector3(4.39716, 2.30395, 2.84563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xn8fi"]
+size = Vector3(4.39716, 2.30395, 5.20065)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a856b"]
+size = Vector3(0.35957, 0.281934, 0.472363)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1cdg"]
 size = Vector3(5.75, 0.25, 6.5)
@@ -113,6 +142,10 @@ viewport_path = NodePath("Control/SubViewport")
 [node name="level" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
+[node name="office" parent="level" instance=ExtResource("1_m4ami")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.801, 8.034, 21.596)
+
 [node name="house" parent="level" instance=ExtResource("1_awue5")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -128,6 +161,32 @@ surface_material_override/0 = SubResource("ShaderMaterial_qgryk")
 [node name="house_wires" parent="level/Networks" instance=ExtResource("2_43qd7")]
 script = ExtResource("1_jqye8")
 active = true
+
+[node name="WireMesh" type="Node3D" parent="level/Networks/house_wires"]
+
+[node name="Upstairs" type="Node3D" parent="level/Networks/house_wires/WireMesh"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level/Networks/house_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703682, 2.39664, 0.718412)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/house_wires/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/house_wires/StaticBody3D"]
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride" type="StaticBody3D" parent="level/Networks/house_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632327, 0.812534, 4.3224)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/house_wires/CarOverride"]
+transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/house_wires/CarOverride"]
+shape = SubResource("BoxShape3D_q5wwl")
 
 [node name="PlayerPath" type="Path3D" parent="level/Networks/house_wires"]
 curve = SubResource("Curve3D_vqcuc")
@@ -194,37 +253,197 @@ script = ExtResource("5_ftnol")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.235652)
 mesh = SubResource("QuadMesh_6dfqq")
 
-[node name="WireMesh" type="Node3D" parent="level/Networks/house_wires"]
-
-[node name="Upstairs" type="Node3D" parent="level/Networks/house_wires/WireMesh"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="level/Networks/house_wires"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703682, 2.39664, 0.718412)
-collision_layer = 64
-collision_mask = 0
-
-[node name="Forward" type="Marker3D" parent="level/Networks/house_wires/StaticBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/house_wires/StaticBody3D"]
-shape = SubResource("BoxShape3D_q5wwl")
-
-[node name="CarOverride" type="StaticBody3D" parent="level/Networks/house_wires"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632327, 0.812534, 4.3224)
-collision_layer = 64
-collision_mask = 0
-
-[node name="Forward" type="Marker3D" parent="level/Networks/house_wires/CarOverride"]
-transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/house_wires/CarOverride"]
-shape = SubResource("BoxShape3D_q5wwl")
-
 [node name="to_office" parent="level/Networks" instance=ExtResource("15_q6lad")]
 script = ExtResource("1_jqye8")
 npc = true
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/to_office"]
+
+[node name="office_wires" parent="level/Networks" instance=ExtResource("16_tsksg")]
+script = ExtResource("1_jqye8")
+y_offset = 40.0
+
+[node name="WireMesh" type="Node3D" parent="level/Networks/office_wires"]
+
+[node name="CeilingA" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.3524, 8.20415, 21.2772)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CeilingA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67357, 1.52964, -1.05399)
+shape = SubResource("BoxShape3D_0fsq8")
+
+[node name="RoomA" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05463, -1.60442, -2.70935)
+shape = SubResource("BoxShape3D_eyadc")
+
+[node name="RoomA6" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9512, -1.60442, 2.23482)
+shape = SubResource("BoxShape3D_7jf57")
+
+[node name="RoomA7" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9512, -1.60442, 4.74118)
+shape = SubResource("BoxShape3D_ag5an")
+
+[node name="RoomA2" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470245, -1.60442, -0.492706)
+shape = SubResource("BoxShape3D_5f641")
+
+[node name="RoomA4" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470245, -1.60442, -2.81512)
+shape = SubResource("BoxShape3D_2da14")
+
+[node name="RoomA5" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470245, -1.60442, -5.16835)
+shape = SubResource("BoxShape3D_g3jyw")
+
+[node name="RoomA3" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7483, 10.8321, 20.4584)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/RoomA3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470245, -1.60442, 3.51265)
+shape = SubResource("BoxShape3D_xn8fi")
+
+[node name="CarOverride" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.957586, 0, -0.288146, 0, 1, 0, 0.288146, 0, -0.957586, -74.1898, 8.71181, 15.0282)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride"]
+transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride4" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.957586, 0, -0.288146, 0, 1, 0, 0.288146, 0, -0.957586, -74.1898, 8.71181, 13.5648)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride4"]
+transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride4"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride2" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.957586, 0, -0.288146, 0, 1, 0, 0.288146, 0, -0.957586, -74.1898, 8.71181, 17.0028)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride2"]
+transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride2"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride3" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.957586, 0, -0.288146, 0, 1, 0, 0.288146, 0, -0.957586, -74.1898, 8.71181, 19.0145)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride3"]
+transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, -9.71758e-09, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride3"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride9" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.957586, 0, -0.288146, 0, 1, 0, 0.288146, 0, -0.957586, -76.1976, 8.71181, 19.7324)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride9"]
+transform = Transform3D(-0.395978, 0, -0.91826, 0, 1, 0, 0.91826, 0, -0.395978, -7.62939e-06, 0, -0.111155)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride9"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride5" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.997775, 0, -0.0666746, 0, 1, 0, 0.0666746, 0, -0.997775, -75.9643, 8.25852, 25.9465)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride5"]
+transform = Transform3D(0.973095, 0, -0.230406, 0, 1, 0, 0.230406, 0, 0.973095, 0, 0, -0.111158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride5"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride6" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.999673, 0, -0.0255839, 0, 1, 0, 0.0255839, 0, -0.999673, -77.0532, 8.96874, 18.8875)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride6"]
+transform = Transform3D(-0.389188, 0, 0.921158, 0, 1, 0, -0.921158, 0, -0.389188, 0, 0, -0.111158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride6"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride7" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(-0.999673, 0, -0.0255839, 0, 1, 0, 0.0255839, 0, -0.999673, -78.679, 8.96874, 18.6184)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride7"]
+transform = Transform3D(-0.668226, 0.0564826, -0.741811, -0.0129989, 0.996075, 0.0875521, 0.743845, 0.0681473, -0.664869, 0, 0, -0.111158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride7"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_q5wwl")
+
+[node name="CarOverride8" type="StaticBody3D" parent="level/Networks/office_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.8234, 8.46091, 21.1278)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/office_wires/CarOverride8"]
+transform = Transform3D(-0.458153, 0, 0.888874, 0, 0.999999, 0, -0.888874, 0, -0.458153, 0, 0.119831, -0.111158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/office_wires/CarOverride8"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.129829, 0.0909672, -0.186177)
+shape = SubResource("BoxShape3D_a856b")
 
 [node name="CeilingA" type="StaticBody3D" parent="level"]
 collision_layer = 4

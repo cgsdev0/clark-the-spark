@@ -5,6 +5,7 @@ var nodes
 
 @export var npc = false
 @export var active = false
+@export var y_offset = 0.0
 
 func add_connection(edges, a, b):
 	if edges[a] not in connections:
@@ -83,6 +84,8 @@ var tween
 var buffered = []
 
 func clear_tween():
+	if npc:
+		grid_hop()
 	tween = null
 
 var cached = -Vector3.FORWARD
@@ -381,7 +384,7 @@ func _physics_process(delta):
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
-				if operable && !operable.dead:
+				if operable && !operable.dead && operable.electric:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)
 					electrified = operable
 					tween.parallel().tween_callback(func(): operable.electrified = true)
