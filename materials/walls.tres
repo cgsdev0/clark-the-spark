@@ -9,7 +9,6 @@ shader = ExtResource("1_nnckb")
 shader_parameter/invert = false
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
-shader_parameter/sphereRadius = 2.0
 shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
