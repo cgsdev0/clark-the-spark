@@ -81,7 +81,7 @@ points = PackedVector3Array(0.534289, 0.3117, 0.522771, 0.253137, 0.1711, 0.3382
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)
 script = ExtResource("2_4fvik")
 
-[node name="bathroom_radiator" parent="Node/house/upstairs/bathroom" index="0"]
+[node name="bathroom_radiator" parent="Node/house/upstairs/bathroom" index="1"]
 script = ExtResource("7_5o68q")
 type = 14
 electric = true
@@ -97,7 +97,7 @@ shape = SubResource("BoxShape3D_gmqo4")
 [node name="Forward" type="Marker3D" parent="Node/house/upstairs/bathroom/bathroom_radiator/StaticBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705395, 1.04865, 0.263043)
 
-[node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="1"]
+[node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="2"]
 surface_material_override/0 = ExtResource("3_5bxs3")
 script = ExtResource("7_5o68q")
 type = 3
@@ -553,8 +553,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/kitchen/microwave/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_iv0j2")
 
-[node name="downstairs_walls" parent="Node/house/downstairs" index="3"]
+[node name="downstairs_walls" parent="Node/house/downstairs" index="4"]
 surface_material_override/0 = ExtResource("2_u14tk")
 
-[node name="downstairs_ceiling" parent="Node/house/downstairs" index="6"]
+[node name="downstairs_ceiling" parent="Node/house/downstairs" index="7"]
 surface_material_override/0 = ExtResource("5_vmpl2")

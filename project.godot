@@ -125,5 +125,5 @@ spherePos5={
 }
 sphereRadius={
 "type": "float",
-"value": 8.315
+"value": 0.0
 }

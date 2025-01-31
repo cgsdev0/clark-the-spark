@@ -146,30 +146,25 @@ sprite_frames = SubResource("SpriteFrames_44bef")
 frame_progress = 0.0348298
 script = ExtResource("4_8goul")
 
-[node name="Trail" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-top_level = true
-script = ExtResource("9_nwkxw")
-
-[node name="Trail2" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail"]
+[node name="Trail2" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 top_level = true
 script = ExtResource("9_nwkxw")
 which = "spherePos2"
 
-[node name="Trail3" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2"]
+[node name="Trail3" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 top_level = true
 script = ExtResource("9_nwkxw")
 which = "spherePos3"
 
-[node name="Trail4" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2/Trail3"]
+[node name="Trail4" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 top_level = true
 script = ExtResource("9_nwkxw")
 which = "spherePos4"
 
-[node name="Trail5" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail/Trail2/Trail3/Trail4"]
+[node name="Trail5" type="Node3D" parent="level/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3/Trail4"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 top_level = true
 script = ExtResource("9_nwkxw")
