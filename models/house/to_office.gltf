@@ -1,0 +1,79 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "ToOffice"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Plane.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0
+                    },
+                    "indices" : 1,
+                    "mode" : 1
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 13,
+            "max" : [
+                1.3741843700408936,
+                8.867401123046875,
+                14.749430656433105
+            ],
+            "min" : [
+                -71.43297576904297,
+                0.26125675439834595,
+                4.027227878570557
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5123,
+            "count" : 24,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 156,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 48,
+            "byteOffset" : 156,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 204,
+            "uri" : "data:application/octet-stream;base64,RuWvP1IDAD8N34BARuWvPzUahj8N34BARuWvPzUahj9/5rVAiAKrvzUahj9/5rVAAyLHwG7eZEDhK+pAs44fwm7eZEDhK+pAu2WKwm7eZEDhK+pAr92OwuDgDUGr/WtBEXiZP1IDAD8N34BAEXiZP3LDhT4N34BAybAiP3LDhT4N34BAybAiPzjNTT8N34BAybAiPzjNTT9tEItAAAABAAEAAgACAAMAAwAEAAQABQAFAAYABgAHAAAACAAIAAkACQAKAAoACwALAAwA"
+        }
+    ]
+}

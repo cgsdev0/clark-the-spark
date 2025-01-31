@@ -3,6 +3,9 @@ extends Node3D
 var connections: Dictionary = {}
 var nodes
 
+@export var npc = false
+@export var active = false
+
 func add_connection(edges, a, b):
 	if edges[a] not in connections:
 		connections[edges[a]] = []
@@ -33,20 +36,22 @@ func test_upstairs(point: Vector3):
 func create_edge_mesh(a: Vector3, b: Vector3):
 	var cube = CSGBox3D.new()
 	cube.material = preload("res://materials/wires.tres")
-	var diff = (b - a)
-	var dx = max(abs(diff.x) - wire_thickness, wire_thickness)
-	var dy = max(abs(diff.y) - wire_thickness, wire_thickness)
-	var dz = max(abs(diff.z) - wire_thickness, wire_thickness)
-	cube.size = Vector3(dx, dy, dz)
+	var len = (b - a).length()
+	# var dx = max(abs(diff.x) - wire_thickness, wire_thickness)
+	# var dy = max(abs(diff.y) - wire_thickness, wire_thickness)
+	# var dz = max(abs(diff.z) - wire_thickness, wire_thickness)
+	var normal = (b-a).normalized()
+	cube.size = Vector3(wire_thickness, wire_thickness, len)
 	if test_upstairs(to_global(a)) && test_upstairs(to_global(b)):
 		$WireMesh/Upstairs.add_child(cube)
 	else:
 		$WireMesh.add_child(cube)
 	cube.position = (a + b) / 2.0
+	cube.look_at(cube.global_position + normal, Vector3.FORWARD)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var cube: MeshInstance3D = find_child("Grid")
+	var cube: MeshInstance3D = get_child(0)
 	var mesh: ArrayMesh = cube.mesh
 	var data = mesh.surface_get_arrays(0)
 	nodes = data[0]
@@ -63,9 +68,14 @@ func _ready():
 		add_connection(edges, i+1, i)
 	# print(connections)
 	
-	$PlayerPath.curve.clear_points()
-	$PlayerPath.curve.add_point(nodes[1])
-	$PlayerPath/Player.position = nodes[1]
+	reinit()
+	
+func reinit(node = 0):
+	if active:
+		current = node
+		$PlayerPath.curve.clear_points()
+		$PlayerPath.curve.add_point(nodes[node])
+		$PlayerPath/Player.position = nodes[node]
 
 var current = 1
 var tween
@@ -169,7 +179,37 @@ var require_release = false
 
 var radius = 2.0
 
+func find_nearest(pos: Vector3):
+	var l = to_local(pos)
+	var m = null
+	var d = 1000000
+	for i in nodes.size():
+		var dist = (l - nodes[i]).length_squared()
+		if dist < d:
+			d = dist
+			m = i
+	return m
+
+func dx():
+	var d = max($PlayerPath/Player.progress - 0.05, 0.0)
+	print($PlayerPath/Player.progress)
+	return to_global($PlayerPath.curve.sample_baked(d))
+	
+func grid_hop():
+	var grid = get_parent().get_child(get_index() + 1)
+	$PlayerPath.reparent(grid)
+	$Camera3D.reparent(grid)
+	active = false
+	await RenderingServer.frame_post_draw
+	grid.active = true
+	grid.reinit(grid.find_nearest(to_global(nodes[current])))
+
 func _physics_process(delta):
+	if !active:
+		return
+	if Input.is_action_just_pressed("debug_hop") && OS.is_debug_build():
+		grid_hop()
+		return
 	if charging:
 		charge_timer += delta
 		if Events.charge >= 100.0 && is_possible:
@@ -223,17 +263,18 @@ func _physics_process(delta):
 	
 	# ceiling stuff
 	# toggle upstairs
-	var space = get_world_3d().direct_space_state
-	var params = PhysicsPointQueryParameters3D.new()
-	params.collision_mask = 32
-	params.position = $PlayerPath/Player/AnimatedSprite3D.global_position
-	var result = space.intersect_point(params)
-	var zone = "downstairs"
-	if !result.is_empty():
-		zone = result[0].collider.zone
-	if zone != "upstairs":
-		%house.show_upstairs(false)
-		%WireMesh/Upstairs.visible = false
+	if name == "house_wires":
+		var space = get_world_3d().direct_space_state
+		var params = PhysicsPointQueryParameters3D.new()
+		params.collision_mask = 32
+		params.position = $PlayerPath/Player/AnimatedSprite3D.global_position
+		var result = space.intersect_point(params)
+		var zone = "downstairs"
+		if !result.is_empty():
+			zone = result[0].collider.zone
+		if zone != "upstairs":
+			%house.show_upstairs(false)
+			$WireMesh/Upstairs.visible = false
 	
 	if is_point_in_ceiling($PlayerPath/Player/AnimatedSprite3D.global_position):
 		radius -= delta * 6.0
@@ -243,6 +284,10 @@ func _physics_process(delta):
 	RenderingServer.global_shader_parameter_set("sphereRadius", radius)
 	$Camera3D.destination = to_global(nodes[current] + normal * 1.5)
 	$Camera3D.target = to_global(nodes[current])
+	if npc:
+		$Camera3D.chase = $PlayerPath/Player
+	else:
+		$Camera3D.chase = null
 	var input = Vector2.ZERO
 	if Input.is_action_just_pressed("move_down"):
 		input = Vector2.DOWN
@@ -321,13 +366,17 @@ func _physics_process(delta):
 				for p in path:
 					path_length += (p - start).length()
 					start = p
-					curve.add_point(p + get_normal(current) * 0.05)
+					var offset =  get_normal(current) * 0.05
+					if npc:
+						offset = Vector3.UP * 0.05
+					curve.add_point(p + offset)
 				$PlayerPath/Player.progress = 0.0
 				can_buffer = false
 				tween = get_tree().create_tween()
 				tween.parallel().tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
 				tween.set_ease(Tween.EASE_IN_OUT)
-				tween.set_trans(Tween.TRANS_QUAD)
+				if !npc:
+					tween.set_trans(Tween.TRANS_QUAD)
 				var dur = max(0.33 * path_length, 0.33)
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)

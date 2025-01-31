@@ -6,6 +6,7 @@ var target_rotation = 0.0
 var target_pitch = 0.0
 var ceiling = true
 var target_y = 0.0
+var chase = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,8 +45,18 @@ func _process(delta):
 		zone = result[0].collider.zone
 	if zone == "upstairs":
 		%house.show_upstairs(true)
-		%WireMesh/Upstairs.visible = true
+		get_parent().get_node("WireMesh/Upstairs").visible = true
 	
+	if is_instance_valid(chase):
+		var from = get_parent().dx()
+		var to = chase.global_position
+		global_position.x = based_lerp(global_position.x, from.x, delta, 2.0)
+		global_position.z = based_lerp(global_position.z, from.z, delta, 2.0)
+		global_position.y = based_lerp(global_position.y, from.y + 2.0, delta, 2.0)
+		var a = Vector2(global_position.x, global_position.z) - Vector2(to.x, to.z)
+		global_rotation.y = based_lerp_angle(global_rotation.y,  PI / 2.0 - a.angle(), delta, 8.0)
+		global_rotation.x = based_lerp_angle(global_rotation.x, -PI / 10.0, delta, 3.0)
+		return
 	# move
 	var diff = target - destination
 	var xz = Vector2(diff.x, -diff.z)
