@@ -1,10 +1,11 @@
-[gd_scene load_steps=76 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=77 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Material" uid="uid://cmfe4mhhqtwpk" path="res://materials/power_pole.tres" id="1_fxtk2"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
 [ext_resource type="PackedScene" uid="uid://fa7it7yoyoki" path="res://scenes/office.tscn" id="1_m4ami"]
+[ext_resource type="Script" path="res://scripts/earth.gd" id="1_rn37l"]
 [ext_resource type="PackedScene" uid="uid://ctww4njwphpx6" path="res://scenes/circuit.tscn" id="1_v6jmi"]
 [ext_resource type="Material" uid="uid://cpi2hyuptlf8j" path="res://models/Material.005.tres" id="1_vonts"]
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
@@ -231,18 +232,21 @@ shader_parameter/falloff = 0.2
 
 [node name="Ending" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Ending"]
+[node name="EndCam" type="Camera3D" parent="Ending"]
+unique_name_in_owner = true
 transform = Transform3D(-1, 1.77636e-15, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 418.617, 733.256, -476.601)
 cull_mask = 1047554
 current = true
 
 [node name="Earth" type="Node3D" parent="Ending"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 419.366, 728.467, -459.991)
+script = ExtResource("1_rn37l")
 
 [node name="Icosphere_Icosphere_001" type="MeshInstance3D" parent="Ending/Earth"]
 layers = 2
 mesh = SubResource("ArrayMesh_xkkgb")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_vonts")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ending"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 419.366, 728.467, -444.041)
