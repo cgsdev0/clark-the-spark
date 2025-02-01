@@ -7,7 +7,7 @@ signal meter_calm
 signal transition
 signal teleport
 
-var score: int = 20000
+var score: int = 0
 signal score_changed
 
 var charge = 0.0
