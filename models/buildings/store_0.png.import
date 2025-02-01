@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ubtqqskjinuf"
-path="res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"
+uid="uid://cogmgi7b15510"
+path="res://.godot/imported/store_0.png-0078048748b3cbd9898ba135e20db19d.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "dfea0fe54511b7a377c9e6346bbe0558"
 }
 
 [deps]
 
-source_file="res://textures/main_plant_building.png"
-dest_files=["res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"]
+source_file="res://models/buildings/store_0.png"
+dest_files=["res://.godot/imported/store_0.png-0078048748b3cbd9898ba135e20db19d.ctex"]
 
 [params]
 

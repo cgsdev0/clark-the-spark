@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ubtqqskjinuf"
-path="res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"
+uid="uid://cd5at8k48w5kj"
+path="res://.godot/imported/city_house_0.png-e17e8b0d2ecda7cf153a578a73d055d8.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "2deb0e98d139b438e00484c3a832717e"
 }
 
 [deps]
 
-source_file="res://textures/main_plant_building.png"
-dest_files=["res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"]
+source_file="res://models/buildings/city_house_0.png"
+dest_files=["res://.godot/imported/city_house_0.png-e17e8b0d2ecda7cf153a578a73d055d8.ctex"]
 
 [params]
 
