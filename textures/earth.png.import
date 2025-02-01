@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbngydb6q7w1t"
-path="res://.godot/imported/ElectricSpriteBody.png-a245a4ab3c3c73fd0d9a714665dc724b.ctex"
+uid="uid://bk846f45edu54"
+path="res://.godot/imported/earth.png-8b90abbe9af209db868ee9d66cd38415.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ElectricSpriteBody.png"
-dest_files=["res://.godot/imported/ElectricSpriteBody.png-a245a4ab3c3c73fd0d9a714665dc724b.ctex"]
+source_file="res://textures/earth.png"
+dest_files=["res://.godot/imported/earth.png-8b90abbe9af209db868ee9d66cd38415.ctex"]
 
 [params]
 
