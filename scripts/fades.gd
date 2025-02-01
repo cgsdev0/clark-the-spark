@@ -19,19 +19,24 @@ enum Electric {
 	RADIATOR,
 	SPEAKER,
 	TREADMILL,
+	CAR,
+	GENERATOR,
+	RESISTOR,
+	BIG_RESISTOR,
+	CAPACITOR
 }
 
 var values = {
 	# points gained, min needed, pop threshold, max time
-	Electric.GENERIC: [5, 0, 5000, 1.0],
-	Electric.ALARM_CLOCK: [5, 0, 5000, 1.0],
-	Electric.CEILING_LIGHT: [5, 0, 5000, 1.0],
-	Electric.TALL_LAMP: [5, 0, 5000, 1.0],
-	Electric.SHORT_LAMP: [5, 0, 5000, 1.0],
+	Electric.GENERIC: [5, 0, 2000, 1.0],
+	Electric.ALARM_CLOCK: [5, 0, 2000, 1.0],
+	Electric.CEILING_LIGHT: [5, 0, 2000, 1.0],
+	Electric.TALL_LAMP: [5, 0, 2000, 1.0],
+	Electric.SHORT_LAMP: [5, 0, 2000, 1.0],
 	Electric.SPEAKER: [50, 20, 10000, 1.5],
-	Electric.CEILING_FAN: [50, 20, 5000, 1.0],
+	Electric.CEILING_FAN: [50, 15, 5000, 1.0],
 	Electric.TV: [60, 40, 12000, 2.0],
-	Electric.CONSOLE: [100, 100, 8000, 1.0],
+	Electric.CONSOLE: [100, 90, 3000, 1.0],
 	Electric.RADIATOR: [300, 300, 11000, 2.0],
 	Electric.COMPUTER: [325, 300, 10000, 1.8],
 	Electric.TREADMILL: [300, 600, 20000, 2.0],
@@ -39,7 +44,12 @@ var values = {
 	Electric.MICROWAVE: [500, 800, 20000, 2.0],
 	Electric.WASHER: [500, 2000, 20000, 1.5],
 	Electric.DRYER: [1000, 2000, 20000, 2.5],
-	Electric.OVEN: [1500, 1000, 50000, 2.8],
+	Electric.OVEN: [1500, 1000, 20000, 2.8],
+	Electric.CAR: [2500, 4200, 20000, 2.5],
+	Electric.GENERATOR: [5000, 20000, 1000000, 2.8],
+	Electric.RESISTOR: [2, 0, 50, 1.2],
+	Electric.BIG_RESISTOR: [5, 5, 50, 1.2],
+	Electric.CAPACITOR: [4, 1, 50, 2.3],
 }
 
 @export var type: Electric = Electric.GENERIC
@@ -49,6 +59,7 @@ var values = {
 @export var fades = false
 @export var solid_while_alive = false
 @export var mandatory = false
+@export var force_hop = false
 var dead = false
 var mats: Array[StandardMaterial3D] = []
 

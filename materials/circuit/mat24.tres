@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d331vmswclogh"]
+
+[resource]
+resource_name = "mat24"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.921191, 0.949997, 0.940525, 0.4)
+roughness = 0.7

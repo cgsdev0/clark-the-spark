@@ -6,6 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_nnckb")
+shader_parameter/tintColor = Color(1, 1, 1, 1)
 shader_parameter/invert = false
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1

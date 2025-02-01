@@ -1,0 +1,79 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "TutorialWires"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0
+                    },
+                    "indices" : 1,
+                    "mode" : 1
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 21,
+            "max" : [
+                0.06995907425880432,
+                1.2629749774932861,
+                1.4147368669509888
+            ],
+            "min" : [
+                -0.49531450867652893,
+                -0.29110342264175415,
+                -1.2119321823120117
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5123,
+            "count" : 40,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 252,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 80,
+            "byteOffset" : 252,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 332,
+            "uri" : "data:application/octet-stream;base64,3Zn9viqpoT9gasg+3Zn9viqpoT9gasg+3Zn9vgAAgD9gasg+3Zn9vgAAgD9GHjE/tEaPPQAAgD9GHjE/tEaPPQAAgD9F1YY/tEaPPQAAgD8ZFrU/3Zn9viqpoT+YIJu/3Zn9vnQGij+YIJu/tEaPPXQGij+YIJu/tEaPPXQGij+YIJu/tEaPPQTzIj+YIJu/tEaPPe9akD6YIJu/3Zn9vvBakD6YIJu/3Zn9vvBakD5i0/Q93Zn9vuA5hDxi0/Q9tEaPPeA5hDxg0/Q93Zn9vgAAgD8ZFrU/3Zn9viQ9cD4ZFrU/3Zn9viQ9cD6KQzk/3Zn9voILlb6KQzk/CwAKAAoACQAIAAcAAAABAAEAAgACAAMAAwAEAAUABgAEAAUACQAIAAcAAAAMAAsADQAMAA4ADQAPAA4AEAAPAAYAEQARABIAEgATABMAFAA="
+        }
+    ]
+}

@@ -99,6 +99,7 @@ global uniform vec3 spherePos2;
 global uniform vec3 spherePos3;
 global uniform vec3 spherePos4;
 global uniform vec3 spherePos5;
+uniform vec3 tintColor: source_color = vec3(1.0);
 uniform bool invert;
 uniform vec3 borderColor: source_color;
 uniform float borderSize;
@@ -125,7 +126,7 @@ void fragment() {
 	float borderDist = smoothstep(0.0, borderSize, sdfSphere);
 	if (!invert && sdfSphere < 0.0 && FRONT_FACING) discard;
 	if (invert && (sdfSphere > 0.0)) discard;
-	vec3 albColor = texture(_albedo, UV).rgb;
+	vec3 albColor = texture(_albedo, UV).rgb * tintColor;
 	vec3  bcol = borderColor;
 	if (FRONT_FACING) {
 		ALBEDO = mix(bcol, albColor, borderDist);

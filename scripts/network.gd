@@ -3,9 +3,13 @@ extends Node3D
 var connections: Dictionary = {}
 var nodes
 
+@export var hop_override: int = -1
 @export var npc = false
 @export var active = false
 @export var y_offset = 0.0
+@export var y_locked = true
+@export var hard_cut_timer = 0.0
+@export var speed_mult = 1.0
 
 func add_connection(edges, a, b):
 	if edges[a] not in connections:
@@ -52,6 +56,7 @@ func create_edge_mesh(a: Vector3, b: Vector3):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.teleport.connect(teleport)
 	var cube: MeshInstance3D = get_child(0)
 	var mesh: ArrayMesh = cube.mesh
 	var data = mesh.surface_get_arrays(0)
@@ -71,20 +76,27 @@ func _ready():
 	
 	reinit()
 	
-func reinit(node = 0):
+func reinit(node = 20):
 	if active:
+		if npc:
+			$Camera3D.chase = $PlayerPath/Player
+		else:
+			$Camera3D.chase = null
 		current = node
 		$PlayerPath.curve.clear_points()
 		$PlayerPath.curve.add_point(nodes[node])
-		$PlayerPath/Player.position = nodes[node]
+		var offset =  get_normal(current) * 0.05
+		if npc:
+			offset = Vector3.UP * 0.05
+		$PlayerPath/Player.position = nodes[node] + offset
 
-var current = 1
+var current = 20
 var tween
 
 var buffered = []
 
 func clear_tween():
-	if npc:
+	if npc && active:
 		grid_hop()
 	tween = null
 
@@ -165,15 +177,22 @@ var charging = false
 var charge_time = 3.0
 
 func pop():
+	var should_hop = electrified.force_hop
 	charging = false
 	Events.add_score(electrified.get_reward())
 	electrified.kill()
 	electrified = null
 	$PlayerPath/Player/ChargeSound.stop()
-	tween = get_tree().create_tween()
-	tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
-	tween.tween_callback(clear_tween)
 	$PlayerPath/Player/PopSound.play()
+	if should_hop:
+		$PlayerPath/Player/AnimatedSprite3D.scale = Vector3.ONE * 0.5
+		grid_hop()
+		return true
+	else:
+		tween = get_tree().create_tween()
+		tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ONE * 0.5, 0.2)
+		tween.tween_callback(clear_tween)
+	return false
 
 var charge_timer = 0.0
 var max_charge_time = 2.9
@@ -199,24 +218,58 @@ func dx():
 	return to_global($PlayerPath.curve.sample_baked(d))
 	
 func grid_hop():
+	if tween:
+		tween.kill()
+		tween = null
 	var grid = get_parent().get_child(get_index() + 1)
-	$PlayerPath.reparent(grid)
-	$Camera3D.reparent(grid)
+	if !is_instance_valid(grid):
+		active = false
+		await get_tree().create_timer(1.5).timeout
+		Events.transition.emit()
+		await Events.teleport
+		%IsoCam.current = true
+		return
+	$PlayerPath.reparent(grid, false)
+	var cam = $Camera3D
+	cam.freeze = true
+	cam.reparent(grid)
 	active = false
 	await RenderingServer.frame_post_draw
 	grid.active = true
-	grid.reinit(grid.find_nearest(to_global(nodes[current])))
+	var targ = grid.find_nearest(to_global(nodes[current]))
+	if hop_override > -1:
+		targ = hop_override
+	grid.reinit(targ)
+	cam.freeze = false
 
+func teleport():
+	if active:
+		var cam = $Camera3D
+		grid_hop()
+		await get_tree().create_timer(0.05).timeout
+		cam.teleport()
+
+func start_hardcut_timer():
+	if hard_cut_timer == 0.0 || !active:
+		return
+	await get_tree().create_timer(hard_cut_timer).timeout
+	Events.transition.emit()
+	
 func _physics_process(delta):
 	if !active:
 		return
-	if Input.is_action_just_pressed("debug_hop") && OS.is_debug_build():
+	if Input.is_action_just_pressed("debug_hop2") && OS.is_debug_build():
 		grid_hop()
+		return
+	if Input.is_action_just_pressed("debug_hop") && OS.is_debug_build():
+		Events.transition.emit()
+		# grid_hop()
 		return
 	if charging:
 		charge_timer += delta
 		if Events.charge >= 100.0 && is_possible:
-			pop()
+			if pop():
+				return
 	if charge_timer > min(max_charge_time, 2.9) && charging && !is_possible:
 		charging = false
 		Events.meter_angry.emit()
@@ -235,7 +288,8 @@ func _physics_process(delta):
 			is_possible = electrified.is_possible()
 			print("TIME: ", charge_time)
 			if charge_time == 0.0:
-				pop()
+				if pop():
+					return
 			else:
 				$PlayerPath/Player/ChargeSound.play()
 	if !Input.is_action_pressed("pop") && charging:
@@ -287,10 +341,6 @@ func _physics_process(delta):
 	RenderingServer.global_shader_parameter_set("sphereRadius", radius)
 	$Camera3D.destination = to_global(nodes[current] + normal * 1.5)
 	$Camera3D.target = to_global(nodes[current])
-	if npc:
-		$Camera3D.chase = $PlayerPath/Player
-	else:
-		$Camera3D.chase = null
 	var input = Vector2.ZERO
 	if Input.is_action_just_pressed("move_down"):
 		input = Vector2.DOWN
@@ -338,7 +388,7 @@ func _physics_process(delta):
 			print(adjusted)
 			print(input)
 			if adjusted.distance_squared_to(input) < 0.001 || connections[current].size() == 1:
-				print("cooking")
+				start_hardcut_timer()
 				if electrified:
 					electrified.electrified = false
 					electrified = null
@@ -380,7 +430,7 @@ func _physics_process(delta):
 				tween.set_ease(Tween.EASE_IN_OUT)
 				if !npc:
 					tween.set_trans(Tween.TRANS_QUAD)
-				var dur = max(0.33 * path_length, 0.33)
+				var dur = max(0.33 * path_length / speed_mult, 0.33)
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))

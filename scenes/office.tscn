@@ -9,6 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u77iy"]
 render_priority = 0
 shader = ExtResource("2_fwxso")
+shader_parameter/tintColor = Color(1, 1, 1, 1)
 shader_parameter/invert = false
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
@@ -74,6 +75,7 @@ points = PackedVector3Array(-0.0809122, 0.636447, -0.336783, -0.061693, 0.198361
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0njwy"]
 render_priority = 0
 shader = ExtResource("2_fwxso")
+shader_parameter/tintColor = Color(1, 1, 1, 1)
 shader_parameter/invert = false
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
@@ -694,6 +696,7 @@ shape = SubResource("ConvexPolygonShape3D_dcslw")
 script = ExtResource("3_g5xqg")
 electric = true
 fades = true
+force_hop = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/parking_garage/power_generator" index="0"]
 collision_layer = 18

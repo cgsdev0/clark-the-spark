@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2clhbukeveb7"
-path="res://.godot/imported/smoke_stack.gltf-a7ea8eeac9a38e52317cbdad09ae5ddd.scn"
+uid="uid://du75wqygal4v3"
+path="res://.godot/imported/to_house.gltf-c01cd51ad93c990d43b4c2fc0eae3cbc.scn"
 
 [deps]
 
-source_file="res://models/buildings/smoke_stack.gltf"
-dest_files=["res://.godot/imported/smoke_stack.gltf-a7ea8eeac9a38e52317cbdad09ae5ddd.scn"]
+source_file="res://models/house/to_house.gltf"
+dest_files=["res://.godot/imported/to_house.gltf-c01cd51ad93c990d43b4c2fc0eae3cbc.scn"]
 
 [params]
 
@@ -19,7 +19,7 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=false
+meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2

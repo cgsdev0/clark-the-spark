@@ -1,29 +1,49 @@
-[gd_scene load_steps=47 format=3 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=70 format=3 uid="uid://cdyln7ny6tm1d"]
 
+[ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
+[ext_resource type="Material" uid="uid://cmfe4mhhqtwpk" path="res://materials/power_pole.tres" id="1_fxtk2"]
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
 [ext_resource type="PackedScene" uid="uid://fa7it7yoyoki" path="res://scenes/office.tscn" id="1_m4ami"]
+[ext_resource type="PackedScene" uid="uid://ctww4njwphpx6" path="res://scenes/circuit.tscn" id="1_v6jmi"]
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
+[ext_resource type="PackedScene" uid="uid://b5s8h2gxt3npx" path="res://scenes/circuit_inert.tscn" id="2_70xbw"]
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
+[ext_resource type="PackedScene" uid="uid://dc01df17lgguh" path="res://models/buildings/city_house.gltf" id="2_hof5i"]
+[ext_resource type="Script" path="res://scripts/building.gd" id="3_c2pgq"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
+[ext_resource type="PackedScene" uid="uid://dv78qyd6ja74x" path="res://models/buildings/skyscraper.gltf" id="3_eogml"]
 [ext_resource type="Texture2D" uid="uid://r013qt7ukcai" path="res://textures/testElectricSprite.png" id="3_vup4x"]
 [ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
 [ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="4_s1mw2"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
+[ext_resource type="PackedScene" uid="uid://c2clhbukeveb7" path="res://models/buildings/smoke_stack.gltf" id="5_tv2cq"]
+[ext_resource type="PackedScene" uid="uid://csuh0pvrkq3m8" path="res://models/buildings/steam_stack.gltf" id="6_028tr"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
+[ext_resource type="PackedScene" uid="uid://84asm8keo6aq" path="res://models/buildings/main_plant_building.gltf" id="7_6488p"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
+[ext_resource type="PackedScene" uid="uid://fiwjwn3i0yfo" path="res://models/house/circuit_wires.gltf" id="7_uiv23"]
+[ext_resource type="PackedScene" uid="uid://dr70cvfmvrdcc" path="res://models/buildings/off_site_building.gltf" id="8_4yqsb"]
+[ext_resource type="PackedScene" uid="uid://c8slpk3ucx2mr" path="res://models/buildings/tall_building.gltf" id="9_2gr74"]
 [ext_resource type="AudioStream" uid="uid://b1lolpi0yakw5" path="res://audio/sfx/charge.ogg" id="9_aee73"]
 [ext_resource type="Script" path="res://scripts/trail.gd" id="9_nwkxw"]
 [ext_resource type="AudioStream" uid="uid://mnogvlqkynih" path="res://audio/sfx/pop1.ogg" id="10_jev0h"]
 [ext_resource type="AudioStream" uid="uid://bwjmwoenejvhn" path="res://audio/sfx/fail.ogg" id="10_lwet4"]
+[ext_resource type="PackedScene" uid="uid://dkoxs00eyom4f" path="res://models/buildings/store.gltf" id="10_tps0p"]
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
+[ext_resource type="PackedScene" uid="uid://bsf1prnlux5aw" path="res://models/buildings/townhouse.gltf" id="11_txcb6"]
+[ext_resource type="Script" path="res://scripts/iso_cam.gd" id="13_3dgot"]
 [ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 [ext_resource type="PackedScene" uid="uid://cjwidnaabjnak" path="res://models/house/to_office.gltf" id="15_q6lad"]
 [ext_resource type="PackedScene" uid="uid://c11fyemminal8" path="res://models/house/office_wires.gltf" id="16_tsksg"]
+[ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
+[ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
+[ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgryk"]
 render_priority = 0
 shader = ExtResource("3_e6etu")
+shader_parameter/tintColor = Color(1, 1, 1, 1)
 shader_parameter/invert = true
 shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
 shader_parameter/borderSize = 0.1
@@ -31,9 +51,6 @@ shader_parameter/noiseSpeed = 0.7
 shader_parameter/noiseStrength = 0.1
 shader_parameter/noiseSize = 1.2
 shader_parameter/_albedo = ExtResource("4_s1mw2")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q5wwl"]
-size = Vector3(0.35957, 0.281934, 0.472363)
 
 [sub_resource type="Curve3D" id="Curve3D_vqcuc"]
 _data = {
@@ -84,6 +101,7 @@ animations = [{
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yu5ii"]
 playback_mode = 1
+random_pitch = 1.06
 streams_count = 2
 stream_0/stream = ExtResource("10_jev0h")
 stream_1/stream = ExtResource("11_kcvd8")
@@ -91,6 +109,12 @@ stream_1/stream = ExtResource("11_kcvd8")
 [sub_resource type="QuadMesh" id="QuadMesh_6dfqq"]
 flip_faces = true
 size = Vector2(2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhqie"]
+size = Vector3(2.17051, 4.25627, 4.67513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5wwl"]
+size = Vector3(0.35957, 0.281934, 0.472363)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fsq8"]
 size = Vector3(9.8956, 0.407715, 13.435)
@@ -134,13 +158,251 @@ size = Vector3(2.74658, 3.21716, 1.89502)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a42ev"]
 size = Vector3(2.74658, 3.21716, 1.80896)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
+albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xc3eq"]
+material = SubResource("StandardMaterial3D_iucx5")
+size = Vector2(1000, 1000)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_7kg8m"]
 viewport_path = NodePath("Control/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inu3v"]
+shader = ExtResource("23_a5qjr")
+shader_parameter/circle_size = 1.05
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
+shader_parameter/falloff = 0.2
 
 [node name="Node3D" type="Node3D"]
 
 [node name="level" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Poles" type="Node3D" parent="level"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24536, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5909, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2289, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5381, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2639, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="level/Poles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.1753, 0.401514, 7.32822)
+radius = 0.1
+height = 6.61828
+sides = 6
+smooth_faces = false
+material = ExtResource("1_fxtk2")
+
+[node name="city" type="Node3D" parent="level"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="OurOffice" parent="level/city" instance=ExtResource("1_8fab5")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -12.6797, 0, 3.56652)
+script = ExtResource("3_c2pgq")
+selected = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level/city/OurOffice"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.186525, 0.348904, -0.0928612)
+size = Vector3(1.86, 1.55, 1.55)
+
+[node name="OurHouse" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -0.0825666)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse4" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -2.46061)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse6" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -4.96)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse7" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -7.66574)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse8" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -10.3012)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse2" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -0.87545)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse5" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -3.1782)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse9" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -5.7262)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse10" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -8.00449)
+script = ExtResource("3_c2pgq")
+
+[node name="OurHouse11" parent="level/city" instance=ExtResource("2_hof5i")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -10.442)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export" parent="level/city" instance=ExtResource("3_eogml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2265, 0, 0.766239)
+script = ExtResource("3_c2pgq")
+
+[node name="Marker3D" type="Marker3D" parent="level/city/blockbench_export"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.85975)
+
+[node name="Marker3D2" type="Marker3D" parent="level/city/blockbench_export"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.04129)
+
+[node name="PowerPlant" type="Node3D" parent="level/city"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3148, 0, -5.89994)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export" parent="level/city/PowerPlant" instance=ExtResource("5_tv2cq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38497, 0, -4.01893)
+
+[node name="blockbench_export6" parent="level/city/PowerPlant" instance=ExtResource("5_tv2cq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71227, 0, -4.07969)
+
+[node name="blockbench_export2" parent="level/city/PowerPlant" instance=ExtResource("6_028tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60901, 0, -7.45092)
+
+[node name="blockbench_export5" parent="level/city/PowerPlant" instance=ExtResource("6_028tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37988, 0, -7.35213)
+
+[node name="blockbench_export3" parent="level/city/PowerPlant" instance=ExtResource("7_6488p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.31505)
+
+[node name="blockbench_export4" parent="level/city/PowerPlant" instance=ExtResource("8_4yqsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517435, 0, -0.696447)
+
+[node name="blockbench_export2" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -21.0559, 0, -10.2499)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export13" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(1.57361e-07, 0, -1.2, 0, 1.2, 0, 1.2, 0, 1.57361e-07, -25.188, 0, -2.06155)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export3" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -8.88793)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export16" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3804, 0, -2.66254)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export18" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7951, 0, -2.76369)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export19" parent="level/city" instance=ExtResource("9_2gr74")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -18.3191, 0, 3.89498)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export4" parent="level/city" instance=ExtResource("10_tps0p")]
+transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 0.999999, 0, 8.74227e-08, 0, -0.999999, -2.20333, 0, 2.3724)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export10" parent="level/city" instance=ExtResource("10_tps0p")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.07342, 0, -0.851424)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export11" parent="level/city" instance=ExtResource("10_tps0p")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -0.851424)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export15" parent="level/city" instance=ExtResource("10_tps0p")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -0.851424)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export5" parent="level/city" instance=ExtResource("11_txcb6")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -5.43508, 0, 2.63329)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export6" parent="level/city" instance=ExtResource("11_txcb6")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -4.43719, 0, 2.67457)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export7" parent="level/city" instance=ExtResource("11_txcb6")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -6.43397, 0, 2.57542)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export8" parent="level/city" instance=ExtResource("11_txcb6")]
+transform = Transform3D(-0.999999, 0, 8.74226e-08, 0, 0.999999, 0, -8.74226e-08, 0, -0.999999, -7.44337, 0, 2.52985)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export9" parent="level/city" instance=ExtResource("1_8fab5")]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -9.40444, 0, 2.92813)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export14" parent="level/city" instance=ExtResource("1_8fab5")]
+transform = Transform3D(0.999999, 0, 1.74845e-07, 0, 0.999999, 0, -1.74845e-07, 0, 0.999999, -13.0001, 0, -1.89694)
+script = ExtResource("3_c2pgq")
+
+[node name="blockbench_export17" parent="level/city" instance=ExtResource("1_8fab5")]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -15.5949, 0, 3.61188)
+script = ExtResource("3_c2pgq")
+
+[node name="IsoCam" type="Camera3D" parent="level/city"]
+unique_name_in_owner = true
+transform = Transform3D(-0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, 0.353553, -0.612372, 8.23, 19.645, -18.105)
+projection = 1
+size = 300.0
+near = 0.001
+script = ExtResource("13_3dgot")
+
+[node name="circuit" parent="level" instance=ExtResource("1_v6jmi")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -5, 0)
+
+[node name="box" type="CSGBox3D" parent="level/circuit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57087, -2.92595, -1.31712)
+flip_faces = true
+size = Vector3(5.94037, 13.3758, 11.7046)
+
+[node name="circuit" parent="level/circuit" instance=ExtResource("2_70xbw")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.710858, -5.07069, -0.04357)
+
+[node name="circuit2" parent="level/circuit" instance=ExtResource("2_70xbw")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.710858, -5.07069, -4.31543)
 
 [node name="office" parent="level" instance=ExtResource("1_m4ami")]
 unique_name_in_owner = true
@@ -158,9 +420,107 @@ surface_material_override/0 = SubResource("ShaderMaterial_qgryk")
 
 [node name="Networks" type="Node3D" parent="level"]
 
-[node name="house_wires" parent="level/Networks" instance=ExtResource("2_43qd7")]
+[node name="circuit_wires" parent="level/Networks" instance=ExtResource("7_uiv23")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -5, 0)
 script = ExtResource("1_jqye8")
 active = true
+y_offset = -16.0
+y_locked = false
+speed_mult = 0.6
+
+[node name="PlayerPath" type="Path3D" parent="level/Networks/circuit_wires"]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_vqcuc")
+
+[node name="Player" type="PathFollow3D" parent="level/Networks/circuit_wires/PlayerPath"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+visible = false
+radius = 0.2
+material = SubResource("StandardMaterial3D_dl8xo")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+pixel_size = 0.007
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_44bef")
+frame_progress = 0.0348298
+script = ExtResource("4_8goul")
+
+[node name="Trail2" type="Node3D" parent="level/Networks/circuit_wires/PlayerPath/Player/AnimatedSprite3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos2"
+
+[node name="Trail3" type="Node3D" parent="level/Networks/circuit_wires/PlayerPath/Player/AnimatedSprite3D/Trail2"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos3"
+
+[node name="Trail4" type="Node3D" parent="level/Networks/circuit_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos4"
+
+[node name="Trail5" type="Node3D" parent="level/Networks/circuit_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3/Trail4"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+top_level = true
+script = ExtResource("9_nwkxw")
+which = "spherePos5"
+
+[node name="ChargeSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+stream = ExtResource("9_aee73")
+
+[node name="FailSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+stream = ExtResource("10_lwet4")
+volume_db = -4.0
+
+[node name="PopSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+stream = SubResource("AudioStreamRandomizer_yu5ii")
+
+[node name="Camera3D" type="Camera3D" parent="level/Networks/circuit_wires"]
+process_priority = -2
+transform = Transform3D(0.071942, -0.0842398, 0.314387, 0, 0.321975, 0.0862731, -0.325477, -0.01862, 0.0694907, 1.25901, 2.24354, -0.55)
+current = true
+near = 1.0
+script = ExtResource("5_ftnol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level/Networks/circuit_wires/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.235652)
+mesh = SubResource("QuadMesh_6dfqq")
+
+[node name="WireMesh" type="Node3D" parent="level/Networks/circuit_wires"]
+
+[node name="CarOverride" type="StaticBody3D" parent="level/Networks/circuit_wires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632327, 0.812534, 4.3224)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Forward" type="Marker3D" parent="level/Networks/circuit_wires/CarOverride"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -0.111156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/circuit_wires/CarOverride"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905469, -0.791711, -4.25537)
+shape = SubResource("BoxShape3D_xhqie")
+
+[node name="to_house2" parent="level/Networks" instance=ExtResource("17_t2t27")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -5, 0)
+script = ExtResource("1_jqye8")
+hop_override = 124
+npc = true
+hard_cut_timer = 2.5
+speed_mult = 0.6
+
+[node name="WireMesh" type="Node3D" parent="level/Networks/to_house2"]
+
+[node name="house_wires" parent="level/Networks" instance=ExtResource("2_43qd7")]
+script = ExtResource("1_jqye8")
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/house_wires"]
 
@@ -188,74 +548,10 @@ transform = Transform3D(-0.90245, 0, -0.430795, 0, 1, 0, 0.430795, 0, -0.90245, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/Networks/house_wires/CarOverride"]
 shape = SubResource("BoxShape3D_q5wwl")
 
-[node name="PlayerPath" type="Path3D" parent="level/Networks/house_wires"]
-curve = SubResource("Curve3D_vqcuc")
-
-[node name="Player" type="PathFollow3D" parent="level/Networks/house_wires/PlayerPath"]
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="level/Networks/house_wires/PlayerPath/Player"]
-visible = false
-radius = 0.2
-material = SubResource("StandardMaterial3D_dl8xo")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="level/Networks/house_wires/PlayerPath/Player"]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-pixel_size = 0.007
-billboard = 1
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_44bef")
-frame_progress = 0.0348298
-script = ExtResource("4_8goul")
-
-[node name="Trail2" type="Node3D" parent="level/Networks/house_wires/PlayerPath/Player/AnimatedSprite3D"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-top_level = true
-script = ExtResource("9_nwkxw")
-which = "spherePos2"
-
-[node name="Trail3" type="Node3D" parent="level/Networks/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-top_level = true
-script = ExtResource("9_nwkxw")
-which = "spherePos3"
-
-[node name="Trail4" type="Node3D" parent="level/Networks/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-top_level = true
-script = ExtResource("9_nwkxw")
-which = "spherePos4"
-
-[node name="Trail5" type="Node3D" parent="level/Networks/house_wires/PlayerPath/Player/AnimatedSprite3D/Trail2/Trail3/Trail4"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-top_level = true
-script = ExtResource("9_nwkxw")
-which = "spherePos5"
-
-[node name="ChargeSound" type="AudioStreamPlayer" parent="level/Networks/house_wires/PlayerPath/Player"]
-stream = ExtResource("9_aee73")
-
-[node name="FailSound" type="AudioStreamPlayer" parent="level/Networks/house_wires/PlayerPath/Player"]
-stream = ExtResource("10_lwet4")
-volume_db = -4.0
-
-[node name="PopSound" type="AudioStreamPlayer" parent="level/Networks/house_wires/PlayerPath/Player"]
-stream = SubResource("AudioStreamRandomizer_yu5ii")
-
-[node name="Camera3D" type="Camera3D" parent="level/Networks/house_wires"]
-process_priority = -2
-transform = Transform3D(0.2, 0, 0, 0, 0.193185, 0.0517638, 0, -0.0517638, 0.193185, 0.6, 1.35, -0.55)
-near = 1.0
-script = ExtResource("5_ftnol")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="level/Networks/house_wires/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, -0.235652)
-mesh = SubResource("QuadMesh_6dfqq")
-
 [node name="to_office" parent="level/Networks" instance=ExtResource("15_q6lad")]
 script = ExtResource("1_jqye8")
 npc = true
+speed_mult = 1.3
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/to_office"]
 
@@ -497,13 +793,18 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6579, -3.06303)
 shape = SubResource("BoxShape3D_a42ev")
 
+[node name="Floor" type="MeshInstance3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
+mesh = SubResource("QuadMesh_xc3eq")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_1sx5j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(-0.362972, 0.792697, -0.489778, 0.0741282, 0.548525, 0.832842, 0.928847, 0.265992, -0.25786, -12.1994, 4.05649, -4.52207)
 light_energy = 0.7
-shadow_opacity = 0.68
+shadow_opacity = 0.53
 directional_shadow_split_1 = 0.08
 directional_shadow_split_2 = 0.18
 
@@ -544,5 +845,17 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(128, 128)
 
 [node name="Node2D" parent="Control/SubViewport" instance=ExtResource("13_5ll0k")]
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_inu3v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("24_lh5yc")
 
 [editable path="level/house/wireframe2"]
