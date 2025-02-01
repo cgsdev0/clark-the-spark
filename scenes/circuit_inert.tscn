@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5s8h2gxt3npx"]
+
+[ext_resource type="PackedScene" uid="uid://cy52xkm7s3d6x" path="res://models/house/circuit.gltf" id="1_ono6l"]
+[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_4ssml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ots0x"]
+render_priority = 0
+shader = ExtResource("2_4ssml")
+shader_parameter/tintColor = Color(0.388235, 0.780392, 0.301961, 1)
+shader_parameter/invert = false
+shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
+shader_parameter/borderSize = 0.1
+shader_parameter/noiseSpeed = 0.7
+shader_parameter/noiseStrength = 0.1
+shader_parameter/noiseSize = 1.2
+
+[node name="circuit" instance=ExtResource("1_ono6l")]
+
+[node name="group502520534" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ots0x")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37029, -1.4272, 2.49829)
+size = Vector3(4.49707, 0.442871, 0.445313)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30138, 1.48937, 2.49829)
+size = Vector3(4.52637, 0.442871, 0.445313)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, -1.4272, -2.4967)
+size = Vector3(4.41174, 0.442871, 0.445313)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17929, 1.48937, -2.4967)
+size = Vector3(4.49707, 0.442871, 0.445313)

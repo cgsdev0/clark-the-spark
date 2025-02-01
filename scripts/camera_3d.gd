@@ -8,10 +8,8 @@ var ceiling = true
 var target_y = 0.0
 var chase = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	target_y = global_position.y
-	pass # Replace with function body.
+	target_y = 7.0
 
 
 func based_lerp(a, b, delta, rate):
@@ -21,9 +19,16 @@ func based_lerp(a, b, delta, rate):
 
 func based_lerp_angle(a, b, delta, rate):
 	return lerp_angle(a, b, 1-exp(-delta * rate))
+
+func teleport():
+	global_rotation.y = target_rotation
+	global_rotation.x = target_pitch
+	global_position = destination
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var freeze = false
 func _process(delta):
+	if freeze:
+		return
 	# fade out solid objects
 	var space = get_world_3d().direct_space_state
 	var params = PhysicsRayQueryParameters3D.new()
@@ -48,6 +53,8 @@ func _process(delta):
 		get_parent().get_node("WireMesh/Upstairs").visible = true
 	
 	if is_instance_valid(chase):
+		if chase.progress_ratio == 0.0:
+			return
 		var from = get_parent().dx()
 		var to = chase.global_position
 		global_position.x = based_lerp(global_position.x, from.x, delta, 2.0)
@@ -70,7 +77,10 @@ func _process(delta):
 	global_rotation.x = based_lerp_angle(global_rotation.x, target_pitch, delta, 3.0)
 	global_position.x = based_lerp(global_position.x, destination.x, delta, 3.0)
 	global_position.z = based_lerp(global_position.z, destination.z, delta, 3.0)
-	global_position.y = based_lerp(global_position.y, target_y + 
-		get_parent().y_offset +
-		(10.0 if ceiling else 0.0) +
-		(8.0 if zone == "upstairs" else 0.0), delta, 3.0)
+	if get_parent().y_locked:
+		global_position.y = based_lerp(global_position.y, target_y + 
+			get_parent().y_offset +
+			(10.0 if ceiling else 0.0) +
+			(8.0 if zone == "upstairs" else 0.0), delta, 3.0)
+	else:
+		global_position.y = based_lerp(global_position.y, destination.y + 1.0, delta, 3.0)

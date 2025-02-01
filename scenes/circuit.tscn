@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctww4njwphpx6"]
+
+[ext_resource type="PackedScene" uid="uid://cy52xkm7s3d6x" path="res://models/house/circuit.gltf" id="1_h5u23"]
+[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_xmc6p"]
+[ext_resource type="Script" path="res://scripts/fades.gd" id="3_jdof1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ots0x"]
+render_priority = 0
+shader = ExtResource("2_xmc6p")
+shader_parameter/tintColor = Color(0.388235, 0.780392, 0.301961, 1)
+shader_parameter/invert = false
+shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
+shader_parameter/borderSize = 0.1
+shader_parameter/noiseSpeed = 0.7
+shader_parameter/noiseStrength = 0.1
+shader_parameter/noiseSize = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vf74a"]
+size = Vector3(0.0661133, 0.0607422, 0.0673584)
+
+[node name="circuit" instance=ExtResource("1_h5u23")]
+
+[node name="group502520534" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ots0x")
+
+[node name="group664017250" parent="." index="5"]
+script = ExtResource("3_jdof1")
+type = 19
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group664017250" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group664017250/StaticBody3D" index="0"]
+transform = Transform3D(1, 1.07134e-14, 0, -2.22961e-14, 1, -8.72566e-16, 0, 4.11875e-14, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_vf74a")
+
+[node name="group1463279788" parent="." index="7"]
+script = ExtResource("3_jdof1")
+type = 21
+electric = true
+mandatory = true
+force_hop = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group1463279788" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group1463279788/StaticBody3D" index="0"]
+transform = Transform3D(1, 5.12923e-13, 2.5332e-07, -2.72005e-14, 1, 1.77636e-14, -2.5332e-07, -2.66454e-15, 1, 0.0169434, 0, 0)
+shape = SubResource("BoxShape3D_vf74a")
+
+[node name="group826636348_001" parent="." index="15"]
+script = ExtResource("3_jdof1")
+type = 20
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="group826636348_001" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="group826636348_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 5.12923e-13, 2.5332e-07, -2.72005e-14, 1, 1.77636e-14, -2.5332e-07, -2.66454e-15, 1, 0.0169434, 0, 0)
+shape = SubResource("BoxShape3D_vf74a")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37029, -1.4272, 2.49829)
+size = Vector3(4.49707, 0.442871, 0.445313)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30138, 1.48937, 2.49829)
+size = Vector3(4.52637, 0.442871, 0.445313)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, -1.4272, -2.4967)
+size = Vector3(4.41174, 0.442871, 0.445313)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17929, 1.48937, -2.4967)
+size = Vector3(4.49707, 0.442871, 0.445313)

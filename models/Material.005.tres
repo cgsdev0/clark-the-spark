@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cpi2hyuptlf8j"]
+
+[ext_resource type="Texture2D" uid="uid://bk846f45edu54" path="res://textures/earth.png" id="1_yxpmt"]
+
+[resource]
+resource_name = "Material.005"
+albedo_texture = ExtResource("1_yxpmt")
+roughness = 0.903922
+emission_enabled = true
+texture_filter = 2

@@ -4,6 +4,9 @@ extends Node
 signal meter_angry
 signal meter_calm
 
+signal transition
+signal teleport
+
 var score: int = 0
 signal score_changed
 
