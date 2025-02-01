@@ -95,6 +95,7 @@ func kill():
 		#anim.pause()
 	dead = true
 	for mat in mats:
+		mat.albedo_color = Color.WEB_GRAY
 		mat.emission_enabled = false
 	electrified = false
 	
