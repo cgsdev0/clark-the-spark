@@ -1,14 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://fa7it7yoyoki"]
+[gd_scene load_steps=35 format=3 uid="uid://fa7it7yoyoki"]
 
 [ext_resource type="PackedScene" uid="uid://b36gij25sosps" path="res://models/house/office.gltf" id="1_hrl64"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_fwxso"]
 [ext_resource type="Script" path="res://scripts/fades.gd" id="3_g5xqg"]
+[ext_resource type="Material" uid="uid://mtnywgiqha1f" path="res://materials/fan_on.tres" id="3_mrqv7"]
 [ext_resource type="Material" uid="uid://dr2k245qyd52i" path="res://materials/light_on.tres" id="3_n3u2p"]
 [ext_resource type="Texture2D" uid="uid://bjjfog00bhysb" path="res://textures/office_walls.png" id="3_py6iv"]
+[ext_resource type="Material" uid="uid://bw2ikrljnxkek" path="res://materials/small_lamp_on.tres" id="4_63jcm"]
 [ext_resource type="Material" uid="uid://doy2qx22pnn8i" path="res://materials/tall_lamp_on.tres" id="5_futxg"]
 [ext_resource type="Texture2D" uid="uid://c2ye5v2xbph3v" path="res://textures/real_parking_garage_textures.png" id="7_jjvpb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u77iy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_os53l"]
 render_priority = 0
 shader = ExtResource("2_fwxso")
 shader_parameter/tintColor = Color(1, 1, 1, 1)
@@ -99,10 +101,14 @@ points = PackedVector3Array(-0.0809122, 0.636447, -0.336783, -0.061693, 0.198361
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dcslw"]
 points = PackedVector3Array(-0.0625, 0.0682174, -0.151971, 0.0625, 0.431783, 0.154847, 0.0625, 0.431783, -0.151971, -0.0625, 0.431783, 0.154847, 0.0625, 0.0682174, 0.154847, -0.0625, 0.431783, -0.151971, -0.0625, 0.0682174, 0.154847, 0.0625, 0.0682174, -0.151971)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_fagcv"]
+flip_faces = true
+size = Vector2(9.1, 12.6)
+
 [node name="blockbench_export" instance=ExtResource("1_hrl64")]
 
 [node name="office_walls" parent="Node/office" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_u77iy")
+surface_material_override/0 = SubResource("ShaderMaterial_os53l")
 
 [node name="left_treadmill" parent="Node/gym" index="0"]
 transform = Transform3D(-1, 0, -1.22465e-16, 0, 1, 0, 1.22465e-16, 0, -1, -1.96989, 0, -5.54688)
@@ -144,6 +150,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_2xrn6")
 
 [node name="gym_ceiling_fan" parent="Node/gym" index="3"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -157,7 +164,11 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_heh0d")
 
+[node name="hallway_table" parent="Node/hallway" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.328125, -3.47161)
+
 [node name="hallway_small_lamp" parent="Node/hallway" index="1"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -211,6 +222,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_ja4ir")
 
 [node name="waiting_room_small_lamp_left" parent="Node/waiting_area" index="5"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -221,6 +233,9 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_small_lamp_left/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_hronf")
+
+[node name="waiting_room_media_center" parent="Node/waiting_area" index="6"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.29688, 0.234375, -2.5041)
 
 [node name="waiting_room_tv" parent="Node/waiting_area" index="8"]
 script = ExtResource("3_g5xqg")
@@ -238,6 +253,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_51bhv")
 
 [node name="waiting_room_small_lamp_right" parent="Node/waiting_area" index="10"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -422,6 +438,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438904, 0.240173, 0.599113)
 shape = SubResource("BoxShape3D_28tbo")
 
 [node name="work_area_tall_lamp_left" parent="Node/work_area" index="7"]
+surface_material_override/0 = ExtResource("5_futxg")
 script = ExtResource("3_g5xqg")
 type = 4
 electric = true
@@ -544,6 +561,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/breakroom/break_room_selves/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_1ml2t")
 
+[node name="office_room_tall_lamp" parent="Node/breakroom" index="4"]
+surface_material_override/0 = ExtResource("5_futxg")
+
 [node name="break_room_tall_lamp" parent="Node/breakroom" index="5"]
 surface_material_override/0 = ExtResource("5_futxg")
 script = ExtResource("3_g5xqg")
@@ -558,6 +578,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_ect7w")
 
 [node name="waiting_room_ceiling_fan" parent="Node/breakroom" index="6"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -571,6 +592,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_heh0d")
 
 [node name="break_room_ceiling_fan" parent="Node/breakroom" index="7"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -718,3 +740,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/parking_garage/parking_lot_breaker_box/StaticBody3D" index="0"]
 transform = Transform3D(1.68851, 0, 1.07189, 0, 2, 0, -1.07189, 0, 1.68851, 0.00291939, -0.143174, -0.262737)
 shape = SubResource("ConvexPolygonShape3D_dcslw")
+
+[node name="MakeshiftCeiling" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84187, 1.66996, -1.33649)
+mesh = SubResource("PlaneMesh_fagcv")
