@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=96 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
 [ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
 [ext_resource type="Script" path="res://scripts/meter_position.gd" id="42_qjn13"]
+[ext_resource type="FontFile" uid="uid://bh7kpk6fbm2dk" path="res://audio/music/Stacked pixel.ttf" id="43_kaiq7"]
 [ext_resource type="AudioStream" uid="uid://dgvupihmcx7we" path="res://audio/music/main.ogg" id="49_wth0b"]
 [ext_resource type="AudioStream" uid="uid://obohs6shebnb" path="res://audio/music/cutscene.ogg" id="50_prm0i"]
 [ext_resource type="AudioStream" uid="uid://ccmy31oyu3cvk" path="res://audio/music/space.ogg" id="51_5rgat"]
@@ -227,6 +228,22 @@ texture_filter = 0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7kg8m"]
 viewport_path = NodePath("Control/SubViewport")
+
+[sub_resource type="Theme" id="Theme_vxk2j"]
+default_font = ExtResource("43_kaiq7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mwx6"]
+bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.172549, 0.909804, 0.960784, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_inu3v"]
 shader = ExtResource("23_a5qjr")
@@ -687,13 +704,16 @@ which = "spherePos5"
 
 [node name="ChargeSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
 stream = ExtResource("9_aee73")
+bus = &"SFX"
 
 [node name="FailSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
 stream = ExtResource("10_lwet4")
 volume_db = -4.0
+bus = &"SFX"
 
 [node name="PopSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
 stream = SubResource("AudioStreamRandomizer_yu5ii")
+bus = &"SFX"
 
 [node name="Camera3D" type="Camera3D" parent="level/Networks/circuit_wires"]
 process_priority = -2
@@ -1059,6 +1079,103 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_7kg8m")
 
+[node name="MenuBackdrop" type="ColorRect" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control" parent="Control/MenuBackdrop"]
+custom_minimum_size = Vector2(360, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -114.0
+offset_right = 180.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vxk2j")
+
+[node name="Panel" type="Panel" parent="Control/MenuBackdrop/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mwx6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MenuBackdrop/Menu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "start"
+
+[node name="Button2" type="Button" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "fullscreen"
+
+[node name="Button3" type="Button" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "QUIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Control/MenuBackdrop/Menu/Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
 [node name="SubViewport" type="SubViewport" parent="Control"]
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
@@ -1111,6 +1228,7 @@ script = ExtResource("24_lh5yc")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_aef5r")
 autoplay = true
+bus = &"Music"
 script = ExtResource("52_1vmuq")
 
 [editable path="level/house/wireframe2"]
