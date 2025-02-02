@@ -184,6 +184,7 @@ func pop():
 	electrified = null
 	$PlayerPath/Player/ChargeSound.stop()
 	$PlayerPath/Player/PopSound.play()
+	Events.pop.emit()
 	if should_hop:
 		$PlayerPath/Player/AnimatedSprite3D.scale = Vector3.ONE * 0.5
 		grid_hop()
@@ -393,6 +394,7 @@ func _physics_process(delta):
 					charging = false
 					$PlayerPath/Player/ChargeSound.stop()
 				start_hardcut_timer()
+				Events.multimeter_up = false
 				Events.hide_tooltip.emit()
 				if electrified:
 					electrified.electrified = false

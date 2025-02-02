@@ -164,6 +164,10 @@ func fail_tooltip():
 		Events.show_tooltip.emit(tooltip)
 
 func _process(delta):
+	if electrified && !was_electrified:
+		Events.multimeter_up = true
+	if !electrified && was_electrified && !dead:
+		Events.multimeter_up = false
 	if tooltip == Events.Tooltip.POP && electrified && !was_electrified:
 		Events.show_tooltip.emit(tooltip)
 	if is_instance_valid(tv):

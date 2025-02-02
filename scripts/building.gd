@@ -175,6 +175,7 @@ func pop():
 	self.kill()
 	%PlayerPath/Player/ChargeSound.stop()
 	%PlayerPath/Player/PopSound.play()
+	Events.pop.emit()
 	if should_hop:
 		Events.charge = 0.0
 		selected = false

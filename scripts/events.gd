@@ -14,8 +14,11 @@ enum Tooltip {
 	TOO_HARD,
 }
 
+var multimeter_up = false
+
 var tooltip: Tooltip = Tooltip.UP
 
+signal pop
 signal hide_tooltip
 signal show_tooltip(tooltip: Tooltip)
 
@@ -31,7 +34,7 @@ func _on_hide():
 	
 	
 var planet_destroyed = false
-var score: int = 99999 if OS.is_debug_build() else 0
+var score: int = 0 if OS.is_debug_build() else 0
 signal score_changed
 
 var charge = 0.0
