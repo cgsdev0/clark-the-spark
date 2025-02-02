@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://ccefvslg7c4lf"
+path="res://.godot/imported/garage_ceiling.png-9dcb0caddce2d6af53b079cb884b2711.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/garage_ceiling.png"
+dest_files=["res://.godot/imported/garage_ceiling.png-9dcb0caddce2d6af53b079cb884b2711.ctex"]
 
 [params]
 

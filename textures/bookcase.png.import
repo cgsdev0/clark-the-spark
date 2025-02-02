@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://nhirjlkxbgo2"
+path="res://.godot/imported/bookcase.png-3a07ce2ea65f2f9423bfd0c28f4dbfdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/bookcase.png"
+dest_files=["res://.godot/imported/bookcase.png-3a07ce2ea65f2f9423bfd0c28f4dbfdc.ctex"]
 
 [params]
 

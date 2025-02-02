@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=85 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
+[ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
 [ext_resource type="Texture2D" uid="uid://cxecmkf3agbu4" path="res://textures/road_test.png" id="39_2shrn"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
@@ -129,6 +130,9 @@ _data = {
 "tilts": PackedFloat32Array(0)
 }
 point_count = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a2wwm"]
+viewport_path = NodePath("Control/ThoughtsViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl8xo"]
 shading_mode = 0
@@ -563,6 +567,14 @@ curve = SubResource("Curve3D_vqcuc")
 [node name="Thoughts" type="Sprite3D" parent="level/Networks/circuit_wires/PlayerPath"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -25, 0)
 top_level = true
+offset = Vector2(-150, -50)
+pixel_size = 0.0015
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+render_priority = 10
+texture = SubResource("ViewportTexture_a2wwm")
+script = ExtResource("27_q3d6h")
 
 [node name="Player" type="PathFollow3D" parent="level/Networks/circuit_wires/PlayerPath"]
 
@@ -987,7 +999,6 @@ size = Vector2i(128, 128)
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(256, 256)
 
 [node name="Node2D" parent="Control/ThoughtsViewport" instance=ExtResource("41_ctusk")]
 

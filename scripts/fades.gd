@@ -60,6 +60,7 @@ var values = {
 @export var solid_while_alive = false
 @export var mandatory = false
 @export var force_hop = false
+@export var tooltip: Events.Tooltip = Events.Tooltip.NONE
 
 var was_electrified = false
 var dead = false
@@ -95,6 +96,8 @@ func kill():
 	#var anim = find_child("AnimationPlayer")
 	#if is_instance_valid(anim):
 		#anim.pause()
+	if tooltip != Events.Tooltip.NONE:
+		Events.hide_tooltip.emit()
 	if is_instance_valid(tv):
 		tv.queue_free()
 	dead = true
@@ -155,7 +158,14 @@ func fade_tv(fade_in):
 		t.tween_callback(func(): AudioServer.set_bus_mute(bus, true))
 		
 var dead_timer = 0.0
+
+func fail_tooltip():
+	if tooltip == Events.Tooltip.TOO_HARD:
+		Events.show_tooltip.emit(tooltip)
+
 func _process(delta):
+	if tooltip == Events.Tooltip.POP && electrified && !was_electrified:
+		Events.show_tooltip.emit(tooltip)
 	if is_instance_valid(tv):
 		tv.visible = self.is_visible_in_tree()
 	if dead:

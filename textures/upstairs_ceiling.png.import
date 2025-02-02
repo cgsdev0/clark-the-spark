@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://cxowhulkiunqs"
+path="res://.godot/imported/upstairs_ceiling.png-cc484ca8ba9b158a840afd2a9c24a3e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/upstairs_ceiling.png"
+dest_files=["res://.godot/imported/upstairs_ceiling.png-cc484ca8ba9b158a840afd2a9c24a3e3.ctex"]
 
 [params]
 

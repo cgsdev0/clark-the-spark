@@ -275,6 +275,7 @@ func _physics_process(delta):
 		Events.meter_angry.emit()
 		$PlayerPath/Player/ChargeSound.stop()
 		$PlayerPath/Player/FailSound.play()
+		electrified.fail_tooltip()
 		require_release = true
 	if Input.is_action_just_released("pop"):
 		require_release = false
@@ -392,6 +393,7 @@ func _physics_process(delta):
 					charging = false
 					$PlayerPath/Player/ChargeSound.stop()
 				start_hardcut_timer()
+				Events.hide_tooltip.emit()
 				if electrified:
 					electrified.electrified = false
 					electrified = null

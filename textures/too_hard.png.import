@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://b4ohchxm0y8ai"
+path="res://.godot/imported/too_hard.png-ecdf95487973f1a6fc057948ce62df44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/too_hard.png"
+dest_files=["res://.godot/imported/too_hard.png-ecdf95487973f1a6fc057948ce62df44.ctex"]
 
 [params]
 

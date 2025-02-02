@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://difnwjgm2rrh2"
+path="res://.godot/imported/button_bubble.png-55963b826dfda189eda17d687742056b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/button_bubble.png"
+dest_files=["res://.godot/imported/button_bubble.png-55963b826dfda189eda17d687742056b.ctex"]
 
 [params]
 

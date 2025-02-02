@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53jj3uhxwk3a"
-path="res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"
+uid="uid://dijfx203wi6fc"
+path="res://.godot/imported/yellow_tall_building.png-a925b2e02f93cdc78e95cdd758870440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/townhouse.png"
-dest_files=["res://.godot/imported/townhouse.png-4c95a6f6087d65053683e55c0adedeae.ctex"]
+source_file="res://textures/yellow_tall_building.png"
+dest_files=["res://.godot/imported/yellow_tall_building.png-a925b2e02f93cdc78e95cdd758870440.ctex"]
 
 [params]
 

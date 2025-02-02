@@ -19,6 +19,16 @@ var textures = {
 		preload("res://textures/house_textures_green.png"),
 		preload("res://textures/house_textures_pink.png"),
 		preload("res://textures/house_textures_yellow.png")
+	],
+	Electric.TOWN_HOUSE: [
+		preload("res://textures/townhouse.png"),
+		preload("res://textures/blue_townhouse.png"),
+		preload("res://textures/yellow_townhouse.png"),
+	],
+	Electric.TALL_BUILDING: [
+		preload("res://textures/tall_building.png"),
+		preload("res://textures/green_tall_building.png"),
+		preload("res://textures/yellow_tall_building.png")
 	]
 }
 

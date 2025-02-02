@@ -28,6 +28,7 @@ script = ExtResource("3_jdof1")
 type = 19
 electric = true
 mandatory = true
+tooltip = 2
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group664017250" index="0"]
 collision_layer = 2
@@ -57,6 +58,7 @@ script = ExtResource("3_jdof1")
 type = 20
 electric = true
 mandatory = true
+tooltip = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="group826636348_001" index="0"]
 collision_layer = 2
