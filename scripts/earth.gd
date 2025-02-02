@@ -51,6 +51,7 @@ func pop():
 	self.kill()
 	%PlayerPath/Player/ChargeSound.stop()
 	%PlayerPath/Player/PopSound.play()
+	Events.pop.emit()
 	var t = get_tree().create_tween()
 	t.tween_property(self, "rot_speed", 0.0, 0.5)
 	t.tween_interval(2.6)

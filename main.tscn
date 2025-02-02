@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=86 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
 [ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
+[ext_resource type="Script" path="res://scripts/meter_position.gd" id="42_qjn13"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cvpae"]
 viewport_path = NodePath("Control/PlayerViewport")
@@ -953,7 +954,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.
 mesh = SubResource("QuadMesh_xc3eq")
 
 [node name="Roads" type="MeshInstance3D" parent="level"]
-transform = Transform3D(2.05, 0, 0, 0, -8.96083e-08, 2.05, 0, -2.05, -8.96083e-08, -79.598, 0, -29.0339)
+unique_name_in_owner = true
+transform = Transform3D(2.05, 0, 0, 0, -8.96083e-08, 2.05, 0, -2.05, -8.96083e-08, -79.598, 0.1, -29.034)
 mesh = SubResource("QuadMesh_g3tae")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsg44")
 
@@ -982,10 +984,13 @@ anchor_left = 0.98
 anchor_top = 1.0
 anchor_right = 0.98
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -256.0
+offset_left = -256.8
+offset_top = -100.0
+offset_right = -0.800049
+offset_bottom = 156.0
 grow_horizontal = 0
 grow_vertical = 0
+script = ExtResource("42_qjn13")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control/Control"]
