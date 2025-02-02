@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cruq5lr5h1b6n"]
 
-[ext_resource type="Texture2D" uid="uid://u8paa00kr3ky" path="res://textures/medium_building.png" id="1_c4ks1"]
+[ext_resource type="Texture2D" uid="uid://b6w1yxp2wkkst" path="res://textures/medium_building.png" id="1_c4ks1"]
 
 [resource]
 resource_name = "material_0"

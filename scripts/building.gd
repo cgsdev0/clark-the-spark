@@ -29,6 +29,10 @@ var textures = {
 		preload("res://textures/tall_building.png"),
 		preload("res://textures/green_tall_building.png"),
 		preload("res://textures/yellow_tall_building.png")
+	],
+	Electric.STORE: [
+		preload("res://textures/store.png"),
+		preload("res://textures/store_yellow.png")
 	]
 }
 
