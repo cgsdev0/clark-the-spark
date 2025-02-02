@@ -11,6 +11,9 @@ var nodes
 @export var hard_cut_timer = 0.0
 @export var speed_mult = 1.0
 
+# haha
+var lol = false
+
 func add_connection(edges, a, b):
 	if edges[a] not in connections:
 		connections[edges[a]] = []
@@ -245,6 +248,9 @@ func grid_hop():
 	cam.freeze = false
 
 func teleport():
+	if !lol:
+		lol = true
+		return
 	if active:
 		var cam = $Camera3D
 		grid_hop()

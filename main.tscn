@@ -809,6 +809,7 @@ directional_shadow_split_1 = 0.08
 directional_shadow_split_2 = 0.18
 
 [node name="Control" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -842,7 +843,6 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_7kg8m")
 
 [node name="MenuBackdrop" parent="Control" instance=ExtResource("43_cwema")]
-visible = false
 layout_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="Control"]
@@ -895,8 +895,9 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("24_lh5yc")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamInteractive_aef5r")
-volume_db = -21.348
+volume_db = -8.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("52_1vmuq")

@@ -27,6 +27,7 @@ signal city_song
 signal space_song
 
 func _ready():
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	show_tooltip.connect(_on_show)
 	hide_tooltip.connect(_on_hide)
 	
