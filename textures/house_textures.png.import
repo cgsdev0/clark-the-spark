@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ubtqqskjinuf"
-path="res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"
+uid="uid://kkkp48ic7ggg"
+path="res://.godot/imported/house_textures.png-203285b7157bf0fcc42552f2b3f454eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/main_plant_building.png"
-dest_files=["res://.godot/imported/main_plant_building.png-d524bd6f7e5f337424d67971028afad8.ctex"]
+source_file="res://textures/house_textures.png"
+dest_files=["res://.godot/imported/house_textures.png-203285b7157bf0fcc42552f2b3f454eb.ctex"]
 
 [params]
 

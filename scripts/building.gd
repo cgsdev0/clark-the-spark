@@ -4,11 +4,34 @@ extends Node3D
 @export var selected = false
 enum Electric {
 	GENERIC,
+	HOUSE,
+	OFFICE,
+	TOWN_HOUSE,
+	POWER_PLANT,
+	SKYSCRAPER,
+	TALL_BUILDING,
+	STORE
+}
+
+var textures = {
+	Electric.HOUSE: [
+		preload("res://textures/house_textures.png"),
+		preload("res://textures/house_textures_green.png"),
+		preload("res://textures/house_textures_pink.png"),
+		preload("res://textures/house_textures_yellow.png")
+	]
 }
 
 var values = {
 	# points gained, min needed, pop threshold, max time
 	Electric.GENERIC: [5, 0, 2000, 1.0],
+	Electric.HOUSE: [1000, 10000, 40000, 1.0],
+	Electric.OFFICE: [2000, 15000, 60000, 1.0],
+	Electric.TOWN_HOUSE: [1000, 10000, 40000, 1.0],
+	Electric.POWER_PLANT: [100000, 99999, 10000000, 2.8],
+	Electric.SKYSCRAPER: [30000, 60000, 10000000, 2.0],
+	Electric.TALL_BUILDING: [5000, 40000, 10000000, 1.5],
+	Electric.STORE: [2000, 15000, 60000, 1.0],
 }
 
 @export var type: Electric = Electric.GENERIC
@@ -89,7 +112,11 @@ func _ready():
 			mat = mat.duplicate(true)
 			node.set_surface_override_material(i, mat)
 			mats.push_back(mat)
-
+	if textures.has(type):
+		var opts = textures[type]
+		for mat: StandardMaterial3D in mats:
+			mat.albedo_texture = opts.pick_random()
+			
 func find_neighbor(direction: Vector2):
 	var candidates = []
 	for building in get_tree().get_nodes_in_group("buildings"):

@@ -681,6 +681,7 @@ shape = SubResource("CylinderShape3D_heh0d")
 
 [node name="power_generator" parent="Node/parking_garage" index="5"]
 script = ExtResource("3_g5xqg")
+type = 18
 electric = true
 fades = true
 force_hop = true
@@ -694,6 +695,7 @@ shape = SubResource("ConvexPolygonShape3D_37v3v")
 
 [node name="left_car" parent="Node/parking_garage" index="6"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 
@@ -706,6 +708,7 @@ shape = SubResource("ConvexPolygonShape3D_555k2")
 
 [node name="right_car" parent="Node/parking_garage" index="7"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 
@@ -719,6 +722,7 @@ shape = SubResource("ConvexPolygonShape3D_555k2")
 
 [node name="middle_car" parent="Node/parking_garage" index="8"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 

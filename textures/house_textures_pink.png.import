@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clnpleg2gj0we"
-path="res://.godot/imported/skyscraper_0.png-5cbb8af073a57e8f7e8a939e975c8228.ctex"
+uid="uid://ivm8t3kmrr4d"
+path="res://.godot/imported/house_textures_pink.png-404de46b6e52264ffb404f1b034563b2.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "247f8407c620f059afcda4e9fc084f60"
 }
 
 [deps]
 
-source_file="res://models/buildings/skyscraper_0.png"
-dest_files=["res://.godot/imported/skyscraper_0.png-5cbb8af073a57e8f7e8a939e975c8228.ctex"]
+source_file="res://textures/house_textures_pink.png"
+dest_files=["res://.godot/imported/house_textures_pink.png-404de46b6e52264ffb404f1b034563b2.ctex"]
 
 [params]
 

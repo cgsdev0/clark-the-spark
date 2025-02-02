@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dochwtqtyw8wi"
-path="res://.godot/imported/steam_stack_0.png-6f5714fc201e9a03ff398ba65a269348.ctex"
+uid="uid://dbp0taqj6gqbk"
+path="res://.godot/imported/main_power_plant_building.png-e9b0c4fce615cf529c449bba056d5c56.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "0ea2827c13038263a7c6d1383a07e266"
 }
 
 [deps]
 
-source_file="res://models/buildings/steam_stack_0.png"
-dest_files=["res://.godot/imported/steam_stack_0.png-6f5714fc201e9a03ff398ba65a269348.ctex"]
+source_file="res://textures/main_power_plant_building.png"
+dest_files=["res://.godot/imported/main_power_plant_building.png-e9b0c4fce615cf529c449bba056d5c56.ctex"]
 
 [params]
 

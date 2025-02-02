@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ha6k2bfxlst"
-path="res://.godot/imported/townhouse_0.png-19634b4d1211a6ded6fda3a2a1f6bb3f.ctex"
+uid="uid://2db3x18cdh65"
+path="res://.godot/imported/house_textures_yellow.png-1773ed7be348d7fb6d40eeed02195524.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "efff98741f5cd5d5b053847273b01767"
 }
 
 [deps]
 
-source_file="res://models/buildings/townhouse_0.png"
-dest_files=["res://.godot/imported/townhouse_0.png-19634b4d1211a6ded6fda3a2a1f6bb3f.ctex"]
+source_file="res://textures/house_textures_yellow.png"
+dest_files=["res://.godot/imported/house_textures_yellow.png-1773ed7be348d7fb6d40eeed02195524.ctex"]
 
 [params]
 

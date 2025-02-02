@@ -280,6 +280,7 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -12.6797, 0, 3.56652)
 script = ExtResource("3_c2pgq")
 selected = true
+type = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="level/city/OurOffice"]
 transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.186525, 0.348904, -0.0928612)
@@ -288,46 +289,57 @@ size = Vector3(1.86, 1.55, 1.55)
 [node name="OurHouse" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -0.0825666)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse4" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -2.46061)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse6" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -4.96)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse7" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -7.66574)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse8" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -10.3012)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse2" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -0.87545)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse5" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -3.1782)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse9" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -5.7262)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse10" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -8.00449)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="OurHouse11" parent="level/city" instance=ExtResource("2_hof5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -10.442)
 script = ExtResource("3_c2pgq")
+type = 1
 
 [node name="blockbench_export" parent="level/city" instance=ExtResource("3_eogml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2265, 0, 0.766239)
 script = ExtResource("3_c2pgq")
+type = 5
 
 [node name="Marker3D" type="Marker3D" parent="level/city/blockbench_export"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.85975)
@@ -338,6 +350,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.04129)
 [node name="PowerPlant" type="Node3D" parent="level/city"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3148, 0, -5.89994)
 script = ExtResource("3_c2pgq")
+type = 4
 
 [node name="blockbench_export" parent="level/city/PowerPlant" instance=ExtResource("5_tv2cq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38497, 0, -4.01893)
@@ -360,70 +373,87 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517435, 0, -0.696447)
 [node name="blockbench_export2" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -21.0559, 0, -10.2499)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export13" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(1.57361e-07, 0, -1.2, 0, 1.2, 0, 1.2, 0, 1.57361e-07, -25.188, 0, -2.06155)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export3" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -8.88793)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export16" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3804, 0, -2.66254)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export18" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7951, 0, -2.76369)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export19" parent="level/city" instance=ExtResource("9_2gr74")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -18.3191, 0, 3.89498)
 script = ExtResource("3_c2pgq")
+type = 6
 
 [node name="blockbench_export4" parent="level/city" instance=ExtResource("10_tps0p")]
 transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 0.999999, 0, 8.74227e-08, 0, -0.999999, -2.20333, 0, 2.3724)
 script = ExtResource("3_c2pgq")
+type = 7
 
 [node name="blockbench_export10" parent="level/city" instance=ExtResource("10_tps0p")]
 transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.07342, 0, -0.851424)
 script = ExtResource("3_c2pgq")
+type = 7
 
 [node name="blockbench_export11" parent="level/city" instance=ExtResource("10_tps0p")]
 transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -0.851424)
 script = ExtResource("3_c2pgq")
+type = 7
 
 [node name="blockbench_export15" parent="level/city" instance=ExtResource("10_tps0p")]
 transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -0.851424)
 script = ExtResource("3_c2pgq")
+type = 7
 
 [node name="blockbench_export5" parent="level/city" instance=ExtResource("11_txcb6")]
 transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -5.43508, 0, 2.63329)
 script = ExtResource("3_c2pgq")
+type = 3
 
 [node name="blockbench_export6" parent="level/city" instance=ExtResource("11_txcb6")]
 transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -4.43719, 0, 2.67457)
 script = ExtResource("3_c2pgq")
+type = 3
 
 [node name="blockbench_export7" parent="level/city" instance=ExtResource("11_txcb6")]
 transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -6.43397, 0, 2.57542)
 script = ExtResource("3_c2pgq")
+type = 3
 
 [node name="blockbench_export8" parent="level/city" instance=ExtResource("11_txcb6")]
 transform = Transform3D(-0.999999, 0, 8.74226e-08, 0, 0.999999, 0, -8.74226e-08, 0, -0.999999, -7.44337, 0, 2.52985)
 script = ExtResource("3_c2pgq")
+type = 3
 
 [node name="blockbench_export9" parent="level/city" instance=ExtResource("1_8fab5")]
 transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -9.40444, 0, 2.92813)
 script = ExtResource("3_c2pgq")
+type = 2
 
 [node name="blockbench_export14" parent="level/city" instance=ExtResource("1_8fab5")]
 transform = Transform3D(0.999999, 0, 1.74845e-07, 0, 0.999999, 0, -1.74845e-07, 0, 0.999999, -13.0001, 0, -1.89694)
 script = ExtResource("3_c2pgq")
+type = 2
 
 [node name="blockbench_export17" parent="level/city" instance=ExtResource("1_8fab5")]
 transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -15.5949, 0, 3.61188)
 script = ExtResource("3_c2pgq")
+type = 2
 
 [node name="IsoCam" type="Camera3D" parent="level/city"]
 unique_name_in_owner = true
