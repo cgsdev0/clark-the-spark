@@ -166,6 +166,7 @@ func move_on():
 	await get_tree().create_timer(2.0).timeout
 	Events.transition.emit()
 	await Events.teleport
+	Events.space_song.emit()
 	%EndCam.current = true
 	
 func pop():
