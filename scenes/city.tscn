@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://o32ll2twlx1f"]
+[gd_scene load_steps=20 format=3 uid="uid://o32ll2twlx1f"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_xbhn4"]
 [ext_resource type="Script" path="res://scripts/building.gd" id="2_m5854"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dkoxs00eyom4f" path="res://models/buildings/store.gltf" id="10_qau77"]
 [ext_resource type="PackedScene" uid="uid://bsf1prnlux5aw" path="res://models/buildings/townhouse.gltf" id="11_offs4"]
 [ext_resource type="Texture2D" uid="uid://cxecmkf3agbu4" path="res://textures/road_test.png" id="12_fgemr"]
+[ext_resource type="PackedScene" uid="uid://gnnthbps5agn" path="res://models/trees/small_tree.gltf" id="13_3dldo"]
+[ext_resource type="PackedScene" uid="uid://14j611a5c52u" path="res://models/trees/wide_tree.gltf" id="14_hbal6"]
+[ext_resource type="PackedScene" uid="uid://c6o8an206owhr" path="res://models/trees/tall_tree.gltf" id="15_nklqj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
 albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
@@ -235,3 +238,165 @@ transform = Transform3D(0.341667, 0, 0, 0, -1.49347e-08, 0.341667, 0, -0.341667,
 mesh = SubResource("QuadMesh_g3tae")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsg44")
+
+[node name="blockbench_export21" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.636059, -0.0278865, 1.73292)
+
+[node name="blockbench_export26" parent="." instance=ExtResource("14_hbal6")]
+transform = Transform3D(1.13683, 0, 0.978584, 0, 1.5, 0, -0.978584, 0, 1.13683, 0.551389, 0, 2.35636)
+
+[node name="blockbench_export28" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.306146, 0, 0.516018, 0, 0.6, 0, -0.516018, 0, 0.306146, -0.0093983, -0.0192734, 1.49249)
+
+[node name="blockbench_export42" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.306146, 0, 0.516018, 0, 0.6, 0, -0.516018, 0, 0.306146, 0.998244, -0.0192734, 2.88883)
+
+[node name="blockbench_export27" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.759777, 0, 0.48243, 0, 0.9, 0, -0.48243, 0, 0.759777, -0.770972, -0.0192734, 2.56067)
+
+[node name="blockbench_export24" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.07624, 0, -1.04485, 0, 1.5, 0, 1.04485, 0, 1.07624, -0.5479, -0.0278865, 3.23511)
+
+[node name="blockbench_export29" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(-0.23416, 0, 1.48161, 0, 1.5, 0, -1.48161, 0, -0.23416, -4.05964, -0.0278865, -13.9623)
+
+[node name="blockbench_export30" parent="." instance=ExtResource("14_hbal6")]
+transform = Transform3D(-1.14405, 0, 0.970125, 0, 1.5, 0, -0.970125, 0, -1.14405, -3.62921, 0, -15.2325)
+
+[node name="blockbench_export31" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.557484, 0, 0.221838, 0, 0.6, 0, -0.221838, 0, -0.557484, -4.39495, -0.0192734, -14.5437)
+
+[node name="blockbench_export32" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.595122, 0, 0.675152, 0, 0.9, 0, -0.675152, 0, -0.595122, -3.22098, -0.0192734, -13.9582)
+
+[node name="blockbench_export39" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.595122, 0, 0.675152, 0, 0.9, 0, -0.675152, 0, -0.595122, -3.69563, -0.0192734, 1.70328)
+
+[node name="blockbench_export40" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.826154, 0, -0.357029, 0, 0.9, 0, 0.357029, 0, -0.826154, -11.0595, -0.0192734, 1.72023)
+
+[node name="blockbench_export33" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(0.864028, 0, 1.22615, 0, 1.5, 0, -1.22615, 0, 0.864028, -2.58963, -0.0278865, -14.2839)
+
+[node name="blockbench_export34" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(0.710948, 0, -1.32082, 0, 1.5, 0, 1.32082, 0, 0.710948, -1.79639, -0.0278865, 3.82334)
+
+[node name="blockbench_export35" parent="." instance=ExtResource("14_hbal6")]
+transform = Transform3D(1.4005, 0, -0.53721, 0, 1.5, 0, 0.53721, 0, 1.4005, -1.78255, 0, 5.16444)
+
+[node name="blockbench_export41" parent="." instance=ExtResource("14_hbal6")]
+transform = Transform3D(0.496378, 0, 0.337059, 0, 0.6, 0, -0.337059, 0, 0.496378, 0.683394, 0, 1.15286)
+
+[node name="blockbench_export21" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.49791, 0, -0.0790792, 0, 1.5, 0, 0.0790792, 0, -1.49791, -13.97, -0.0278865, -36.1646)
+
+[node name="blockbench_export26" parent="blockbench_export41" instance=ExtResource("14_hbal6")]
+transform = Transform3D(-1.08365, 0, -1.03716, 0, 1.5, 0, 1.03716, 0, -1.08365, -15.1886, 0, -36.7247)
+
+[node name="blockbench_export27" parent="blockbench_export41" instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.733287, 0, -0.521814, 0, 0.9, 0, 0.521814, 0, -0.733287, -13.8789, -0.0192734, -36.9984)
+
+[node name="blockbench_export24" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.12983, 0, 0.986654, 0, 1.5, 0, -0.986654, 0, -1.12983, -14.1372, -0.0278865, -37.6601)
+
+[node name="blockbench_export34" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-0.779591, 0, 1.2815, 0, 1.5, 0, -1.2815, 0, -0.779591, -12.9215, -0.0278865, -38.3133)
+
+[node name="blockbench_export35" parent="blockbench_export41" instance=ExtResource("14_hbal6")]
+transform = Transform3D(-1.42688, 0, 0.462629, 0, 1.5, 0, -0.462629, 0, -1.42688, -13.006, 0, -39.6519)
+
+[node name="blockbench_export41" parent="blockbench_export41" instance=ExtResource("14_hbal6")]
+transform = Transform3D(-0.477918, 0, -0.362759, 0, 0.6, 0, 0.362759, 0, -0.477918, -15.257, 0, -35.5159)
+
+[node name="blockbench_export37" parent="blockbench_export41" instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.807032, 0, 0.39837, 0, 0.9, 0, -0.39837, 0, -0.807032, -12.1442, -0.0192734, -38.6283)
+
+[node name="blockbench_export44" parent="blockbench_export41" instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.787489, 0, 1.39279, 0, 1.6, 0, -1.39279, 0, 0.787489, -14.1669, -0.0192734, -39.0811)
+
+[node name="blockbench_export21" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.49226, 0, 0.152131, 0, 1.5, 0, -0.152131, 0, 1.49226, 1.67797, -0.0278865, 9.27605)
+
+[node name="blockbench_export26" parent="blockbench_export41/blockbench_export44" instance=ExtResource("14_hbal6")]
+transform = Transform3D(1.03171, 0, 1.08884, 0, 1.5, 0, -1.08884, 0, 1.03171, 2.92253, 0, 9.77585)
+
+[node name="blockbench_export27" parent="blockbench_export41/blockbench_export44" instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.706931, 0, 0.556999, 0, 0.9, 0, -0.556999, 0, 0.706931, 1.6277, -0.0192734, 10.1132)
+
+[node name="blockbench_export24" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.17666, 0, -0.930305, 0, 1.5, 0, 0.930305, 0, 1.17666, 1.91803, -0.0278865, 10.7615)
+
+[node name="blockbench_export34" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(0.84124, 0, -1.2419, 0, 1.5, 0, 1.2419, 0, 0.84124, 0.735641, -0.0278865, 11.4734)
+
+[node name="blockbench_export35" parent="blockbench_export41/blockbench_export44" instance=ExtResource("14_hbal6")]
+transform = Transform3D(1.44776, 0, -0.3924, 0, 1.5, 0, 0.3924, 0, 1.44776, 0.88542, 0, 12.8061)
+
+[node name="blockbench_export41" parent="blockbench_export41/blockbench_export44" instance=ExtResource("14_hbal6")]
+transform = Transform3D(0.459634, 0, 0.385664, 0, 0.6, 0, -0.385664, 0, 0.459634, 2.93179, 0, 8.56516)
+
+[node name="blockbench_export37" parent="blockbench_export41/blockbench_export44" instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.825523, 0, -0.358485, 0, 0.9, 0, 0.358485, 0, 0.825523, -0.0253525, -0.0192734, 11.8259)
+
+[node name="blockbench_export44" parent="blockbench_export41/blockbench_export44" instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.718536, 0, -1.42958, 0, 1.6, 0, 1.42958, 0, -0.718536, 2.01712, -0.0192734, 12.1794)
+
+[node name="blockbench_export45" parent="blockbench_export41/blockbench_export44" instance=ExtResource("15_nklqj")]
+transform = Transform3D(1.31444, 0, -0.91227, 0, 1.6, 0, 0.91227, 0, 1.31444, 4.30149, -0.0192734, 11.9573)
+
+[node name="blockbench_export38" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-0.261478, 0, -1.47703, 0, 1.5, 0, 1.47703, 0, -0.261478, -0.458634, -0.0278865, 12.3888)
+
+[node name="blockbench_export43" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.9808, 0, 0.276444, 0, 2, 0, -0.276444, 0, 1.9808, 3.11715, -0.0278865, 12.7124)
+
+[node name="blockbench_export46" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.88427, 0, -0.670475, 0, 2, 0, 0.670475, 0, -1.88427, 3.19808, -0.0278865, 11.1711)
+
+[node name="blockbench_export25" parent="blockbench_export41/blockbench_export44" instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.46277, 0, -0.332119, 0, 1.5, 0, 0.332119, 0, 1.46277, -0.899303, -0.0278865, 11.4427)
+
+[node name="blockbench_export45" parent="blockbench_export41" instance=ExtResource("15_nklqj")]
+transform = Transform3D(-1.26833, 0, 0.975369, 0, 1.6, 0, -0.975369, 0, -1.26833, -16.4594, -0.0192734, -38.9708)
+
+[node name="blockbench_export38" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(0.333293, 0, 1.4625, 0, 1.5, 0, -1.4625, 0, 0.333293, -11.6839, -0.0278865, -39.1694)
+
+[node name="blockbench_export43" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.99194, 0, -0.179387, 0, 2, 0, 0.179387, 0, -1.99194, -15.2396, -0.0278865, -39.6672)
+
+[node name="blockbench_export46" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.91476, 0, 0.577662, 0, 2, 0, -0.577662, 0, 1.91476, -15.3957, -0.0278865, -38.1317)
+
+[node name="blockbench_export25" parent="blockbench_export41" instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.44481, 0, 0.403153, 0, 1.5, 0, -0.403153, 0, -1.44481, -11.29, -0.0278865, -38.2029)
+
+[node name="blockbench_export36" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.599479, 0, -0.0249999, 0, 0.6, 0, 0.0249999, 0, 0.599479, -1.28767, -0.0192734, 4.26119)
+
+[node name="blockbench_export37" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(0.784908, 0, -0.440362, 0, 0.9, 0, 0.440362, 0, 0.784908, -2.58921, -0.0192734, 4.09687)
+
+[node name="blockbench_export44" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(-0.859821, 0, -1.34934, 0, 1.6, 0, 1.34934, 0, -0.859821, -0.593117, -0.0192734, 4.65568)
+
+[node name="blockbench_export45" parent="." instance=ExtResource("15_nklqj")]
+transform = Transform3D(1.21514, 0, -1.04088, 0, 1.6, 0, 1.04088, 0, 1.21514, 1.702, -0.0192734, 4.66642)
+
+[node name="blockbench_export38" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(-0.409932, 0, -1.4429, 0, 1.5, 0, 1.4429, 0, -0.409932, -3.07735, -0.0278865, 4.61296)
+
+[node name="blockbench_export43" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.99863, 0, 0.074124, 0, 2, 0, -0.074124, 0, 1.99863, 0.447181, -0.0278865, 5.29754)
+
+[node name="blockbench_export46" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(-1.94255, 0, -0.475913, 0, 2, 0, 0.475913, 0, -1.94255, 0.684017, -0.0278865, 3.77236)
+
+[node name="blockbench_export25" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.42154, 0, -0.478762, 0, 1.5, 0, 0.478762, 0, 1.42154, -3.4198, -0.0278865, 3.62706)
+
+[node name="blockbench_export22" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(1.17629, 0, 0.930778, 0, 1.5, 0, -0.930778, 0, 1.17629, -3.9605, -0.0278865, -2.51186)
+
+[node name="blockbench_export23" parent="." instance=ExtResource("13_3dldo")]
+transform = Transform3D(0.585277, 0, 1.3811, 0, 1.5, 0, -1.3811, 0, 0.585277, -4.14923, -0.0278865, -3.61153)
