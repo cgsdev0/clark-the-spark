@@ -12,6 +12,7 @@ func _ready():
 			break
 
 func _process(delta):
+	Events.city = current
 	if target:
 		var aabb: AABB = target.aabb
 		var dest = aabb.get_center() * 25.0 + global_basis.z * 1000.0

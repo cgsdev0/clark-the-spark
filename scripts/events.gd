@@ -36,7 +36,7 @@ func _on_show(t: Tooltip):
 func _on_hide():
 	tooltip = Tooltip.NONE
 	
-	
+var city = false
 var planet_destroyed = false
 var score: int = 0 if OS.is_debug_build() else 0
 signal score_changed

@@ -1,0 +1,237 @@
+[gd_scene load_steps=17 format=3 uid="uid://o32ll2twlx1f"]
+
+[ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_xbhn4"]
+[ext_resource type="Script" path="res://scripts/building.gd" id="2_m5854"]
+[ext_resource type="PackedScene" uid="uid://dc01df17lgguh" path="res://models/buildings/city_house.gltf" id="3_ahw03"]
+[ext_resource type="PackedScene" uid="uid://dv78qyd6ja74x" path="res://models/buildings/skyscraper.gltf" id="4_g7pg2"]
+[ext_resource type="PackedScene" uid="uid://c2clhbukeveb7" path="res://models/buildings/smoke_stack.gltf" id="5_ocrr8"]
+[ext_resource type="PackedScene" uid="uid://csuh0pvrkq3m8" path="res://models/buildings/steam_stack.gltf" id="6_lim5e"]
+[ext_resource type="PackedScene" uid="uid://84asm8keo6aq" path="res://models/buildings/main_plant_building.gltf" id="7_xqw67"]
+[ext_resource type="PackedScene" uid="uid://dr70cvfmvrdcc" path="res://models/buildings/off_site_building.gltf" id="8_d8sur"]
+[ext_resource type="PackedScene" uid="uid://c8slpk3ucx2mr" path="res://models/buildings/tall_building.gltf" id="9_0800s"]
+[ext_resource type="PackedScene" uid="uid://dkoxs00eyom4f" path="res://models/buildings/store.gltf" id="10_qau77"]
+[ext_resource type="PackedScene" uid="uid://bsf1prnlux5aw" path="res://models/buildings/townhouse.gltf" id="11_offs4"]
+[ext_resource type="Texture2D" uid="uid://cxecmkf3agbu4" path="res://textures/road_test.png" id="12_fgemr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
+albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xc3eq"]
+material = SubResource("StandardMaterial3D_iucx5")
+size = Vector2(1000, 1000)
+
+[sub_resource type="QuadMesh" id="QuadMesh_g3tae"]
+material = SubResource("StandardMaterial3D_iucx5")
+size = Vector2(96.5, 62.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsg44"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("12_fgemr")
+texture_filter = 0
+
+[node name="city" type="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="OurOffice" parent="." instance=ExtResource("1_xbhn4")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -12.6797, 0, 3.56652)
+script = ExtResource("2_m5854")
+selected = true
+type = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="OurOffice"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.186525, 0.348904, -0.0928612)
+size = Vector3(1.86, 1.55, 1.55)
+
+[node name="OurHouse" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -0.0825666)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse4" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -2.46061)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse6" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -4.96)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse7" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -7.66574)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse8" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -10.3012)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse2" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -1.6067)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse5" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -3.71342)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse9" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -6.00653)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse10" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -8.28482)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="OurHouse11" parent="." instance=ExtResource("3_ahw03")]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -10.7223)
+script = ExtResource("2_m5854")
+type = 1
+
+[node name="blockbench_export" parent="." instance=ExtResource("4_g7pg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4282, 0, 0.766239)
+script = ExtResource("2_m5854")
+type = 5
+
+[node name="Marker3D" type="Marker3D" parent="blockbench_export"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.85975)
+
+[node name="Marker3D2" type="Marker3D" parent="blockbench_export"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.04129)
+
+[node name="PowerPlant" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3148, 0, -5.89994)
+script = ExtResource("2_m5854")
+type = 4
+force_hop = true
+
+[node name="blockbench_export" parent="PowerPlant" instance=ExtResource("5_ocrr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38497, 0, -4.01893)
+
+[node name="blockbench_export6" parent="PowerPlant" instance=ExtResource("5_ocrr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71227, 0, -4.07969)
+
+[node name="blockbench_export2" parent="PowerPlant" instance=ExtResource("6_lim5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60901, 0, -7.45092)
+
+[node name="blockbench_export5" parent="PowerPlant" instance=ExtResource("6_lim5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37988, 0, -7.35213)
+
+[node name="blockbench_export3" parent="PowerPlant" instance=ExtResource("7_xqw67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.31505)
+
+[node name="blockbench_export4" parent="PowerPlant" instance=ExtResource("8_d8sur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517435, 0, -0.696447)
+
+[node name="blockbench_export2" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -21.0559, 0, -11.1081)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export20" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -22.0175, 0, -7.82596)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export13" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(1.57361e-07, 0, -1.2, 0, 1.2, 0, 1.2, 0, 1.57361e-07, -25.188, 0, -2.06155)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export3" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -9.14999)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export12" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -6.52034)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export16" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3804, 0, -2.66254)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export18" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7951, 0, -2.70768)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export19" parent="." instance=ExtResource("9_0800s")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -18.3191, 0, 3.89498)
+script = ExtResource("2_m5854")
+type = 6
+
+[node name="blockbench_export4" parent="." instance=ExtResource("10_qau77")]
+transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 0.999999, 0, 8.74227e-08, 0, -0.999999, -2.20333, 0, 2.3724)
+script = ExtResource("2_m5854")
+type = 7
+
+[node name="blockbench_export10" parent="." instance=ExtResource("10_qau77")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.13016, 0, -1.26164)
+script = ExtResource("2_m5854")
+type = 7
+
+[node name="blockbench_export11" parent="." instance=ExtResource("10_qau77")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -1.26164)
+script = ExtResource("2_m5854")
+type = 7
+
+[node name="blockbench_export15" parent="." instance=ExtResource("10_qau77")]
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -1.26164)
+script = ExtResource("2_m5854")
+type = 7
+
+[node name="blockbench_export5" parent="." instance=ExtResource("11_offs4")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -5.43508, 0, 2.49073)
+script = ExtResource("2_m5854")
+type = 3
+
+[node name="blockbench_export6" parent="." instance=ExtResource("11_offs4")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -4.43719, 0, 2.53201)
+script = ExtResource("2_m5854")
+type = 3
+
+[node name="blockbench_export7" parent="." instance=ExtResource("11_offs4")]
+transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -6.43397, 0, 2.43286)
+script = ExtResource("2_m5854")
+type = 3
+
+[node name="blockbench_export8" parent="." instance=ExtResource("11_offs4")]
+transform = Transform3D(-0.999999, 0, 8.74226e-08, 0, 0.999999, 0, -8.74226e-08, 0, -0.999999, -7.44337, 0, 2.38729)
+script = ExtResource("2_m5854")
+type = 3
+
+[node name="blockbench_export9" parent="." instance=ExtResource("1_xbhn4")]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -9.40444, 0, 2.74599)
+script = ExtResource("2_m5854")
+type = 2
+
+[node name="blockbench_export14" parent="." instance=ExtResource("1_xbhn4")]
+transform = Transform3D(0.999999, 0, 1.74845e-07, 0, 0.999999, 0, -1.74845e-07, 0, 0.999999, -13.0001, 0, -1.89694)
+script = ExtResource("2_m5854")
+type = 2
+
+[node name="blockbench_export17" parent="." instance=ExtResource("1_xbhn4")]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -15.5949, 0, 3.61188)
+script = ExtResource("2_m5854")
+type = 2
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.166667, 0, 0, 0, -7.28523e-09, 0.166667, 0, -0.166667, -7.28523e-09, 0, -0.0166667, 0)
+mesh = SubResource("QuadMesh_xc3eq")
+skeleton = NodePath("../..")
+
+[node name="Roads" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.341667, 0, 0, 0, -1.49347e-08, 0.341667, 0, -0.341667, -1.49347e-08, -13.2663, 0.0166667, -4.839)
+mesh = SubResource("QuadMesh_g3tae")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vsg44")

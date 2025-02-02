@@ -1,6 +1,5 @@
-[gd_scene load_steps=94 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=79 format=4 uid="uid://cdyln7ny6tm1d"]
 
-[ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Material" uid="uid://cmfe4mhhqtwpk" path="res://materials/power_pole.tres" id="1_fxtk2"]
@@ -12,29 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
 [ext_resource type="PackedScene" uid="uid://b5s8h2gxt3npx" path="res://scenes/circuit_inert.tscn" id="2_70xbw"]
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
-[ext_resource type="PackedScene" uid="uid://dc01df17lgguh" path="res://models/buildings/city_house.gltf" id="2_hof5i"]
 [ext_resource type="Shader" path="res://shaders/space.gdshader" id="2_uy6os"]
-[ext_resource type="Script" path="res://scripts/building.gd" id="3_c2pgq"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
-[ext_resource type="PackedScene" uid="uid://dv78qyd6ja74x" path="res://models/buildings/skyscraper.gltf" id="3_eogml"]
 [ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
 [ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="4_s1mw2"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
-[ext_resource type="PackedScene" uid="uid://c2clhbukeveb7" path="res://models/buildings/smoke_stack.gltf" id="5_tv2cq"]
-[ext_resource type="PackedScene" uid="uid://csuh0pvrkq3m8" path="res://models/buildings/steam_stack.gltf" id="6_028tr"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
-[ext_resource type="PackedScene" uid="uid://84asm8keo6aq" path="res://models/buildings/main_plant_building.gltf" id="7_6488p"]
+[ext_resource type="PackedScene" uid="uid://o32ll2twlx1f" path="res://scenes/city.tscn" id="7_2ij2j"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
 [ext_resource type="PackedScene" uid="uid://fiwjwn3i0yfo" path="res://models/house/circuit_wires.gltf" id="7_uiv23"]
-[ext_resource type="PackedScene" uid="uid://dr70cvfmvrdcc" path="res://models/buildings/off_site_building.gltf" id="8_4yqsb"]
-[ext_resource type="PackedScene" uid="uid://c8slpk3ucx2mr" path="res://models/buildings/tall_building.gltf" id="9_2gr74"]
 [ext_resource type="AudioStream" uid="uid://b1lolpi0yakw5" path="res://audio/sfx/charge.ogg" id="9_aee73"]
 [ext_resource type="Script" path="res://scripts/trail.gd" id="9_nwkxw"]
 [ext_resource type="AudioStream" uid="uid://mnogvlqkynih" path="res://audio/sfx/pop1.ogg" id="10_jev0h"]
 [ext_resource type="AudioStream" uid="uid://bwjmwoenejvhn" path="res://audio/sfx/fail.ogg" id="10_lwet4"]
-[ext_resource type="PackedScene" uid="uid://dkoxs00eyom4f" path="res://models/buildings/store.gltf" id="10_tps0p"]
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
-[ext_resource type="PackedScene" uid="uid://bsf1prnlux5aw" path="res://models/buildings/townhouse.gltf" id="11_txcb6"]
 [ext_resource type="Script" path="res://scripts/iso_cam.gd" id="13_3dgot"]
 [ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 [ext_resource type="PackedScene" uid="uid://cjwidnaabjnak" path="res://models/house/to_office.gltf" id="15_q6lad"]
@@ -43,7 +33,6 @@
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
 [ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
-[ext_resource type="Texture2D" uid="uid://cxecmkf3agbu4" path="res://textures/road_test.png" id="39_2shrn"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
 [ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
@@ -208,24 +197,6 @@ size = Vector3(2.74658, 3.21716, 1.89502)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a42ev"]
 size = Vector3(2.74658, 3.21716, 1.80896)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
-albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_xc3eq"]
-material = SubResource("StandardMaterial3D_iucx5")
-size = Vector2(1000, 1000)
-
-[sub_resource type="QuadMesh" id="QuadMesh_g3tae"]
-material = SubResource("StandardMaterial3D_iucx5")
-size = Vector2(96.5, 62.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsg44"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("39_2shrn")
-texture_filter = 0
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_7kg8m"]
 viewport_path = NodePath("Control/SubViewport")
 
@@ -374,207 +345,16 @@ sides = 6
 smooth_faces = false
 material = ExtResource("1_fxtk2")
 
-[node name="city" type="Node3D" parent="level"]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
-
-[node name="OurOffice" parent="level/city" instance=ExtResource("1_8fab5")]
-transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -12.6797, 0, 3.56652)
-script = ExtResource("3_c2pgq")
-selected = true
-type = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="level/city/OurOffice"]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.186525, 0.348904, -0.0928612)
-size = Vector3(1.86, 1.55, 1.55)
-
-[node name="OurHouse" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -0.0825666)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse4" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -2.46061)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse6" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -4.96)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse7" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -7.66574)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse8" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.16103, 0, -10.3012)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse2" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -1.6067)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse5" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -3.71342)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse9" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -6.00653)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse10" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -8.28482)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="OurHouse11" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.99079, 0, -10.7223)
-script = ExtResource("3_c2pgq")
-type = 1
-
-[node name="blockbench_export" parent="level/city" instance=ExtResource("3_eogml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4282, 0, 0.766239)
-script = ExtResource("3_c2pgq")
-type = 5
-
-[node name="Marker3D" type="Marker3D" parent="level/city/blockbench_export"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.85975)
-
-[node name="Marker3D2" type="Marker3D" parent="level/city/blockbench_export"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.04129)
-
-[node name="PowerPlant" type="Node3D" parent="level/city"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3148, 0, -5.89994)
-script = ExtResource("3_c2pgq")
-type = 4
-force_hop = true
-
-[node name="blockbench_export" parent="level/city/PowerPlant" instance=ExtResource("5_tv2cq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38497, 0, -4.01893)
-
-[node name="blockbench_export6" parent="level/city/PowerPlant" instance=ExtResource("5_tv2cq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71227, 0, -4.07969)
-
-[node name="blockbench_export2" parent="level/city/PowerPlant" instance=ExtResource("6_028tr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60901, 0, -7.45092)
-
-[node name="blockbench_export5" parent="level/city/PowerPlant" instance=ExtResource("6_028tr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37988, 0, -7.35213)
-
-[node name="blockbench_export3" parent="level/city/PowerPlant" instance=ExtResource("7_6488p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.31505)
-
-[node name="blockbench_export4" parent="level/city/PowerPlant" instance=ExtResource("8_4yqsb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517435, 0, -0.696447)
-
-[node name="blockbench_export2" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -21.0559, 0, -11.1081)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export20" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -22.0175, 0, -7.82596)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export13" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(1.57361e-07, 0, -1.2, 0, 1.2, 0, 1.2, 0, 1.57361e-07, -25.188, 0, -2.06155)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export3" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -9.14999)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export12" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, -7.30584, 0, -6.52034)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export16" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3804, 0, -2.66254)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export18" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7951, 0, -2.70768)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export19" parent="level/city" instance=ExtResource("9_2gr74")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -18.3191, 0, 3.89498)
-script = ExtResource("3_c2pgq")
-type = 6
-
-[node name="blockbench_export4" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 0.999999, 0, 8.74227e-08, 0, -0.999999, -2.20333, 0, 2.3724)
-script = ExtResource("3_c2pgq")
-type = 7
-
-[node name="blockbench_export10" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.13016, 0, -1.26164)
-script = ExtResource("3_c2pgq")
-type = 7
-
-[node name="blockbench_export11" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -1.26164)
-script = ExtResource("3_c2pgq")
-type = 7
-
-[node name="blockbench_export15" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -1.26164)
-script = ExtResource("3_c2pgq")
-type = 7
-
-[node name="blockbench_export5" parent="level/city" instance=ExtResource("11_txcb6")]
-transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -5.43508, 0, 2.49073)
-script = ExtResource("3_c2pgq")
-type = 3
-
-[node name="blockbench_export6" parent="level/city" instance=ExtResource("11_txcb6")]
-transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -4.43719, 0, 2.53201)
-script = ExtResource("3_c2pgq")
-type = 3
-
-[node name="blockbench_export7" parent="level/city" instance=ExtResource("11_txcb6")]
-transform = Transform3D(-0.999999, 0, 8.74227e-08, 0, 0.999999, 0, -8.74227e-08, 0, -0.999999, -6.43397, 0, 2.43286)
-script = ExtResource("3_c2pgq")
-type = 3
-
-[node name="blockbench_export8" parent="level/city" instance=ExtResource("11_txcb6")]
-transform = Transform3D(-0.999999, 0, 8.74226e-08, 0, 0.999999, 0, -8.74226e-08, 0, -0.999999, -7.44337, 0, 2.38729)
-script = ExtResource("3_c2pgq")
-type = 3
-
-[node name="blockbench_export9" parent="level/city" instance=ExtResource("1_8fab5")]
-transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -9.40444, 0, 2.74599)
-script = ExtResource("3_c2pgq")
-type = 2
-
-[node name="blockbench_export14" parent="level/city" instance=ExtResource("1_8fab5")]
-transform = Transform3D(0.999999, 0, 1.74845e-07, 0, 0.999999, 0, -1.74845e-07, 0, 0.999999, -13.0001, 0, -1.89694)
-script = ExtResource("3_c2pgq")
-type = 2
-
-[node name="blockbench_export17" parent="level/city" instance=ExtResource("1_8fab5")]
-transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -15.5949, 0, 3.61188)
-script = ExtResource("3_c2pgq")
-type = 2
-
-[node name="IsoCam" type="Camera3D" parent="level/city"]
+[node name="IsoCam" type="Camera3D" parent="level"]
 unique_name_in_owner = true
-transform = Transform3D(-0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, 0.353553, -0.612372, 8.23, 19.645, -18.105)
+transform = Transform3D(-0.141421, -0.0707107, 0.122475, 0, 0.173205, 0.1, -0.141421, 0.0707107, -0.122475, 49.38, 117.87, -108.63)
 cull_mask = 1048573
 projection = 1
 size = 250.0
 near = 0.001
 script = ExtResource("13_3dgot")
+
+[node name="city" parent="level" instance=ExtResource("7_2ij2j")]
 
 [node name="circuit" parent="level" instance=ExtResource("1_v6jmi")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -5, 0)
@@ -1009,16 +789,6 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6579, -3.06303)
 shape = SubResource("BoxShape3D_a42ev")
 
-[node name="Floor" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
-mesh = SubResource("QuadMesh_xc3eq")
-
-[node name="Roads" type="MeshInstance3D" parent="level"]
-unique_name_in_owner = true
-transform = Transform3D(2.05, 0, 0, 0, -8.96083e-08, 2.05, 0, -2.05, -8.96083e-08, -79.598, 0.1, -29.034)
-mesh = SubResource("QuadMesh_g3tae")
-surface_material_override/0 = SubResource("StandardMaterial3D_vsg44")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_1sx5j")
 
@@ -1064,6 +834,7 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_7kg8m")
 
 [node name="MenuBackdrop" parent="Control" instance=ExtResource("43_cwema")]
+visible = false
 layout_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="Control"]

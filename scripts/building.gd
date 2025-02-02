@@ -202,7 +202,7 @@ var require_release = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if !%IsoCam.current || !selected:
+	if !Events.city || !selected:
 		return
 		
 		
