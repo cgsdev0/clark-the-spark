@@ -1,4 +1,13 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cyk8c4ahy2gfb"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwics2uc3jref"]
+
+[ext_resource type="Shader" path="res://shaders/wires.gdshader" id="1_jlr2w"]
 
 [resource]
-albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
+render_priority = 0
+shader = ExtResource("1_jlr2w")
+shader_parameter/base_color = Color(0.14902, 0.168627, 0.266667, 1)
+shader_parameter/glow_color = Color(0.172549, 0.909804, 0.960784, 1)
+shader_parameter/sphereRadius = 0.1
+shader_parameter/glow_strength = 0.8
+shader_parameter/pulse_strength = 0.08
+shader_parameter/pulse_speed = 5.0
