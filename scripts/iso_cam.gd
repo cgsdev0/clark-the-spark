@@ -6,6 +6,7 @@ func based_lerp(a, b, delta, rate):
 	return lerp(a, b, 1-exp(-delta * rate))
 	
 func _ready():
+	Events.iso_cam_hacky_do_not_use = self
 	for building in get_tree().get_nodes_in_group("buildings"):
 		if building.selected:
 			target = building

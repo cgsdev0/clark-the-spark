@@ -8,6 +8,7 @@ func _ready():
 
 func cut():
 	var t = get_tree().create_tween()
+	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	t.tween_method(change_size, 1.05, 0.0, 0.5)
 	t.tween_callback(func(): Events.teleport.emit())
 	t.tween_interval(0.4)

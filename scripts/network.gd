@@ -11,6 +11,9 @@ var nodes
 @export var hard_cut_timer = 0.0
 @export var speed_mult = 1.0
 
+# haha
+var lol = false
+
 func add_connection(edges, a, b):
 	if edges[a] not in connections:
 		connections[edges[a]] = []
@@ -186,6 +189,7 @@ func pop():
 	$PlayerPath/Player/PopSound.play()
 	Events.pop.emit()
 	if should_hop:
+		Events.multimeter_up = false
 		$PlayerPath/Player/AnimatedSprite3D.scale = Vector3.ONE * 0.5
 		grid_hop()
 		return true
@@ -225,11 +229,14 @@ func grid_hop():
 	var grid = get_parent().get_child(get_index() + 1)
 	if !is_instance_valid(grid):
 		active = false
+		Events.multimeter_up = false
 		await get_tree().create_timer(1.5).timeout
 		Events.transition.emit()
 		await Events.teleport
 		Events.city_song.emit()
 		%IsoCam.current = true
+		await get_tree().create_timer(0.8).timeout
+		Events.multimeter_up = true
 		return
 	$PlayerPath.reparent(grid, false)
 	var cam = $Camera3D
@@ -245,6 +252,9 @@ func grid_hop():
 	cam.freeze = false
 
 func teleport():
+	if !lol:
+		lol = true
+		return
 	if active:
 		var cam = $Camera3D
 		grid_hop()
@@ -443,6 +453,10 @@ func _physics_process(delta):
 				var dur = max(0.33 * path_length / speed_mult, 0.33)
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
+				
+				tween.parallel().tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -30.0, dur * 0.2)
+				tween.parallel().tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -80.0, dur * 0.2).set_delay(dur - 0.2)
+				
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
 				if operable && !operable.dead && operable.electric:
 					tween.tween_property($PlayerPath/Player/AnimatedSprite3D, "scale", Vector3.ZERO, 0.2)

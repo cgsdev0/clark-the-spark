@@ -27,6 +27,7 @@ signal city_song
 signal space_song
 
 func _ready():
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	show_tooltip.connect(_on_show)
 	hide_tooltip.connect(_on_hide)
 	
@@ -38,10 +39,13 @@ func _on_hide():
 	
 var city = false
 var planet_destroyed = false
-var score: int = 0 if OS.is_debug_build() else 0
+var score: int = 50000 if OS.is_debug_build() else 0
 signal score_changed
 
 var charge = 0.0
+var player_path_hacky_do_not_use = null
+var iso_cam_hacky_do_not_use
+var hacky_endcam_do_not_use
 
 func add_score(diff: int):
 	score += diff

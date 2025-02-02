@@ -3,6 +3,7 @@ extends Sprite3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.player_path_hacky_do_not_use = %PlayerPath
 	Events.show_tooltip.connect(on_show)
 	Events.hide_tooltip.connect(on_hide)
 	offset = Vector2(-150, -50)
