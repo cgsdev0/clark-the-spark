@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=80 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
+[ext_resource type="AudioStream" uid="uid://1vl0w76ns0a5" path="res://audio/sfx/poweline.wav" id="24_mwnya"]
 [ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
@@ -468,6 +469,7 @@ which = "spherePos5"
 
 [node name="ChargeSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
 stream = ExtResource("9_aee73")
+volume_db = -21.549
 bus = &"SFX"
 
 [node name="FailSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
@@ -477,6 +479,12 @@ bus = &"SFX"
 
 [node name="PopSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
 stream = SubResource("AudioStreamRandomizer_yu5ii")
+bus = &"SFX"
+
+[node name="PowerlineSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
+stream = ExtResource("24_mwnya")
+volume_db = -80.0
+autoplay = true
 bus = &"SFX"
 
 [node name="Camera3D" type="Camera3D" parent="level/Networks/circuit_wires"]
@@ -888,6 +896,7 @@ script = ExtResource("24_lh5yc")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_aef5r")
+volume_db = -21.348
 autoplay = true
 bus = &"Music"
 script = ExtResource("52_1vmuq")
