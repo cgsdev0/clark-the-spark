@@ -37,7 +37,7 @@ var values = {
 	Electric.CEILING_FAN: [50, 15, 5000, 1.0],
 	Electric.TV: [60, 40, 12000, 2.0],
 	Electric.CONSOLE: [100, 90, 3000, 1.0],
-	Electric.RADIATOR: [300, 300, 11000, 2.0],
+	Electric.RADIATOR: [300, 200, 11000, 2.0],
 	Electric.COMPUTER: [325, 300, 10000, 1.8],
 	Electric.TREADMILL: [300, 600, 20000, 2.0],
 	Electric.FRIDGE: [400, 1000, 20000, 2.8],
@@ -45,7 +45,7 @@ var values = {
 	Electric.WASHER: [500, 2000, 20000, 1.5],
 	Electric.DRYER: [1000, 2000, 20000, 2.5],
 	Electric.OVEN: [1500, 1000, 20000, 2.8],
-	Electric.CAR: [2500, 4200, 20000, 2.5],
+	Electric.CAR: [2500, 4000, 20000, 2.5],
 	Electric.GENERATOR: [5000, 20000, 1000000, 2.8],
 	Electric.RESISTOR: [2, 0, 50, 1.2],
 	Electric.BIG_RESISTOR: [5, 5, 50, 1.2],
@@ -60,6 +60,9 @@ var values = {
 @export var solid_while_alive = false
 @export var mandatory = false
 @export var force_hop = false
+@export var tooltip: Events.Tooltip = Events.Tooltip.NONE
+
+var was_electrified = false
 var dead = false
 var mats: Array[StandardMaterial3D] = []
 
@@ -93,13 +96,26 @@ func kill():
 	#var anim = find_child("AnimationPlayer")
 	#if is_instance_valid(anim):
 		#anim.pause()
+	if tooltip != Events.Tooltip.NONE:
+		Events.hide_tooltip.emit()
+	if is_instance_valid(tv):
+		tv.queue_free()
 	dead = true
 	for mat in mats:
+		mat.albedo_color = Color.WEB_GRAY
 		mat.emission_enabled = false
 	electrified = false
 	
+var tv = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if type == Electric.TV:
+		var min = 100000
+		for t in get_tree().get_nodes_in_group("tv_screen"):
+			var len = (t.global_position - global_position).length_squared()
+			if len < min:
+				min = len
+				tv = t
 	for i in mesh.get_surface_count():
 		var mat = mesh.surface_get_material(i)
 		if get_surface_override_material(i) != null:
@@ -114,7 +130,14 @@ func _ready():
 		else:
 			mesh.surface_set_material(i, mat)
 		mats.push_back(mat)
-
+	
+	# warm up cache idfk
+	for mat in mats:
+		mat.next_pass = preload("res://materials/electrified.tres")
+	await RenderingServer.frame_post_draw
+	for mat in mats:
+		mat.next_pass = null
+		
 func fade_out(delta):
 	if fades:
 		for mat in mats:
@@ -122,11 +145,37 @@ func fade_out(delta):
 
 var speed = 5.0
 
+func fade_tv(fade_in):
+	var bus = AudioServer.get_bus_index("TV")
+	var volume_db = AudioServer.get_bus_volume_db(bus)
+	if fade_in:
+		AudioServer.set_bus_mute(bus, false)
+		var t = get_tree().create_tween()
+		t.tween_method(func(vol): AudioServer.set_bus_volume_db(bus, vol), volume_db, -20.0, 0.4)
+	else:
+		var t = get_tree().create_tween()
+		t.tween_method(func(vol): AudioServer.set_bus_volume_db(bus, vol), volume_db, -80.0, 0.4)
+		t.tween_callback(func(): AudioServer.set_bus_mute(bus, true))
+		
 var dead_timer = 0.0
+
+func fail_tooltip():
+	if tooltip == Events.Tooltip.TOO_HARD:
+		Events.show_tooltip.emit(tooltip)
+
 func _process(delta):
+	if tooltip == Events.Tooltip.POP && electrified && !was_electrified:
+		Events.show_tooltip.emit(tooltip)
+	if is_instance_valid(tv):
+		tv.visible = self.is_visible_in_tree()
 	if dead:
 		dead_timer += delta
 	match type:
+		#Electric.TV:
+			#if electrified && !was_electrified:
+				#fade_tv(true)
+			#if !electrified && was_electrified:
+				#fade_tv(false)
 		Electric.CEILING_FAN:
 			rotate_y(delta * speed)
 			if dead:
@@ -146,3 +195,4 @@ func _process(delta):
 			if solid_while_alive && (!dead || dead_timer < 2.0):
 				mat.albedo_color.a = 1.0
 			mat.albedo_color.a = clampf(mat.albedo_color.a, 0.4, 1.0)
+	was_electrified = electrified

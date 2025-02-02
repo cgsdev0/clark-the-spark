@@ -1,6 +1,7 @@
 shader_type spatial;
 render_mode unshaded;
 
+uniform float scale = 1.0;
 vec3 mod289(vec3 x) {
   return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
@@ -90,7 +91,8 @@ void vertex() {
 }
 
 void fragment() {
-	float f = sin(UV.y * 20.0  + snoise(wVex*0.5+TIME) * 0.5 + TIME * 9.0);
+	if (UV.y < 0.5 && scale > 1.0) discard;
+	float f = sin(UV.y * 20.0 * scale + snoise(wVex*0.5+TIME / scale) * 0.5 + TIME / scale * 9.0);
 	if (f < 0.8) discard;
 	float fac = (f - 0.8) / 0.3;
 	vec3 col = mix(vec3(1.0), vec3(0.5, 1.0, 1.0), step(0.5, 1.0 - fac));

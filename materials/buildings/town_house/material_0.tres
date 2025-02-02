@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dch54hxmnlntq"]
 
-[ext_resource type="Texture2D" uid="uid://c6ha6k2bfxlst" path="res://models/buildings/townhouse_0.png" id="1_ehxf3"]
+[ext_resource type="Texture2D" uid="uid://c53jj3uhxwk3a" path="res://textures/townhouse.png" id="1_7pcab"]
 
 [resource]
 resource_name = "material_0"
-albedo_texture = ExtResource("1_ehxf3")
+albedo_texture = ExtResource("1_7pcab")
 texture_filter = 0
 texture_repeat = false

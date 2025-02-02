@@ -1,14 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://fa7it7yoyoki"]
+[gd_scene load_steps=35 format=3 uid="uid://fa7it7yoyoki"]
 
 [ext_resource type="PackedScene" uid="uid://b36gij25sosps" path="res://models/house/office.gltf" id="1_hrl64"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_fwxso"]
 [ext_resource type="Script" path="res://scripts/fades.gd" id="3_g5xqg"]
+[ext_resource type="Material" uid="uid://mtnywgiqha1f" path="res://materials/fan_on.tres" id="3_mrqv7"]
 [ext_resource type="Material" uid="uid://dr2k245qyd52i" path="res://materials/light_on.tres" id="3_n3u2p"]
 [ext_resource type="Texture2D" uid="uid://bjjfog00bhysb" path="res://textures/office_walls.png" id="3_py6iv"]
+[ext_resource type="Material" uid="uid://bw2ikrljnxkek" path="res://materials/small_lamp_on.tres" id="4_63jcm"]
 [ext_resource type="Material" uid="uid://doy2qx22pnn8i" path="res://materials/tall_lamp_on.tres" id="5_futxg"]
 [ext_resource type="Texture2D" uid="uid://c2ye5v2xbph3v" path="res://textures/real_parking_garage_textures.png" id="7_jjvpb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u77iy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_os53l"]
 render_priority = 0
 shader = ExtResource("2_fwxso")
 shader_parameter/tintColor = Color(1, 1, 1, 1)
@@ -36,9 +38,6 @@ albedo_color = Color(0.352941, 0.411765, 0.533333, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wh46b"]
 points = PackedVector3Array(-0.226667, -0.411069, -0.0774781, 0.322757, -0.411069, -0.0100325, 0.226376, 0.0996974, -0.10642, -0.28452, 0.0515042, 0.0381697, -0.222488, -0.333362, 0.0625, -0.226667, 0.0996974, -0.10642, 0.226376, -0.343568, -0.10642, 0.313095, -0.411069, 0.0478, 0.284169, 0.0804405, -0.000385225, -0.222488, 0.0864293, 0.0625, -0.226667, -0.343568, -0.10642, -0.214742, -0.389542, 0.0333856, 0.224806, -0.333362, 0.0625, -0.0435051, 0.0997483, 0.0670944, 0.224806, 0.0864293, 0.0625, 0.226376, -0.401389, -0.0871254, -0.0435051, 0.109377, 0.0574472, 0.226376, 0.109326, -0.0967726, -0.28452, 0.0418758, -0.000385225, -0.226667, 0.109326, -0.0967726, 0.33242, -0.314682, 0.00924502, 0.322757, -0.324311, 0.0381697, -0.22443, 0.0974896, 0.0539392, 0.226376, -0.411069, -0.0774781, 0.225913, 0.0969058, 0.0537661, 0.264904, -0.411069, 0.0478, -0.226667, -0.401389, -0.0871254, -0.271967, 0.0802652, 0.0173233, 0.273385, 0.0800855, 0.0172945, 0.322757, -0.324311, -0.0100325, 0.313095, -0.324311, 0.0478, -0.28452, 0.0418758, 0.0285225)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ja4ir"]
-points = PackedVector3Array(-0.178192, -0.0672829, -0.0442, 0.240233, 0.337048, 0.0675407, -0.238244, 0.348744, -0.00189456, -0.184392, -0.0433498, 0.190311, 0.201251, -0.0672829, -0.0442, 0.198455, -0.0643262, 0.1848, 0.253844, 0.348744, -0.00189456, -0.113761, 0.262414, 0.124762, -0.224633, 0.337048, 0.0675407, 0.207699, -0.0433498, 0.190311, -0.223887, 0.0179, 0.00236687, 0.207699, -0.0433498, -0.0480445, 0.0148264, 0.176053, 0.152237, 0.239487, 0.0179, 0.00236687, -0.175505, -0.0643262, 0.1848, 0.129361, 0.262414, 0.124762, -0.184392, -0.0433498, -0.0480445, 0.155996, 0.281955, 0.109927)
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_51bhv"]
 points = PackedVector3Array(-0.346669, -0.210997, -0.0442, 0.461539, 0.491973, 0.0843708, -0.446034, 0.491973, 0.0843708, 0.40116, -0.188736, 0.190317, 0.40116, -0.188736, -0.0517651, -0.3703, -0.188736, 0.190317, -0.476365, 0.507213, -0.00636276, 0.491965, 0.50714, -0.00636276, -0.476365, -0.0828561, 0.0692762, -0.242181, 0.353679, 0.121936, 0.491965, -0.0828561, 0.0692762, 0.38323, -0.217268, 0.1848, -0.3703, -0.188736, -0.0517651, 0.257818, 0.353639, 0.121927, -0.353065, -0.217268, 0.1848, -0.476365, -0.0828561, -0.00636276, 0.491965, -0.0828561, -0.00636276, 0.376575, -0.210997, -0.0442, -0.0170797, 0.204896, 0.143954)
 
@@ -48,6 +47,15 @@ points = PackedVector3Array(0.0766229, 0.243969, 0.0469, -0.0768208, 0.243956, -
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7bdur"]
 points = PackedVector3Array(0.258247, 0.218, 0.341619, 0.258247, 0.218, 0.521024, 0.248512, 0.284355, 0.335231, 0.531653, 0.218, 0.341619, 0.541359, 0.284355, 0.527412, 0.541359, 0.284355, 0.335231, 0.248512, 0.284355, 0.527412, 0.531653, 0.218, 0.521024, 0.5391, 0.234277, 0.52591, 0.53793, 0.238872, 0.3375)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ja4ir"]
+points = PackedVector3Array(-0.178192, -0.0672829, -0.0442, 0.240233, 0.337048, 0.0675407, -0.238244, 0.348744, -0.00189456, -0.184392, -0.0433498, 0.190311, 0.201251, -0.0672829, -0.0442, 0.198455, -0.0643262, 0.1848, 0.253844, 0.348744, -0.00189456, -0.113761, 0.262414, 0.124762, -0.224633, 0.337048, 0.0675407, 0.207699, -0.0433498, 0.190311, -0.223887, 0.0179, 0.00236687, 0.207699, -0.0433498, -0.0480445, 0.0148264, 0.176053, 0.152237, 0.239487, 0.0179, 0.00236687, -0.175505, -0.0643262, 0.1848, 0.129361, 0.262414, 0.124762, -0.184392, -0.0433498, -0.0480445, 0.155996, 0.281955, 0.109927)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ect7w"]
+points = PackedVector3Array(0.127112, 0.65957, 0.0430814, -0.136744, 0.645737, -0.0263195, -0.136744, 0.645737, 0.0153064, 0.0993232, -0.00694442, -0.0263195, -0.0534057, -0.00694442, 0.098656, 0.0715617, 0.67349, -0.123544, -0.0534057, -0.00694442, -0.0957449, -0.0534057, 0.881857, 0.0569812, 0.0715617, 0.645737, 0.126456, -0.0811671, 0.65957, -0.123544, -0.0672728, 0.67349, 0.126456, 0.0576674, -0.00694442, 0.098656, 0.0576674, 0.881857, -0.0540946, -0.108956, -0.00694442, -0.0124197, 0.0576674, -0.00694442, -0.0957449, 0.141033, 0.67349, -0.0124197, 0.0576674, 0.867937, 0.0569812, -0.0811671, 0.881857, -0.0124197, 0.0993232, -0.00694442, 0.0292061, -0.0950615, -0.00694442, 0.0430814, -0.0950615, 0.65957, 0.098656, 0.113218, 0.645737, -0.0679699, -0.0811671, -0.00694442, -0.0679699, 0.0854288, 0.867937, 0.0153064, 0.0715617, 0.67349, 0.126456, -0.0359163, 0.843504, -0.0619782, 0.141033, 0.645737, 0.0153064, 0.0715617, -0.00694442, -0.0818696, -0.0811671, 0.881857, 0.0153064, 0.0854288, 0.67349, 0.112531, -0.108956, -0.00694442, 0.0153064, 0.0854288, -0.00694442, 0.0569812)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o0af"]
+albedo_color = Color(0.352941, 0.411765, 0.533333, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jrltx"]
 size = Vector3(1.25793, 1.48035, 1.18574)
 
@@ -56,12 +64,6 @@ size = Vector3(1.25793, 1.48035, 0.108776)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwwd0"]
 size = Vector3(1.25793, 1.48035, 1.15351)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ect7w"]
-points = PackedVector3Array(0.127112, 0.65957, 0.0430814, -0.136744, 0.645737, -0.0263195, -0.136744, 0.645737, 0.0153064, 0.0993232, -0.00694442, -0.0263195, -0.0534057, -0.00694442, 0.098656, 0.0715617, 0.67349, -0.123544, -0.0534057, -0.00694442, -0.0957449, -0.0534057, 0.881857, 0.0569812, 0.0715617, 0.645737, 0.126456, -0.0811671, 0.65957, -0.123544, -0.0672728, 0.67349, 0.126456, 0.0576674, -0.00694442, 0.098656, 0.0576674, 0.881857, -0.0540946, -0.108956, -0.00694442, -0.0124197, 0.0576674, -0.00694442, -0.0957449, 0.141033, 0.67349, -0.0124197, 0.0576674, 0.867937, 0.0569812, -0.0811671, 0.881857, -0.0124197, 0.0993232, -0.00694442, 0.0292061, -0.0950615, -0.00694442, 0.0430814, -0.0950615, 0.65957, 0.098656, 0.113218, 0.645737, -0.0679699, -0.0811671, -0.00694442, -0.0679699, 0.0854288, 0.867937, 0.0153064, 0.0715617, 0.67349, 0.126456, -0.0359163, 0.843504, -0.0619782, 0.141033, 0.645737, 0.0153064, 0.0715617, -0.00694442, -0.0818696, -0.0811671, 0.881857, 0.0153064, 0.0854288, 0.67349, 0.112531, -0.108956, -0.00694442, 0.0153064, 0.0854288, -0.00694442, 0.0569812)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj08n"]
-albedo_color = Color(0.752941, 0.796078, 0.862745, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q5pfq"]
 points = PackedVector3Array(-0.0408598, 0.0377069, -0.187751, 0.493809, 1.04001, 0.2969, 0.493933, 1.04024, -0.238685, 0.486071, 1.11022e-16, 0.0303356, -0.0417665, 1.04, 0.2969, -0.0417665, 0.0192792, 0.2969, -0.0213761, 1.06599, -0.235193, 0.444085, 0.0683902, -0.27262, 0.493809, 0.0192792, 0.2969, 0.0234, 0.419737, -0.308323, 0.477084, 1.09033, 0.2969, 0.444743, 1.04248, -0.273429, -0.0285486, 0.0116859, -0.224959, 0.492824, 0.0379611, -0.22103, -0.0412868, 1.03913, -0.238145, -0.00826349, 1.09033, 0.2969, 0.475494, 1.08694, -0.23708, 0.00884639, 1.03914, -0.271591, 0.00885239, 0.0702692, -0.271583, -0.00466163, 1.0821, -0.234963, 0.479742, 0.0136087, -0.224177, -0.0427952, 0.0507982, -0.222709, 0.493686, 0.0697158, -0.23847, -0.0412813, 0.0702771, -0.23814, 0.0242071, 0.0332833, -0.256605, 0.0237828, 1.07721, -0.257135, 0.427888, 0.0332833, -0.256605, -0.0249888, 1.07345, 0.2969, 0.00698443, 0.0156435, -0.240155, -0.0406773, 0.0214569, -0.0709705, 0.459145, 1.07076, -0.254014, 0.444104, 0.0181218, -0.239071)
@@ -99,10 +101,14 @@ points = PackedVector3Array(-0.0809122, 0.636447, -0.336783, -0.061693, 0.198361
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dcslw"]
 points = PackedVector3Array(-0.0625, 0.0682174, -0.151971, 0.0625, 0.431783, 0.154847, 0.0625, 0.431783, -0.151971, -0.0625, 0.431783, 0.154847, 0.0625, 0.0682174, 0.154847, -0.0625, 0.431783, -0.151971, -0.0625, 0.0682174, 0.154847, 0.0625, 0.0682174, -0.151971)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_fagcv"]
+flip_faces = true
+size = Vector2(9.1, 12.6)
+
 [node name="blockbench_export" instance=ExtResource("1_hrl64")]
 
 [node name="office_walls" parent="Node/office" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_u77iy")
+surface_material_override/0 = SubResource("ShaderMaterial_os53l")
 
 [node name="left_treadmill" parent="Node/gym" index="0"]
 transform = Transform3D(-1, 0, -1.22465e-16, 0, 1, 0, 1.22465e-16, 0, -1, -1.96989, 0, -5.54688)
@@ -144,6 +150,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_2xrn6")
 
 [node name="gym_ceiling_fan" parent="Node/gym" index="3"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -157,7 +164,11 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_heh0d")
 
+[node name="hallway_table" parent="Node/hallway" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.328125, -3.47161)
+
 [node name="hallway_small_lamp" parent="Node/hallway" index="1"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -198,19 +209,8 @@ collision_mask = 0
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_wh46b")
 
-[node name="waiting_room_monitor" parent="Node/waiting_area/reception" index="1"]
-script = ExtResource("3_g5xqg")
-type = 7
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/waiting_area/reception/waiting_room_monitor" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/reception/waiting_room_monitor/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_ja4ir")
-
-[node name="waiting_room_small_lamp_left" parent="Node/waiting_area" index="5"]
+[node name="waiting_room_small_lamp_left" parent="Node/waiting_area" index="4"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -222,7 +222,10 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_small_lamp_left/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_hronf")
 
-[node name="waiting_room_tv" parent="Node/waiting_area" index="8"]
+[node name="waiting_room_media_center" parent="Node/waiting_area" index="5"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.29688, 0.234375, -2.5041)
+
+[node name="waiting_room_tv" parent="Node/waiting_area" index="7"]
 script = ExtResource("3_g5xqg")
 type = 6
 electric = true
@@ -237,7 +240,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_tv/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_51bhv")
 
-[node name="waiting_room_small_lamp_right" parent="Node/waiting_area" index="10"]
+[node name="waiting_room_small_lamp_right" parent="Node/waiting_area" index="9"]
+surface_material_override/0 = ExtResource("4_63jcm")
 script = ExtResource("3_g5xqg")
 type = 5
 electric = true
@@ -249,7 +253,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_small_lamp_right/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_hronf")
 
-[node name="waiting_room_alarm_clock" parent="Node/waiting_area" index="11"]
+[node name="waiting_room_alarm_clock" parent="Node/waiting_area" index="10"]
 script = ExtResource("3_g5xqg")
 type = 1
 electric = true
@@ -261,7 +265,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_alarm_clock/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_hjsmu")
 
-[node name="waiting_room_dvdplayer" parent="Node/waiting_area" index="12"]
+[node name="waiting_room_dvdplayer" parent="Node/waiting_area" index="11"]
 script = ExtResource("3_g5xqg")
 type = 13
 electric = true
@@ -272,6 +276,92 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/waiting_room_dvdplayer/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_7bdur")
+
+[node name="waiting_room_monitor" parent="Node/waiting_area/reception" index="1"]
+script = ExtResource("3_g5xqg")
+type = 7
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/waiting_area/reception/waiting_room_monitor" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/waiting_area/reception/waiting_room_monitor/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_ja4ir")
+
+[node name="work_area_tall_lamp_right" parent="Node/work_area" index="0"]
+visible = false
+
+[node name="work_area_tall_lamp_left" parent="Node/work_area" index="1"]
+surface_material_override/0 = ExtResource("5_futxg")
+script = ExtResource("3_g5xqg")
+type = 4
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_tall_lamp_left" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_tall_lamp_left/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_ect7w")
+
+[node name="work_area_light_right" parent="Node/work_area" index="2"]
+surface_material_override/0 = ExtResource("3_n3u2p")
+script = ExtResource("3_g5xqg")
+type = 3
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_right" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_right/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
+shape = SubResource("CylinderShape3D_heh0d")
+
+[node name="work_area_light_middle" parent="Node/work_area" index="3"]
+surface_material_override/0 = ExtResource("3_n3u2p")
+script = ExtResource("3_g5xqg")
+type = 3
+electric = true
+mandatory = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_middle" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_middle/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
+shape = SubResource("CylinderShape3D_heh0d")
+
+[node name="work_area_light_left" parent="Node/work_area" index="4"]
+surface_material_override/0 = ExtResource("3_n3u2p")
+script = ExtResource("3_g5xqg")
+type = 3
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_left" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_left/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
+shape = SubResource("CylinderShape3D_heh0d")
+
+[node name="work_area_radiator" parent="Node/work_area" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5o0af")
+script = ExtResource("3_g5xqg")
+type = 14
+electric = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_radiator" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0239596)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_radiator/StaticBody3D" index="0"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wh46b")
 
 [node name="sarah_monitor" parent="Node/work_area/front_left_cubicle" index="2"]
 script = ExtResource("3_g5xqg")
@@ -421,76 +511,6 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438904, 0.240173, 0.599113)
 shape = SubResource("BoxShape3D_28tbo")
 
-[node name="work_area_tall_lamp_left" parent="Node/work_area" index="7"]
-script = ExtResource("3_g5xqg")
-type = 4
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_tall_lamp_left" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_tall_lamp_left/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_ect7w")
-
-[node name="work_area_light_right" parent="Node/work_area" index="8"]
-surface_material_override/0 = ExtResource("3_n3u2p")
-script = ExtResource("3_g5xqg")
-type = 3
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_right" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_right/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
-shape = SubResource("CylinderShape3D_heh0d")
-
-[node name="work_area_light_middle" parent="Node/work_area" index="9"]
-surface_material_override/0 = ExtResource("3_n3u2p")
-script = ExtResource("3_g5xqg")
-type = 3
-electric = true
-mandatory = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_middle" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_middle/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
-shape = SubResource("CylinderShape3D_heh0d")
-
-[node name="work_area_light_left" parent="Node/work_area" index="10"]
-surface_material_override/0 = ExtResource("3_n3u2p")
-script = ExtResource("3_g5xqg")
-type = 3
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_light_left" index="0"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_light_left/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
-shape = SubResource("CylinderShape3D_heh0d")
-
-[node name="work_area_radiator" parent="Node/work_area" index="11"]
-surface_material_override/0 = SubResource("StandardMaterial3D_aj08n")
-script = ExtResource("3_g5xqg")
-type = 14
-electric = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/work_area/work_area_radiator" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0239596)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/work_area/work_area_radiator/StaticBody3D" index="0"]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_wh46b")
-
 [node name="office_bathroom_light" parent="Node/bathroom" index="0"]
 surface_material_override/0 = ExtResource("3_n3u2p")
 script = ExtResource("3_g5xqg")
@@ -544,6 +564,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/breakroom/break_room_selves/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_1ml2t")
 
+[node name="office_room_tall_lamp" parent="Node/breakroom" index="4"]
+surface_material_override/0 = ExtResource("5_futxg")
+
 [node name="break_room_tall_lamp" parent="Node/breakroom" index="5"]
 surface_material_override/0 = ExtResource("5_futxg")
 script = ExtResource("3_g5xqg")
@@ -558,6 +581,7 @@ collision_mask = 0
 shape = SubResource("ConvexPolygonShape3D_ect7w")
 
 [node name="waiting_room_ceiling_fan" parent="Node/breakroom" index="6"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -571,6 +595,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_heh0d")
 
 [node name="break_room_ceiling_fan" parent="Node/breakroom" index="7"]
+surface_material_override/0 = ExtResource("3_mrqv7")
 script = ExtResource("3_g5xqg")
 type = 2
 electric = true
@@ -656,6 +681,7 @@ shape = SubResource("CylinderShape3D_heh0d")
 
 [node name="power_generator" parent="Node/parking_garage" index="5"]
 script = ExtResource("3_g5xqg")
+type = 18
 electric = true
 fades = true
 force_hop = true
@@ -669,6 +695,7 @@ shape = SubResource("ConvexPolygonShape3D_37v3v")
 
 [node name="left_car" parent="Node/parking_garage" index="6"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 
@@ -681,6 +708,7 @@ shape = SubResource("ConvexPolygonShape3D_555k2")
 
 [node name="right_car" parent="Node/parking_garage" index="7"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 
@@ -694,6 +722,7 @@ shape = SubResource("ConvexPolygonShape3D_555k2")
 
 [node name="middle_car" parent="Node/parking_garage" index="8"]
 script = ExtResource("3_g5xqg")
+type = 17
 electric = true
 fades = true
 
@@ -718,3 +747,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/parking_garage/parking_lot_breaker_box/StaticBody3D" index="0"]
 transform = Transform3D(1.68851, 0, 1.07189, 0, 2, 0, -1.07189, 0, 1.68851, 0.00291939, -0.143174, -0.262737)
 shape = SubResource("ConvexPolygonShape3D_dcslw")
+
+[node name="MakeshiftCeiling" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84187, 1.66996, -1.33649)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_fagcv")

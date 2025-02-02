@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhtm3pt1tjd1a"]
+[gd_scene load_steps=14 format=3 uid="uid://bhtm3pt1tjd1a"]
 
 [ext_resource type="Script" path="res://scripts/meter.gd" id="1_plq8u"]
 [ext_resource type="Texture2D" uid="uid://2061krotxm6g" path="res://textures/meter.png" id="1_wbip5"]
@@ -155,6 +155,43 @@ _data = {
 "error": SubResource("Animation_uo3ga")
 }
 
+[sub_resource type="Animation" id="Animation_ejuur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5yc7t"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm6hx"]
+_data = {
+"RESET": SubResource("Animation_ejuur"),
+"flash": SubResource("Animation_5yc7t")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_plq8u")
 
@@ -178,7 +215,7 @@ offset_right = 84.0
 offset_bottom = 44.0
 theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
 theme_override_fonts/font = ExtResource("2_tnlhp")
-text = "0"
+text = "Err  "
 horizontal_alignment = 2
 clip_text = true
 
@@ -206,4 +243,9 @@ show_percentage = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ugu6b")
+}
+
+[node name="Flash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jm6hx")
 }

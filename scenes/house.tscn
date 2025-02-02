@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=42 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
@@ -13,6 +13,24 @@
 [ext_resource type="Material" uid="uid://doy2qx22pnn8i" path="res://materials/tall_lamp_on.tres" id="8_pbbbk"]
 [ext_resource type="Texture2D" uid="uid://kho8a2evqcj2" path="res://textures/garage_wall.png" id="9_13ivd"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttoap"]
+render_priority = 0
+shader = ExtResource("7_s2gfv")
+shader_parameter/tintColor = Color(1, 1, 1, 1)
+shader_parameter/invert = false
+shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
+shader_parameter/borderSize = 0.1
+shader_parameter/noiseSpeed = 0.7
+shader_parameter/noiseStrength = 0.1
+shader_parameter/noiseSize = 1.2
+shader_parameter/_albedo = ExtResource("8_cfmqy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gebv8"]
+resource_name = "material_23"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23k0h"]
 albedo_color = Color(0.352941, 0.411765, 0.533333, 1)
 
@@ -25,9 +43,6 @@ radius = 0.127587
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eflm5"]
 size = Vector3(0.585693, 0.447266, 0.438477)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv6mu"]
-albedo_color = Color(0.752941, 0.796078, 0.862745, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4t28c"]
 points = PackedVector3Array(-0.773132, 0.0986606, 0.225372, -0.322583, 0.597477, 0.366377, -0.324321, 0.586568, 0.375, -0.820175, 0.580128, 0.329756, -0.320225, 0.599758, 0.206081, -0.324321, 0.16663, 0.375, -0.859897, 0.088981, 0.360275, -0.320225, 0.0986606, 0.225372, -0.773132, 0.599758, 0.206081, -0.771632, 0.586568, 0.375, -0.262381, 0.551564, 0.350647, -0.773132, 0.156483, 0.206081, -0.869558, 0.088981, 0.302435, -0.320225, 0.156483, 0.206081, -0.332134, 0.110495, 0.345866, -0.771632, 0.16663, 0.375, -0.773132, 0.609438, 0.215727, -0.879219, 0.185369, 0.32171, -0.320225, 0.088981, 0.235018, -0.262381, 0.541936, 0.312081, -0.830976, 0.580501, 0.312081, -0.320225, 0.609438, 0.215727, -0.772595, 0.596919, 0.366212, -0.869558, 0.175741, 0.350647, -0.773132, 0.088981, 0.235018, -0.811715, 0.088981, 0.360275, -0.274967, 0.580298, 0.329783, -0.869558, 0.175741, 0.302435, -0.859897, 0.175741, 0.360275, -0.262381, 0.541936, 0.341001, -0.866048, 0.100094, 0.338944)
@@ -49,24 +64,6 @@ points = PackedVector3Array(0.258247, 0.218, 0.341619, 0.258247, 0.218, 0.521024
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yf2ha"]
 points = PackedVector3Array(-0.444275, 0.68365, 0.441144, 0.482989, 0.548799, 0.47696, 0.502973, 0.1719, 0.50477, 0.502973, 0.1719, -1.02037, -0.592976, 0.1719, 0.50477, -0.544206, 0.409088, -0.956744, 0.454203, 0.409088, -0.956744, -0.592976, 0.1719, -1.02037, 0.304475, 0.708649, 0.366229, -0.61907, 0.558815, 0.41612, -0.14482, 0.658704, 0.0417027, -0.36746, 0.6875, 0.479558, -0.394366, 0.708649, 0.366229, -0.584645, 0.293235, -1.00878, 0.47927, 0.583814, 0.366229, 0.277561, 0.6875, 0.479558, 0.492919, 0.293684, -1.00638, 0.0797715, 0.658704, 0.0417027, -0.576712, 0.549608, 0.482136, -0.544206, 0.60876, 0.366229, 0.379339, 0.658704, 0.366229, 0.454203, 0.60876, 0.41612, 0.154635, 0.658704, 0.0667265, -0.219684, 0.658704, 0.0667265)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttoap"]
-render_priority = 0
-shader = ExtResource("7_s2gfv")
-shader_parameter/tintColor = Color(1, 1, 1, 1)
-shader_parameter/invert = false
-shader_parameter/borderColor = Color(0, 0.819608, 1, 1)
-shader_parameter/borderSize = 0.1
-shader_parameter/noiseSpeed = 0.7
-shader_parameter/noiseStrength = 0.1
-shader_parameter/noiseSize = 1.2
-shader_parameter/_albedo = ExtResource("8_cfmqy")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gebv8"]
-resource_name = "material_23"
-transparency = 2
-alpha_scissor_threshold = 0.05
-alpha_antialiasing_mode = 0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x27jg"]
 points = PackedVector3Array(-0.0809122, 0.636447, -0.336783, -0.061693, 0.198361, -0.985045, -1.06669, -0.490022, -0.864675, 0.418735, -0.483678, 0.1562, -1.28069, 0.193864, 0.0667263, -1.05889, 0.532164, -0.736328, 0.560755, -0.370945, -0.870784, -1.05834, -0.483678, 0.1562, -0.0293297, 0.29601, 0.281959, 0.706948, 0.0699306, -0.0559458, -0.844128, 0.656375, -0.0585468, 0.700163, 0.0392117, -0.768672, -1.27233, -0.175407, -0.7969, -0.105674, 0.620898, -0.672501, 0.434772, -0.496928, -0.87067, 0.704537, -0.178306, 0.0675491, -1.27233, 0.193082, -0.7969, -0.10768, 0.615209, -0.0339818, -1.26441, -0.276576, 0.0732489, -0.841896, 0.654142, -0.673974, -0.061693, 0.29601, -0.985045, -1.05902, 0.501414, 0.064231, -1.10118, 0.00366598, 0.184478, -1.10118, 0.00366598, -0.88744, -1.06311, 0.596493, -0.274236, -0.898982, 0.558553, -0.793762, -0.258556, 0.682731, -0.366617, 0.623071, -0.339275, -0.807519, 0.708531, 0.00761163, 0.0692337, 0.627467, 0.130548, -0.691487, -0.838037, 0.589221, 0.0603005, -0.061693, 0.198361, 0.281959)
@@ -133,7 +130,13 @@ points = PackedVector3Array(0.534289, 0.3117, 0.522771, 0.253137, 0.1711, 0.3382
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)
 script = ExtResource("2_4fvik")
 
-[node name="bathroom_radiator" parent="Node/house/upstairs/bathroom" index="1"]
+[node name="upstairs_walls" parent="Node/house/upstairs" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ttoap")
+
+[node name="upstairs_ceiling" parent="Node/house/upstairs" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gebv8")
+
+[node name="bathroom_radiator" parent="Node/house/upstairs/bathroom" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_23k0h")
 script = ExtResource("7_5o68q")
 type = 14
@@ -150,7 +153,7 @@ shape = SubResource("BoxShape3D_gmqo4")
 [node name="Forward" type="Marker3D" parent="Node/house/upstairs/bathroom/bathroom_radiator/StaticBody3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705395, 1.04865, 0.263043)
 
-[node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="2"]
+[node name="bathroom_light" parent="Node/house/upstairs/bathroom" index="1"]
 surface_material_override/0 = ExtResource("3_5bxs3")
 script = ExtResource("7_5o68q")
 type = 3
@@ -198,7 +201,7 @@ shape = SubResource("BoxShape3D_eflm5")
 transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0.922073, 0)
 
 [node name="bedroom_radiator" parent="Node/house/upstairs/bedroom" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_cv6mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_23k0h")
 script = ExtResource("7_5o68q")
 type = 14
 electric = true
@@ -319,11 +322,11 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/upstairs/bedroom/bed/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_yf2ha")
 
-[node name="upstairs_walls" parent="Node/house/upstairs" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_ttoap")
+[node name="downstairs_walls" parent="Node/house/downstairs" index="0"]
+surface_material_override/0 = ExtResource("2_u14tk")
 
-[node name="upstairs_ceiling" parent="Node/house/upstairs" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_gebv8")
+[node name="downstairs_ceiling" parent="Node/house/downstairs" index="3"]
+surface_material_override/0 = ExtResource("5_vmpl2")
 
 [node name="car" parent="Node/house/downstairs/garage" index="1"]
 script = ExtResource("7_5o68q")
@@ -343,12 +346,16 @@ surface_material_override/0 = SubResource("ShaderMaterial_u5s08")
 
 [node name="breaker_box" parent="Node/house/downstairs/garage" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21875, 0.77494, -2.78125)
+visible = false
 
 [node name="bookcase" parent="Node/house/downstairs/garage" index="4"]
 transform = Transform3D(-1, 0, -1.22465e-16, 0, 1, 0, 1.22465e-16, 0, -1, 0.8125, -0.0475, -3.91957)
 
 [node name="garage_ceiling" parent="Node/house/downstairs/garage" index="5"]
 surface_material_override/0 = SubResource("StandardMaterial3D_7dkxv")
+
+[node name="breaker_box2" parent="Node/house/downstairs/garage" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21875, 0.774529, -2.78125)
 
 [node name="livingroom_tv" parent="Node/house/downstairs/living room" index="2"]
 script = ExtResource("7_5o68q")
@@ -635,9 +642,3 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node/house/downstairs/kitchen/microwave/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_iv0j2")
-
-[node name="downstairs_walls" parent="Node/house/downstairs" index="4"]
-surface_material_override/0 = ExtResource("2_u14tk")
-
-[node name="downstairs_ceiling" parent="Node/house/downstairs" index="7"]
-surface_material_override/0 = ExtResource("5_vmpl2")

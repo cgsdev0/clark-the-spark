@@ -4,11 +4,48 @@ extends Node3D
 @export var selected = false
 enum Electric {
 	GENERIC,
+	HOUSE,
+	OFFICE,
+	TOWN_HOUSE,
+	POWER_PLANT,
+	SKYSCRAPER,
+	TALL_BUILDING,
+	STORE
+}
+
+var textures = {
+	Electric.HOUSE: [
+		preload("res://textures/house_textures.png"),
+		preload("res://textures/house_textures_green.png"),
+		preload("res://textures/house_textures_pink.png"),
+		preload("res://textures/house_textures_yellow.png")
+	],
+	Electric.TOWN_HOUSE: [
+		preload("res://textures/townhouse.png"),
+		preload("res://textures/blue_townhouse.png"),
+		preload("res://textures/yellow_townhouse.png"),
+	],
+	Electric.TALL_BUILDING: [
+		preload("res://textures/tall_building.png"),
+		preload("res://textures/green_tall_building.png"),
+		preload("res://textures/yellow_tall_building.png")
+	],
+	Electric.STORE: [
+		preload("res://textures/store.png"),
+		preload("res://textures/store_yellow.png")
+	]
 }
 
 var values = {
 	# points gained, min needed, pop threshold, max time
 	Electric.GENERIC: [5, 0, 2000, 1.0],
+	Electric.HOUSE: [1000, 10000, 40000, 1.0],
+	Electric.OFFICE: [2000, 15000, 60000, 1.0],
+	Electric.TOWN_HOUSE: [1000, 10000, 40000, 1.0],
+	Electric.POWER_PLANT: [100000, 99999, 10000000, 2.8],
+	Electric.SKYSCRAPER: [30000, 60000, 10000000, 2.0],
+	Electric.TALL_BUILDING: [5000, 40000, 10000000, 1.5],
+	Electric.STORE: [2000, 15000, 60000, 1.0],
 }
 
 @export var type: Electric = Electric.GENERIC
@@ -46,6 +83,7 @@ func get_charge_time():
 func kill():
 	dead = true
 	for mat in mats:
+		mat.albedo_color = Color.WEB_GRAY
 		mat.emission_enabled = false
 	electrified = false
 	
@@ -89,7 +127,11 @@ func _ready():
 			mat = mat.duplicate(true)
 			node.set_surface_override_material(i, mat)
 			mats.push_back(mat)
-
+	if textures.has(type):
+		var opts = textures[type]
+		for mat: StandardMaterial3D in mats:
+			mat.albedo_texture = opts.pick_random()
+			
 func find_neighbor(direction: Vector2):
 	var candidates = []
 	for building in get_tree().get_nodes_in_group("buildings"):
@@ -120,6 +162,12 @@ func find_neighbor(direction: Vector2):
 	print(min)
 	return who
 
+func move_on():
+	await get_tree().create_timer(2.0).timeout
+	Events.transition.emit()
+	await Events.teleport
+	%EndCam.current = true
+	
 func pop():
 	var should_hop = self.force_hop
 	charging = false
@@ -128,6 +176,17 @@ func pop():
 	%PlayerPath/Player/ChargeSound.stop()
 	%PlayerPath/Player/PopSound.play()
 	if should_hop:
+		Events.charge = 0.0
+		selected = false
+		electrified = false
+		for mat in mats:
+			mat.next_pass = null
+		var t = get_tree().create_tween()
+		t.set_parallel(true)
+		t.set_ease(Tween.EASE_IN)
+		t.set_trans(Tween.TRANS_CUBIC)
+		t.tween_property(%IsoCam, "size", 800.0, 2.5)
+		move_on()
 		return true
 	return false
 
@@ -154,8 +213,8 @@ func _physics_process(delta):
 	if charge_timer > min(max_charge_time, 2.9) && charging && !is_possible_question_mark:
 		charging = false
 		Events.meter_angry.emit()
-		$PlayerPath/Player/ChargeSound.stop()
-		$PlayerPath/Player/FailSound.play()
+		%PlayerPath/Player/ChargeSound.stop()
+		%PlayerPath/Player/FailSound.play()
 		require_release = true
 	if Input.is_action_just_released("pop"):
 		require_release = false
@@ -202,6 +261,9 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("move_down"):
 		target = find_neighbor(Vector2(0, 1))
 	if target:
+		charging = false
+		require_release = false
+		%PlayerPath/Player/ChargeSound.stop()
 		for mat in mats:
 			mat.next_pass = null
 		selected = false

@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://fan50cghwwv2"]
+
+[ext_resource type="Texture2D" uid="uid://dbngydb6q7w1t" path="res://textures/ElectricSpriteBody.png" id="1_32jx4"]
+[ext_resource type="Script" path="res://scripts/sparky.gd" id="1_tgs33"]
+[ext_resource type="Texture2D" uid="uid://bn7sdpsrrqj21" path="res://textures/ElectricSpriteEyes.png" id="2_v3vqx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgora"]
+atlas = ExtResource("1_32jx4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcpfi"]
+atlas = ExtResource("1_32jx4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frk82"]
+atlas = ExtResource("1_32jx4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0sbu"]
+atlas = ExtResource("1_32jx4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sckm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgora")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcpfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frk82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0sbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1w8b"]
+atlas = ExtResource("2_v3vqx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5gs4"]
+atlas = ExtResource("2_v3vqx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joqk0"]
+atlas = ExtResource("2_v3vqx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7fe1"]
+atlas = ExtResource("2_v3vqx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kt6rt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1w8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5gs4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1w8b")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7fe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7fe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqk0")
+}],
+"loop": false,
+"name": &"double_blink",
+"speed": 7.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tgs33")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sckm0")
+frame_progress = 0.41208
+centered = false
+
+[node name="Eyes" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_kt6rt")
+animation = &"double_blink"
+frame = 4
+frame_progress = 1.0
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
