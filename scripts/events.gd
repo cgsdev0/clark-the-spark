@@ -7,7 +7,8 @@ signal meter_calm
 signal transition
 signal teleport
 
-var score: int = 0
+var planet_destroyed = false
+var score: int = 200000
 signal score_changed
 
 var charge = 0.0

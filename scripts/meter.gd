@@ -21,9 +21,14 @@ func _process(delta):
 	$Charge.value = Events.charge
 	jump_timer += delta
 	var computed = int(lerp(internal_score, target_score, clampf(jump_timer, 0.0, 1.0)))
-	$Label.text = str(computed)
-	
+	$Label.text = str(min(computed, 99999))
+	if Events.planet_destroyed:
+		$Label.text = "Err  "
+		$Flash.play("RESET")
+
 func score_changed():
 	jump_timer = 0.0
 	internal_score = target_score
 	target_score = Events.score
+	if target_score > 99999 && !Events.planet_destroyed:
+		$Flash.play("flash")

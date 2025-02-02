@@ -12,9 +12,9 @@ dest_files=["res://.godot/imported/digits.png-307081a989c75abcbfc74069ebafb9be.f
 
 [params]
 
-character_ranges=PackedStringArray("48-57")
+character_ranges=PackedStringArray("48-57", "69-69", "114-114", "32-32")
 kerning_pairs=PackedStringArray()
-columns=10
+columns=13
 rows=1
 image_margin=Rect2i(0, 0, 0, 0)
 character_margin=Rect2i(0, 0, 0, 0)

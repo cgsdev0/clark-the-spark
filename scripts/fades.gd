@@ -37,7 +37,7 @@ var values = {
 	Electric.CEILING_FAN: [50, 15, 5000, 1.0],
 	Electric.TV: [60, 40, 12000, 2.0],
 	Electric.CONSOLE: [100, 90, 3000, 1.0],
-	Electric.RADIATOR: [300, 300, 11000, 2.0],
+	Electric.RADIATOR: [300, 250, 11000, 2.0],
 	Electric.COMPUTER: [325, 300, 10000, 1.8],
 	Electric.TREADMILL: [300, 600, 20000, 2.0],
 	Electric.FRIDGE: [400, 1000, 20000, 2.8],
