@@ -3,6 +3,7 @@ extends Camera3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.hacky_endcam_do_not_use = self
 	pass # Replace with function body.
 
 func animate():

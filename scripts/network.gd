@@ -189,6 +189,7 @@ func pop():
 	$PlayerPath/Player/PopSound.play()
 	Events.pop.emit()
 	if should_hop:
+		Events.multimeter_up = false
 		$PlayerPath/Player/AnimatedSprite3D.scale = Vector3.ONE * 0.5
 		grid_hop()
 		return true
@@ -228,11 +229,14 @@ func grid_hop():
 	var grid = get_parent().get_child(get_index() + 1)
 	if !is_instance_valid(grid):
 		active = false
+		Events.multimeter_up = false
 		await get_tree().create_timer(1.5).timeout
 		Events.transition.emit()
 		await Events.teleport
 		Events.city_song.emit()
 		%IsoCam.current = true
+		await get_tree().create_timer(0.8).timeout
+		Events.multimeter_up = true
 		return
 	$PlayerPath.reparent(grid, false)
 	var cam = $Camera3D

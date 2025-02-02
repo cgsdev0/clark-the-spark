@@ -167,17 +167,20 @@ func move_on():
 	Events.transition.emit()
 	await Events.teleport
 	Events.space_song.emit()
-	%EndCam.current = true
+	Events.hacky_endcam_do_not_use.current = true
+	await get_tree().create_timer(0.9).timeout
+	Events.multimeter_up = true
 	
 func pop():
 	var should_hop = self.force_hop
 	charging = false
 	Events.add_score(self.get_reward())
 	self.kill()
-	%PlayerPath/Player/ChargeSound.stop()
-	%PlayerPath/Player/PopSound.play()
+	Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
+	Events.player_path_hacky_do_not_use.get_node("Player/PopSound").play()
 	Events.pop.emit()
 	if should_hop:
+		Events.multimeter_up = false
 		Events.charge = 0.0
 		selected = false
 		electrified = false
@@ -187,7 +190,7 @@ func pop():
 		t.set_parallel(true)
 		t.set_ease(Tween.EASE_IN)
 		t.set_trans(Tween.TRANS_CUBIC)
-		t.tween_property(%IsoCam, "size", 800.0, 2.5)
+		t.tween_property(Events.iso_cam_hacky_do_not_use, "size", 800.0, 2.5)
 		move_on()
 		return true
 	return false
@@ -215,8 +218,8 @@ func _physics_process(delta):
 	if charge_timer > min(max_charge_time, 2.9) && charging && !is_possible_question_mark:
 		charging = false
 		Events.meter_angry.emit()
-		%PlayerPath/Player/ChargeSound.stop()
-		%PlayerPath/Player/FailSound.play()
+		Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
+		Events.player_path_hacky_do_not_use.get_node("Player/FailSound").play()
 		require_release = true
 	if Input.is_action_just_released("pop"):
 		require_release = false
@@ -232,11 +235,11 @@ func _physics_process(delta):
 				if pop():
 					return
 			else:
-				%PlayerPath/Player/ChargeSound.play()
+				Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").play()
 	if !Input.is_action_pressed("pop") && charging:
 		# $PlayerPath/Player/FailSound.play()
 		charging = false
-		%PlayerPath/Player/ChargeSound.stop()
+		Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
 	if charging:
 		Events.charge += delta * 100.0 / charge_time
 	else:
@@ -265,11 +268,15 @@ func _physics_process(delta):
 	if target:
 		charging = false
 		require_release = false
-		%PlayerPath/Player/ChargeSound.stop()
+		Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
 		for mat in mats:
 			mat.next_pass = null
 		selected = false
 		await RenderingServer.frame_post_draw
 		target.selected = true
-		%IsoCam.target = target
+		if target.dead:
+			Events.multimeter_up = false
+		else:
+			Events.multimeter_up = true
+		Events.iso_cam_hacky_do_not_use.target = target
 		print(target)

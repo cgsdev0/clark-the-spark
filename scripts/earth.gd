@@ -49,12 +49,14 @@ func pop():
 	charging = false
 	Events.planet_destroyed = true
 	self.kill()
-	%PlayerPath/Player/ChargeSound.stop()
-	%PlayerPath/Player/PopSound.play()
+	Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
+	Events.player_path_hacky_do_not_use.get_node("Player/PopSound").play()
 	Events.pop.emit()
 	var t = get_tree().create_tween()
 	t.tween_property(self, "rot_speed", 0.0, 0.5)
-	t.tween_interval(2.6)
+	t.tween_interval(0.5)
+	t.tween_callback(func(): Events.multimeter_up = false)
+	t.tween_interval(1.9)
 	t.set_ease(Tween.EASE_IN)
 	t.set_trans(Tween.TRANS_QUAD)
 	t.tween_property(self, "scale", Vector3.ZERO, 0.18)
@@ -97,11 +99,11 @@ func _physics_process(delta):
 				if pop():
 					return
 			else:
-				%PlayerPath/Player/ChargeSound.play()
+				Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").play()
 	if !Input.is_action_pressed("pop") && charging:
 		# $PlayerPath/Player/FailSound.play()
 		charging = false
-		%PlayerPath/Player/ChargeSound.stop()
+		Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
 	if charging:
 		Events.charge += delta * 100.0 / charge_time
 	else:
