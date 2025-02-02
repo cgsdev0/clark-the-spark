@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0dur2qkrjnbr"]
+
+[ext_resource type="Texture2D" uid="uid://i8taya6k24j2" path="res://textures/thoughts.png" id="1_ewx8s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ewx8s")
+centered = false

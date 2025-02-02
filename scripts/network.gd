@@ -388,6 +388,9 @@ func _physics_process(delta):
 			print(adjusted)
 			print(input)
 			if adjusted.distance_squared_to(input) < 0.001 || connections[current].size() == 1:
+				if charging:
+					charging = false
+					$PlayerPath/Player/ChargeSound.stop()
 				start_hardcut_timer()
 				if electrified:
 					electrified.electrified = false

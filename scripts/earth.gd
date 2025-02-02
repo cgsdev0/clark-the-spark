@@ -56,10 +56,10 @@ func pop():
 	t.tween_interval(2.6)
 	t.set_ease(Tween.EASE_IN)
 	t.set_trans(Tween.TRANS_QUAD)
-	t.tween_property(self, "scale", Vector3.ZERO, 0.25)
+	t.tween_property(self, "scale", Vector3.ZERO, 0.18)
 	t.set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_BACK)
-	t.parallel().tween_property(%BigGuy, "pixel_size", 0.2, 0.5).set_delay(0.3)
+	t.parallel().tween_property(%BigGuy, "pixel_size", 0.2, 0.35).set_delay(0.19)
 
 var charging = false
 var electrified

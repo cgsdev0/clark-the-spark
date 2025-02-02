@@ -53,8 +53,8 @@ points = PackedVector3Array(-0.178192, -0.0672829, -0.0442, 0.240233, 0.337048, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ect7w"]
 points = PackedVector3Array(0.127112, 0.65957, 0.0430814, -0.136744, 0.645737, -0.0263195, -0.136744, 0.645737, 0.0153064, 0.0993232, -0.00694442, -0.0263195, -0.0534057, -0.00694442, 0.098656, 0.0715617, 0.67349, -0.123544, -0.0534057, -0.00694442, -0.0957449, -0.0534057, 0.881857, 0.0569812, 0.0715617, 0.645737, 0.126456, -0.0811671, 0.65957, -0.123544, -0.0672728, 0.67349, 0.126456, 0.0576674, -0.00694442, 0.098656, 0.0576674, 0.881857, -0.0540946, -0.108956, -0.00694442, -0.0124197, 0.0576674, -0.00694442, -0.0957449, 0.141033, 0.67349, -0.0124197, 0.0576674, 0.867937, 0.0569812, -0.0811671, 0.881857, -0.0124197, 0.0993232, -0.00694442, 0.0292061, -0.0950615, -0.00694442, 0.0430814, -0.0950615, 0.65957, 0.098656, 0.113218, 0.645737, -0.0679699, -0.0811671, -0.00694442, -0.0679699, 0.0854288, 0.867937, 0.0153064, 0.0715617, 0.67349, 0.126456, -0.0359163, 0.843504, -0.0619782, 0.141033, 0.645737, 0.0153064, 0.0715617, -0.00694442, -0.0818696, -0.0811671, 0.881857, 0.0153064, 0.0854288, 0.67349, 0.112531, -0.108956, -0.00694442, 0.0153064, 0.0854288, -0.00694442, 0.0569812)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj08n"]
-albedo_color = Color(0.752941, 0.796078, 0.862745, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o0af"]
+albedo_color = Color(0.352941, 0.411765, 0.533333, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jrltx"]
 size = Vector3(1.25793, 1.48035, 1.18574)
@@ -349,7 +349,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.190793, 0)
 shape = SubResource("CylinderShape3D_heh0d")
 
 [node name="work_area_radiator" parent="Node/work_area" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_aj08n")
+surface_material_override/0 = SubResource("StandardMaterial3D_5o0af")
 script = ExtResource("3_g5xqg")
 type = 14
 electric = true
@@ -750,4 +750,5 @@ shape = SubResource("ConvexPolygonShape3D_dcslw")
 
 [node name="MakeshiftCeiling" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84187, 1.66996, -1.33649)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_fagcv")

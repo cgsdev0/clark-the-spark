@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=83 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_8fab5"]
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
@@ -42,7 +42,10 @@
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
+[ext_resource type="Texture2D" uid="uid://cxecmkf3agbu4" path="res://textures/road_test.png" id="39_2shrn"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
+[ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
+[ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cvpae"]
 viewport_path = NodePath("Control/PlayerViewport")
@@ -96,6 +99,17 @@ shader_parameter/bigStarAmount = 0.02
 [sub_resource type="QuadMesh" id="QuadMesh_15ce8"]
 material = SubResource("ShaderMaterial_8q2ac")
 size = Vector2(800, 800)
+
+[sub_resource type="QuadMesh" id="QuadMesh_w0ipb"]
+size = Vector2(1.6, 0.96)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xff0i"]
+viewport_path = NodePath("Control/TVViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqk18"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_xff0i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgryk"]
 render_priority = 0
@@ -188,6 +202,16 @@ albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_xc3eq"]
 material = SubResource("StandardMaterial3D_iucx5")
 size = Vector2(1000, 1000)
+
+[sub_resource type="QuadMesh" id="QuadMesh_g3tae"]
+material = SubResource("StandardMaterial3D_iucx5")
+size = Vector2(96.5, 62.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsg44"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("39_2shrn")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7kg8m"]
 viewport_path = NodePath("Control/SubViewport")
@@ -326,27 +350,27 @@ script = ExtResource("3_c2pgq")
 type = 1
 
 [node name="OurHouse2" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -0.87545)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -1.0068)
 script = ExtResource("3_c2pgq")
 type = 1
 
 [node name="OurHouse5" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -3.1782)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -3.30955)
 script = ExtResource("3_c2pgq")
 type = 1
 
 [node name="OurHouse9" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -5.7262)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -5.85755)
 script = ExtResource("3_c2pgq")
 type = 1
 
 [node name="OurHouse10" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -8.00449)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -8.13584)
 script = ExtResource("3_c2pgq")
 type = 1
 
 [node name="OurHouse11" parent="level/city" instance=ExtResource("2_hof5i")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -10.442)
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 0.999999, 0, -0.999999, 0, -4.37114e-08, -2.77208, 0, -10.5733)
 script = ExtResource("3_c2pgq")
 type = 1
 
@@ -421,17 +445,17 @@ script = ExtResource("3_c2pgq")
 type = 7
 
 [node name="blockbench_export10" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.07342, 0, -0.851424)
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -5.07342, 0, -1.26164)
 script = ExtResource("3_c2pgq")
 type = 7
 
 [node name="blockbench_export11" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -0.851424)
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -7.70651, 0, -1.26164)
 script = ExtResource("3_c2pgq")
 type = 7
 
 [node name="blockbench_export15" parent="level/city" instance=ExtResource("10_tps0p")]
-transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -0.851424)
+transform = Transform3D(0.999999, 0, 1.51582e-14, 0, 0.999999, 0, -1.51582e-14, 0, 0.999999, -10.2533, 0, -1.26164)
 script = ExtResource("3_c2pgq")
 type = 7
 
@@ -475,7 +499,6 @@ unique_name_in_owner = true
 transform = Transform3D(-0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, 0.353553, -0.612372, 8.23, 19.645, -18.105)
 cull_mask = 1048573
 projection = 1
-current = true
 size = 250.0
 near = 0.001
 script = ExtResource("13_3dgot")
@@ -498,6 +521,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.710
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.801, 8.034, 21.596)
 
+[node name="TV2" type="MeshInstance3D" parent="level/office" groups=["tv_screen"]]
+transform = Transform3D(0.535, 0, -9.35424e-08, 0, 0.535, 0, 9.35424e-08, 0, 0.535, -0.857399, 0.965869, -2.79718)
+mesh = SubResource("QuadMesh_w0ipb")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqk18")
+
 [node name="house" parent="level" instance=ExtResource("1_awue5")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -508,11 +536,22 @@ visible = false
 [node name="downstairs_walls" parent="level/house/wireframe2" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qgryk")
 
+[node name="TV" type="MeshInstance3D" parent="level/house" groups=["tv_screen"]]
+transform = Transform3D(-2.33856e-08, 0, -0.535, 0, 0.535, 0, 0.535, 0, -2.33856e-08, 2.21033, 0.963339, -0.219759)
+mesh = SubResource("QuadMesh_w0ipb")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqk18")
+
+[node name="TV2" type="MeshInstance3D" parent="level/house" groups=["tv_screen"]]
+transform = Transform3D(-0.535, 0, 4.67712e-08, 0, 0.535, 0, -4.67712e-08, 0, -0.535, 1.67292, 2.58768, 0.40219)
+mesh = SubResource("QuadMesh_w0ipb")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqk18")
+
 [node name="Networks" type="Node3D" parent="level"]
 
 [node name="circuit_wires" parent="level/Networks" instance=ExtResource("7_uiv23")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -5, 0)
 script = ExtResource("1_jqye8")
+active = true
 y_offset = -16.0
 y_locked = false
 speed_mult = 0.6
@@ -520,6 +559,10 @@ speed_mult = 0.6
 [node name="PlayerPath" type="Path3D" parent="level/Networks/circuit_wires"]
 unique_name_in_owner = true
 curve = SubResource("Curve3D_vqcuc")
+
+[node name="Thoughts" type="Sprite3D" parent="level/Networks/circuit_wires/PlayerPath"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -25, 0)
+top_level = true
 
 [node name="Player" type="PathFollow3D" parent="level/Networks/circuit_wires/PlayerPath"]
 
@@ -576,6 +619,7 @@ stream = SubResource("AudioStreamRandomizer_yu5ii")
 process_priority = -2
 transform = Transform3D(0.071942, -0.0842398, 0.314387, 0, 0.321975, 0.0862731, -0.325477, -0.01862, 0.0694907, 1.25901, 2.24354, -0.55)
 cull_mask = 1048573
+current = true
 near = 1.0
 script = ExtResource("5_ftnol")
 
@@ -639,7 +683,7 @@ shape = SubResource("BoxShape3D_q5wwl")
 [node name="to_office" parent="level/Networks" instance=ExtResource("15_q6lad")]
 script = ExtResource("1_jqye8")
 npc = true
-speed_mult = 1.3
+speed_mult = 1.44
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/to_office"]
 
@@ -885,6 +929,11 @@ shape = SubResource("BoxShape3D_a42ev")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
 mesh = SubResource("QuadMesh_xc3eq")
 
+[node name="Roads" type="MeshInstance3D" parent="level"]
+transform = Transform3D(2.05, 0, 0, 0, -8.96083e-08, 2.05, 0, -2.05, -8.96083e-08, -79.598, 0, -29.0339)
+mesh = SubResource("QuadMesh_g3tae")
+surface_material_override/0 = SubResource("StandardMaterial3D_vsg44")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_1sx5j")
 
@@ -934,6 +983,14 @@ size = Vector2i(128, 128)
 
 [node name="Node2D" parent="Control/SubViewport" instance=ExtResource("13_5ll0k")]
 
+[node name="ThoughtsViewport" type="SubViewport" parent="Control"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(256, 256)
+
+[node name="Node2D" parent="Control/ThoughtsViewport" instance=ExtResource("41_ctusk")]
+
 [node name="PlayerViewport" type="SubViewport" parent="Control"]
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
@@ -941,6 +998,20 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(64, 64)
 
 [node name="Node2D" parent="Control/PlayerViewport" instance=ExtResource("40_pvp5o")]
+
+[node name="TVViewport" type="SubViewport" parent="Control"]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(160, 90)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control/TVViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("42_o3i3g")
+autoplay = true
+loop = true
+bus = &"TV"
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 material = SubResource("ShaderMaterial_inu3v")

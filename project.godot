@@ -22,6 +22,9 @@ Events="*res://scripts/events.gd"
 
 [display]
 
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -32,6 +35,7 @@ enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 [global_group]
 
 upstairs=""
+tv_screen=""
 
 [importer_defaults]
 

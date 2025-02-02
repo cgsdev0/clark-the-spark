@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dim2428cdap85"]
+[gd_scene load_steps=42 format=3 uid="uid://dim2428cdap85"]
 
 [ext_resource type="PackedScene" uid="uid://dp0goeot477ww" path="res://models/house/house2.gltf" id="1_bdfnr"]
 [ext_resource type="Script" path="res://scripts/house.gd" id="2_4fvik"]
@@ -25,9 +25,6 @@ radius = 0.127587
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eflm5"]
 size = Vector3(0.585693, 0.447266, 0.438477)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv6mu"]
-albedo_color = Color(0.752941, 0.796078, 0.862745, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4t28c"]
 points = PackedVector3Array(-0.773132, 0.0986606, 0.225372, -0.322583, 0.597477, 0.366377, -0.324321, 0.586568, 0.375, -0.820175, 0.580128, 0.329756, -0.320225, 0.599758, 0.206081, -0.324321, 0.16663, 0.375, -0.859897, 0.088981, 0.360275, -0.320225, 0.0986606, 0.225372, -0.773132, 0.599758, 0.206081, -0.771632, 0.586568, 0.375, -0.262381, 0.551564, 0.350647, -0.773132, 0.156483, 0.206081, -0.869558, 0.088981, 0.302435, -0.320225, 0.156483, 0.206081, -0.332134, 0.110495, 0.345866, -0.771632, 0.16663, 0.375, -0.773132, 0.609438, 0.215727, -0.879219, 0.185369, 0.32171, -0.320225, 0.088981, 0.235018, -0.262381, 0.541936, 0.312081, -0.830976, 0.580501, 0.312081, -0.320225, 0.609438, 0.215727, -0.772595, 0.596919, 0.366212, -0.869558, 0.175741, 0.350647, -0.773132, 0.088981, 0.235018, -0.811715, 0.088981, 0.360275, -0.274967, 0.580298, 0.329783, -0.869558, 0.175741, 0.302435, -0.859897, 0.175741, 0.360275, -0.262381, 0.541936, 0.341001, -0.866048, 0.100094, 0.338944)
@@ -198,7 +195,7 @@ shape = SubResource("BoxShape3D_eflm5")
 transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0.922073, 0)
 
 [node name="bedroom_radiator" parent="Node/house/upstairs/bedroom" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_cv6mu")
+surface_material_override/0 = SubResource("StandardMaterial3D_23k0h")
 script = ExtResource("7_5o68q")
 type = 14
 electric = true

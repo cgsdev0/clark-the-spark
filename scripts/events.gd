@@ -8,7 +8,7 @@ signal transition
 signal teleport
 
 var planet_destroyed = false
-var score: int = 200000
+var score: int = 0
 signal score_changed
 
 var charge = 0.0
