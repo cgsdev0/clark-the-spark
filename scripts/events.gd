@@ -22,6 +22,10 @@ signal pop
 signal hide_tooltip
 signal show_tooltip(tooltip: Tooltip)
 
+signal cutscene
+signal city_song
+signal space_song
+
 func _ready():
 	show_tooltip.connect(_on_show)
 	hide_tooltip.connect(_on_hide)

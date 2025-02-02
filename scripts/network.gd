@@ -228,6 +228,7 @@ func grid_hop():
 		await get_tree().create_timer(1.5).timeout
 		Events.transition.emit()
 		await Events.teleport
+		Events.city_song.emit()
 		%IsoCam.current = true
 		return
 	$PlayerPath.reparent(grid, false)
@@ -393,6 +394,8 @@ func _physics_process(delta):
 				if charging:
 					charging = false
 					$PlayerPath/Player/ChargeSound.stop()
+				if name == "to_office":
+					Events.cutscene.emit()
 				start_hardcut_timer()
 				Events.multimeter_up = false
 				Events.hide_tooltip.emit()
