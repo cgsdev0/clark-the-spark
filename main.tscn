@@ -31,8 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://c11fyemminal8" path="res://models/house/office_wires.gltf" id="16_tsksg"]
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
+[ext_resource type="AudioStream" uid="uid://daa46nnqratf1" path="res://audio/sfx/powerline.ogg" id="24_2grks"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
-[ext_resource type="AudioStream" uid="uid://1vl0w76ns0a5" path="res://audio/sfx/poweline.wav" id="24_mwnya"]
 [ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
@@ -482,7 +482,7 @@ stream = SubResource("AudioStreamRandomizer_yu5ii")
 bus = &"SFX"
 
 [node name="PowerlineSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
-stream = ExtResource("24_mwnya")
+stream = ExtResource("24_2grks")
 volume_db = -80.0
 autoplay = true
 bus = &"SFX"
