@@ -187,6 +187,7 @@ func pop():
 	electrified = null
 	$PlayerPath/Player/ChargeSound.stop()
 	$PlayerPath/Player/PopSound.play()
+	Events.sparks.emit(get_normal(current))
 	Events.pop.emit()
 	if should_hop:
 		Events.multimeter_up = false

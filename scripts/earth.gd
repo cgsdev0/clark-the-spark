@@ -35,6 +35,8 @@ func kill():
 # Called when the node enters the scene tree for the first time.
 var mats = []
 func _ready():
+	%WinLabel.modulate = Color.TRANSPARENT
+	%WinLabel.hide()
 	var meshes = find_children("*", "MeshInstance3D")
 	if is_instance_of(self, MeshInstance3D):
 		meshes.push_back(self)
@@ -52,6 +54,8 @@ func pop():
 	Events.player_path_hacky_do_not_use.get_node("Player/ChargeSound").stop()
 	Events.player_path_hacky_do_not_use.get_node("Player/PopSound").play()
 	Events.pop.emit()
+
+	%WinLabel.show()
 	var t = get_tree().create_tween()
 	t.tween_property(self, "rot_speed", 0.0, 0.5)
 	t.tween_interval(0.5)
@@ -63,6 +67,9 @@ func pop():
 	t.set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_BACK)
 	t.parallel().tween_property(%BigGuy, "pixel_size", 0.2, 0.35).set_delay(0.19)
+	t.set_trans(Tween.TRANS_LINEAR)
+	t.tween_interval(2.0)
+	t.tween_property(%WinLabel, "modulate", Color.WHITE, 0.1)
 
 var charging = false
 var electrified
