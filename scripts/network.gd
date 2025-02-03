@@ -454,8 +454,10 @@ func _physics_process(delta):
 				tween.parallel().tween_property($PlayerPath/Player, "progress_ratio", 1.0, dur)
 				tween.parallel().tween_callback(func(): can_buffer = true).set_delay(dur - 0.2)
 				
-				tween.parallel().tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -30.0, dur * 0.2)
-				tween.parallel().tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -80.0, dur * 0.2).set_delay(dur - 0.2)
+				var tween2 = get_tree().create_tween()
+				tween2.set_parallel()
+				tween2.tween_property($PlayerPath/Player/PowerlineSound, "volume_db", 0.0, dur * 0.2)
+				tween2.tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -80.0, dur * 0.2).set_delay(dur - 0.2)
 				
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
 				if operable && !operable.dead && operable.electric:

@@ -31,8 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://c11fyemminal8" path="res://models/house/office_wires.gltf" id="16_tsksg"]
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
 [ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
-[ext_resource type="AudioStream" uid="uid://daa46nnqratf1" path="res://audio/sfx/powerline.ogg" id="24_2grks"]
 [ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
+[ext_resource type="AudioStream" uid="uid://1vl0w76ns0a5" path="res://audio/sfx/poweline.wav" id="24_mwnya"]
 [ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
@@ -482,7 +482,7 @@ stream = SubResource("AudioStreamRandomizer_yu5ii")
 bus = &"SFX"
 
 [node name="PowerlineSound" type="AudioStreamPlayer" parent="level/Networks/circuit_wires/PlayerPath/Player"]
-stream = ExtResource("24_2grks")
+stream = ExtResource("24_mwnya")
 volume_db = -80.0
 autoplay = true
 bus = &"SFX"
@@ -555,7 +555,7 @@ shape = SubResource("BoxShape3D_q5wwl")
 [node name="to_office" parent="level/Networks" instance=ExtResource("15_q6lad")]
 script = ExtResource("1_jqye8")
 npc = true
-speed_mult = 1.2
+speed_mult = 1.35
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/to_office"]
 
@@ -878,7 +878,7 @@ size = Vector2i(160, 90)
 offset_right = 40.0
 offset_bottom = 40.0
 stream = ExtResource("42_o3i3g")
-volume_db = 6.0
+volume_db = 4.0
 autoplay = true
 loop = true
 bus = &"TV"

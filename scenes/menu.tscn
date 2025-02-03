@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfkhvq2wn3f7x"]
+[gd_scene load_steps=9 format=3 uid="uid://cfkhvq2wn3f7x"]
 
 [ext_resource type="Shader" path="res://shaders/menu.gdshader" id="1_3fb0x"]
 [ext_resource type="FontFile" uid="uid://bh7kpk6fbm2dk" path="res://audio/music/Stacked pixel.ttf" id="1_jnxne"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="2_daxhn"]
+[ext_resource type="Script" path="res://scripts/menu_path.gd" id="3_pnpp8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1xxu"]
 shader = ExtResource("1_3fb0x")
@@ -17,9 +18,9 @@ shader_parameter/angle = 0.314
 
 [sub_resource type="Curve2D" id="Curve2D_sjwrj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -79, 264, 0, 0, 0, 0, 1087, 273, 0, 0, 0, 0, 1073, -66, 0, 0, 0, 0, -50, 576, 0, 0, 0, 0, -208, 234, 0, 0, 0, 0, 1129, 91, 0, 0, 0, 0, 1085, 701, 0, 0, 0, 0, 636, 640, 0, 0, 0, 0, 928, -96, 0, 0, 0, 0, 143, -80, 0, 0, 0, 0, 213, 751, 0, 0, 0, 0, 516, 588, 0, 0, 0, 0, -115, 299, 0, 0, 0, 0, -79, 264)
+"points": PackedVector2Array(0, 0, 0, 0, 112.547, -127.974, 0, 0, 0, 0, 115.717, 337.862, 0, 0, 0, 0, 1123.72, 336.829, 0, 0, 0, 0, 1121.6, 189.125, 0, 0, 0, 0, -220.283, 81.7039, 0, 0, 0, 0, -242.472, 657.026, 0, 0, 0, 0, 77.6793, 652.895, 0, 0, 0, 0, 77.6793, 473.171, 0, 0, 0, 0, 786.66, 462.842, 0, 0, 0, 0, 776.094, -170.322, 0, 0, 0, 0, 112.547, -127.974)
 }
-point_count = 14
+point_count = 11
 
 [sub_resource type="Theme" id="Theme_vxk2j"]
 default_font = ExtResource("1_jnxne")
@@ -53,17 +54,24 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_daxhn")
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(60.4821, -2.10191)
+scale = Vector2(0.946429, 0.968153)
 curve = SubResource("Curve2D_sjwrj")
+script = ExtResource("3_pnpp8")
+
+[node name="Line2D" type="Line2D" parent="Path2D"]
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-79, 264)
-rotation = 0.00771854
+position = Vector2(112.547, -127.974)
+rotation = 1.56399
+rotates = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 unique_name_in_owner = true
 texture_filter = 1
-rotation = -0.0236515
+rotation = -1.5708
 scale = Vector2(2, 2)
+offset = Vector2(32, 0)
 
 [node name="Modesty" type="ColorRect" parent="."]
 visible = false
