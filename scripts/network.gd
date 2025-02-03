@@ -456,7 +456,7 @@ func _physics_process(delta):
 				
 				var tween2 = get_tree().create_tween()
 				tween2.set_parallel()
-				tween2.tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -30.0, dur * 0.2)
+				tween2.tween_property($PlayerPath/Player/PowerlineSound, "volume_db", 0.0, dur * 0.2)
 				tween2.tween_property($PlayerPath/Player/PowerlineSound, "volume_db", -80.0, dur * 0.2).set_delay(dur - 0.2)
 				
 				var operable = find_operable(curve.get_point_position(curve.point_count - 1))
