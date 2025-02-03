@@ -4,6 +4,7 @@ extends Control
 @onready var Music_Bus_ID = AudioServer.get_bus_index("Music")
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 	%Sprite2D.texture = %AnimatedSprite3D.texture
 	get_tree().paused = true
 	%MusicSlider.value_changed.connect(_on_music_slider_value_changed)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://0dur2qkrjnbr"]
+[gd_scene load_steps=12 format=3 uid="uid://0dur2qkrjnbr"]
 
 [ext_resource type="Script" path="res://scripts/thoughts.gd" id="1_dcom1"]
 [ext_resource type="Texture2D" uid="uid://difnwjgm2rrh2" path="res://textures/button_bubble.png" id="2_d7fud"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ebcwy"]
+[ext_resource type="Texture2D" uid="uid://cv25bxv4dr1ym" path="res://textures/hold_text.png" id="4_84542"]
 [ext_resource type="Texture2D" uid="uid://b4ohchxm0y8ai" path="res://textures/too_hard.png" id="4_c62l3"]
 
 [sub_resource type="Texture2D" id="Texture2D_6oipl"]
@@ -63,6 +64,7 @@ texture = ExtResource("2_d7fud")
 centered = false
 
 [node name="Up" type="Node2D" parent="BubbleButton"]
+visible = false
 
 [node name="Keyboard" type="Sprite2D" parent="BubbleButton/Up"]
 texture_filter = 1
@@ -77,6 +79,7 @@ scale = Vector2(0.25, 0.25)
 texture = SubResource("Texture2D_ta3ip")
 
 [node name="Right" type="Node2D" parent="BubbleButton"]
+visible = false
 
 [node name="Keyboard" type="Sprite2D" parent="BubbleButton/Right"]
 texture_filter = 1
@@ -91,10 +94,16 @@ scale = Vector2(0.25, 0.25)
 texture = SubResource("Texture2D_6cdqc")
 
 [node name="Space" type="Node2D" parent="BubbleButton"]
+visible = false
+
+[node name="Fixed" type="Sprite2D" parent="BubbleButton/Space"]
+texture_filter = 1
+texture = ExtResource("4_84542")
+centered = false
 
 [node name="Keyboard" type="Sprite2D" parent="BubbleButton/Space"]
 texture_filter = 1
-position = Vector2(25, 42)
+position = Vector2(23.75, 42.75)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("Texture2D_xjdwb")
 
@@ -105,6 +114,7 @@ scale = Vector2(0.25, 0.25)
 texture = SubResource("Texture2D_b6sbj")
 
 [node name="TooHard" type="Sprite2D" parent="BubbleButton"]
+visible = false
 texture_filter = 1
 texture = ExtResource("4_c62l3")
 centered = false
