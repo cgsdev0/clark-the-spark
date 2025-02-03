@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=88 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
@@ -41,6 +41,7 @@
 [ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
 [ext_resource type="Script" path="res://scripts/meter_position.gd" id="42_qjn13"]
 [ext_resource type="PackedScene" uid="uid://cfkhvq2wn3f7x" path="res://scenes/menu.tscn" id="43_cwema"]
+[ext_resource type="AudioStream" uid="uid://cogiwebt2cmdq" path="res://audio/music/office.ogg" id="47_p0sh7"]
 [ext_resource type="AudioStream" uid="uid://dgvupihmcx7we" path="res://audio/music/main.ogg" id="49_wth0b"]
 [ext_resource type="AudioStream" uid="uid://obohs6shebnb" path="res://audio/music/cutscene.ogg" id="50_prm0i"]
 [ext_resource type="AudioStream" uid="uid://ccmy31oyu3cvk" path="res://audio/music/space.ogg" id="51_5rgat"]
@@ -246,7 +247,7 @@ shader_parameter/screen_height = 1080.0
 shader_parameter/falloff = 0.2
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_aef5r"]
-clip_count = 5
+clip_count = 6
 clip_0/name = &"Main"
 clip_0/stream = ExtResource("49_wth0b")
 clip_0/auto_advance = 0
@@ -262,6 +263,9 @@ clip_3/auto_advance = 0
 clip_4/name = &"Space"
 clip_4/stream = ExtResource("51_5rgat")
 clip_4/auto_advance = 0
+clip_5/name = &"Office"
+clip_5/stream = ExtResource("47_p0sh7")
+clip_5/auto_advance = 0
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 0,
@@ -269,13 +273,7 @@ Vector2i(0, 1): {
 "from_time": 1,
 "to_time": 1
 },
-Vector2i(0, 3): {
-"fade_beats": 0,
-"fade_mode": 0,
-"from_time": 2,
-"to_time": 1
-},
-Vector2i(1, 0): {
+Vector2i(1, 5): {
 "fade_beats": 0,
 "fade_mode": 0,
 "from_time": 3,
@@ -288,6 +286,12 @@ Vector2i(2, 3): {
 "to_time": 1
 },
 Vector2i(3, 4): {
+"fade_beats": 0,
+"fade_mode": 0,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(5, 2): {
 "fade_beats": 0,
 "fade_mode": 0,
 "from_time": 2,
@@ -525,7 +529,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="Sparks" type="GPUParticles3D" parent="level/Networks/circuit_wires/PlayerPath/Player"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 emitting = false
 amount = 50
 one_shot = true

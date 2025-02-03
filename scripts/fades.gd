@@ -97,7 +97,7 @@ func kill():
 	#if is_instance_valid(anim):
 		#anim.pause()
 	if tooltip != Events.Tooltip.NONE:
-		Events.hide_tooltip.emit()
+		Events.show_tooltip.emit(Events.Tooltip.RIGHT)
 	if is_instance_valid(tv):
 		tv.queue_free()
 	dead = true
@@ -168,6 +168,8 @@ func _process(delta):
 		Events.multimeter_up = true
 	if !electrified && was_electrified && !dead:
 		Events.multimeter_up = false
+	if tooltip == Events.Tooltip.TOO_HARD && electrified && !was_electrified:
+		Events.show_tooltip.emit(Events.Tooltip.POP)
 	if tooltip == Events.Tooltip.POP && electrified && !was_electrified:
 		Events.show_tooltip.emit(tooltip)
 	if is_instance_valid(tv):

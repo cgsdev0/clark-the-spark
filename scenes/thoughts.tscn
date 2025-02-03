@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0dur2qkrjnbr"]
+[gd_scene load_steps=11 format=3 uid="uid://0dur2qkrjnbr"]
 
 [ext_resource type="Script" path="res://scripts/thoughts.gd" id="1_dcom1"]
 [ext_resource type="Texture2D" uid="uid://difnwjgm2rrh2" path="res://textures/button_bubble.png" id="2_d7fud"]
@@ -18,6 +18,22 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ebcwy")
 path = "move_up"
+show_mode = 0
+force_type = 2
+
+[sub_resource type="Texture2D" id="Texture2D_484ec"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_ebcwy")
+path = "move_right"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_6cdqc"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_ebcwy")
+path = "move_right"
 show_mode = 0
 force_type = 2
 
@@ -59,6 +75,20 @@ texture_filter = 1
 position = Vector2(62, 42)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("Texture2D_ta3ip")
+
+[node name="Right" type="Node2D" parent="BubbleButton"]
+
+[node name="Keyboard" type="Sprite2D" parent="BubbleButton/Right"]
+texture_filter = 1
+position = Vector2(25, 42)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("Texture2D_484ec")
+
+[node name="Joystick" type="Sprite2D" parent="BubbleButton/Right"]
+texture_filter = 1
+position = Vector2(62, 42)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("Texture2D_6cdqc")
 
 [node name="Space" type="Node2D" parent="BubbleButton"]
 

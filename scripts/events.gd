@@ -12,6 +12,7 @@ enum Tooltip {
 	UP,
 	POP,
 	TOO_HARD,
+	RIGHT
 }
 
 var multimeter_up = false

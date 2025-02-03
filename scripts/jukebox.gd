@@ -19,7 +19,7 @@ func on_city():
 func on_cutscene():
 	self["parameters/switch_to_clip"] = &"Cutscene"
 	await get_tree().create_timer(4.0).timeout
-	self["parameters/switch_to_clip"] = &"Main"
+	self["parameters/switch_to_clip"] = &"Office"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

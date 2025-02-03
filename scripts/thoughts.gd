@@ -10,14 +10,18 @@ func _ready():
 func _process(delta):
 	match Events.tooltip:
 		Events.Tooltip.UP:
+			for child in $BubbleButton.get_children():
+				child.hide()
 			$BubbleButton/Up.show()
-			$BubbleButton/Space.hide()
-			$BubbleButton/TooHard.hide()
 		Events.Tooltip.POP:
-			$BubbleButton/Up.hide()
+			for child in $BubbleButton.get_children():
+				child.hide()
 			$BubbleButton/Space.show()
-			$BubbleButton/TooHard.hide()
 		Events.Tooltip.TOO_HARD:
-			$BubbleButton/Up.hide()
-			$BubbleButton/Space.hide()
+			for child in $BubbleButton.get_children():
+				child.hide()
 			$BubbleButton/TooHard.show()
+		Events.Tooltip.RIGHT:
+			for child in $BubbleButton.get_children():
+				child.hide()
+			$BubbleButton/Right.show()
