@@ -555,7 +555,7 @@ shape = SubResource("BoxShape3D_q5wwl")
 [node name="to_office" parent="level/Networks" instance=ExtResource("15_q6lad")]
 script = ExtResource("1_jqye8")
 npc = true
-speed_mult = 1.2
+speed_mult = 1.35
 
 [node name="WireMesh" type="Node3D" parent="level/Networks/to_office"]
 
@@ -878,7 +878,7 @@ size = Vector2i(160, 90)
 offset_right = 40.0
 offset_bottom = 40.0
 stream = ExtResource("42_o3i3g")
-volume_db = 6.0
+volume_db = 4.0
 autoplay = true
 loop = true
 bus = &"TV"
