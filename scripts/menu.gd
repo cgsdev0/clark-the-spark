@@ -31,8 +31,8 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_fullscreen_pressed():
-	if get_viewport().mode != Window.MODE_EXCLUSIVE_FULLSCREEN:
-		get_viewport().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+	if get_viewport().mode != Window.MODE_FULLSCREEN:
+		get_viewport().mode = Window.MODE_FULLSCREEN
 	else:
 		get_viewport().mode = Window.MODE_WINDOWED
 
