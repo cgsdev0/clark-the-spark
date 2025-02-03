@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://o32ll2twlx1f"]
+[gd_scene load_steps=23 format=3 uid="uid://o32ll2twlx1f"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_xbhn4"]
 [ext_resource type="Script" path="res://scripts/building.gd" id="2_m5854"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://gnnthbps5agn" path="res://models/trees/small_tree.gltf" id="13_3dldo"]
 [ext_resource type="PackedScene" uid="uid://14j611a5c52u" path="res://models/trees/wide_tree.gltf" id="14_hbal6"]
 [ext_resource type="PackedScene" uid="uid://c6o8an206owhr" path="res://models/trees/tall_tree.gltf" id="15_nklqj"]
+[ext_resource type="Script" path="res://scripts/road.gd" id="16_dnj83"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
 albedo_color = Color(0.14902, 0.360784, 0.258824, 1)
@@ -33,6 +34,20 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("12_fgemr")
 texture_filter = 0
+
+[sub_resource type="Curve3D" id="Curve3D_vqyxs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.81225, 0, 0.0510797, 0, 0, 0, 0, 0, 0, -11.3029, 0, 0.114775, 0, 0, 0, 0, 0, 0, -19.8699, 0, -1.70054, 0, 0, 0, 0, 0, 0, -19.9017, 0, -4.15281, 0, 0, 0, 0, 0, 0, -5.44289, 0, -4.24836, 0, 0, 0, 0, 0, 0, -5.18811, 0, -12.4969, 0, 0, 0, 0, 0, 0, -1.62116, 0, -12.4014, 0, 0, 0, 0, 0, 0, -1.81225, 0, 0.0510797),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_b4880"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.07975, 0, 0.528794, 0, 0, 0, 0, 0, 0, -1.0479, 0, -12.9428, 0, 0, 0, 0, 0, 0, -5.88875, 0, -12.9428, 0, 0, 0, 0, 0, 0, -5.9206, 0, -4.72607, 0, 0, 0, 0, 0, 0, -20.2839, 0, -4.69423, 0, 0, 0, 0, 0, 0, -20.3794, 0, 2.43966, 0, 0, 0, 0, 0, 0, -11.1436, 0, 0.624338, 0, 0, 0, 0, 0, 0, -1.07975, 0, 0.528794),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
 [node name="city" type="Node3D"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
@@ -457,3 +472,13 @@ transform = Transform3D(1.17629, 0, 0.930778, 0, 1.5, 0, -0.930778, 0, 1.17629, 
 
 [node name="blockbench_export23" parent="." instance=ExtResource("13_3dldo")]
 transform = Transform3D(0.585277, 0, 1.3811, 0, 1.5, 0, -1.3811, 0, 0.585277, -4.61504, -0.492848, -3.29819)
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497575, 0)
+curve = SubResource("Curve3D_vqyxs")
+script = ExtResource("16_dnj83")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497575, 0)
+curve = SubResource("Curve3D_b4880")
+script = ExtResource("16_dnj83")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://cdyln7ny6tm1d"]
+[gd_scene load_steps=91 format=4 uid="uid://cdyln7ny6tm1d"]
 
 [ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
@@ -13,9 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
 [ext_resource type="Shader" path="res://shaders/space.gdshader" id="2_uy6os"]
 [ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
+[ext_resource type="AudioStream" uid="uid://bd3nkljq0hkjf" path="res://audio/sfx/you_win.ogg" id="4_0m0s4"]
 [ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
 [ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="4_s1mw2"]
+[ext_resource type="AudioStream" uid="uid://blp2btvqq6ask" path="res://audio/sfx/planet.ogg" id="5_bjhce"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
+[ext_resource type="AudioStream" uid="uid://clkhmrpj3aqve" path="res://audio/sfx/yay.ogg" id="5_v718n"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
 [ext_resource type="PackedScene" uid="uid://o32ll2twlx1f" path="res://scenes/city.tscn" id="7_2ij2j"]
 [ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
@@ -328,6 +331,20 @@ layers = 2
 mesh = SubResource("ArrayMesh_xkkgb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_vonts")
+
+[node name="YouWin" type="AudioStreamPlayer" parent="Ending/Earth"]
+stream = ExtResource("4_0m0s4")
+bus = &"SFX"
+
+[node name="Yay" type="AudioStreamPlayer" parent="Ending/Earth"]
+stream = ExtResource("5_v718n")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Pop" type="AudioStreamPlayer" parent="Ending/Earth"]
+stream = ExtResource("5_bjhce")
+volume_db = 3.0
+bus = &"SFX"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ending"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 419.366, 728.467, -444.041)

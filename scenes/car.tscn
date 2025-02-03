@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://boswxrmne4d46"]
+
+[ext_resource type="PackedScene" uid="uid://bqsolg2enpv64" path="res://models/cars/car.gltf" id="1_q0equ"]
+[ext_resource type="PackedScene" uid="uid://cfbjqicwlynxv" path="res://models/cars/white_car.gltf" id="2_esqlw"]
+[ext_resource type="PackedScene" uid="uid://bo7l31rpshuus" path="res://models/cars/red_car.gltf" id="3_5wqoj"]
+
+[node name="PathFollow3D" type="PathFollow3D"]
+transform = Transform3D(-0.00671135, 0, 0.999977, 0, 1, 0, -0.999977, 0, -0.00671135, -1.81225, 0, 0.0510797)
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_q0equ")]
+transform = Transform3D(-7.86805e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -7.86805e-09, 0, -0.475, 0)
+
+[node name="blockbench_export2" parent="." instance=ExtResource("2_esqlw")]
+transform = Transform3D(-8.03266e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -8.03266e-09, 0, -0.475, 0)
+
+[node name="blockbench_export3" parent="." instance=ExtResource("3_5wqoj")]
+transform = Transform3D(-8.14907e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -8.14907e-09, 0, -0.475, 0)

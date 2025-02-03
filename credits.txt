@@ -1,9 +1,22 @@
-Small Plastic Bag Explosion http://freesound.org/people/qubodup/sounds/238959 by Iwan ‘qubodup’ Gabovitch http://freesound.org/people/qubodup under CC-BY 3.0 License http://creativecommons.org/licenses/by/3.0/legalcode
+CREDITS
 
+badcop   - programming
+jagofett - art
+vesdev   - audio
+
+
+special thanks to:
+
+skyegrey - knack tuah video edit
+
+Free assets used:
+
+http://freesound.org/people/qubodup/sounds/238959
 https://freesound.org/people/soundslikewillem/sounds/333083/
-
 https://poly.pizza/m/fxKdRjNq20j
-
 https://poly.pizza/m/88CP80Kgb-u
 https://managore.itch.io/m5x7
 https://monkopus.itch.io/stacked-pixel
+https://freesound.org/people/audiosmedia/sounds/170583/
+https://freesound.org/people/Reitanna/sounds/323703/
+https://www.dafont.com/gumball-thick-wires.font

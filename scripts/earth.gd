@@ -64,12 +64,15 @@ func pop():
 	t.set_ease(Tween.EASE_IN)
 	t.set_trans(Tween.TRANS_QUAD)
 	t.tween_property(self, "scale", Vector3.ZERO, 0.18)
+	t.parallel().tween_callback(func(): $Pop.play())
 	t.set_ease(Tween.EASE_OUT)
 	t.set_trans(Tween.TRANS_BACK)
 	t.parallel().tween_property(%BigGuy, "pixel_size", 0.2, 0.35).set_delay(0.19)
 	t.set_trans(Tween.TRANS_LINEAR)
 	t.tween_interval(2.0)
 	t.tween_property(%WinLabel, "modulate", Color.WHITE, 0.1)
+	t.parallel().tween_callback(func(): $YouWin.play())
+	t.parallel().tween_callback(func(): $Yay.play()).set_delay(0.8)
 
 var charging = false
 var electrified
