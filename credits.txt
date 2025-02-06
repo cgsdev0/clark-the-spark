@@ -6,17 +6,25 @@ vesdev   - audio
 
 
 special thanks to:
+skyegrey - knack tuah video edit (source: https://www.youtube.com/watch?v=dDagv6SA8nw)
 
-skyegrey - knack tuah video edit
+Code assets used:
+original cutout shader effect - https://www.youtube.com/watch?v=GJVdWGvkWbk
+simplex noise shader code - https://github.com/ashima/webgl-noise/tree/master/src
+controller icons addon - https://github.com/rsubtil/controller_icons/
+godot game engine 4.3 - https://godotengine.org/
 
-Free assets used:
-
+Free sounds used:
 http://freesound.org/people/qubodup/sounds/238959
-https://freesound.org/people/soundslikewillem/sounds/333083/
-https://poly.pizza/m/fxKdRjNq20j
-https://poly.pizza/m/88CP80Kgb-u
-https://managore.itch.io/m5x7
-https://monkopus.itch.io/stacked-pixel
 https://freesound.org/people/audiosmedia/sounds/170583/
 https://freesound.org/people/Reitanna/sounds/323703/
+
+free models used:
+https://poly.pizza/m/fxKdRjNq20j
+https://poly.pizza/m/88CP80Kgb-u
+
+free fonts used:
+https://managore.itch.io/m5x7
+https://monkopus.itch.io/stacked-pixel
+https://datagoblin.itch.io/monogram
 https://www.dafont.com/gumball-thick-wires.font
