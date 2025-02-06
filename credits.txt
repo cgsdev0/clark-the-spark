@@ -12,6 +12,8 @@ Code assets used:
 original cutout shader effect - https://www.youtube.com/watch?v=GJVdWGvkWbk
 simplex noise shader code - https://github.com/ashima/webgl-noise/tree/master/src
 outer space shader - https://godotshaders.com/shader/space-background-parallax/
+checkerboard shader - https://godotshaders.com/shader/moving-checkerboard/
+simple circle transition shader - https://godotshaders.com/shader/simple-circle-transition-2/
 controller icons addon - https://github.com/rsubtil/controller_icons/
 godot game engine 4.3 - https://godotengine.org/
 
