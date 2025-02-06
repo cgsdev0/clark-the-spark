@@ -11,6 +11,7 @@ skyegrey - knack tuah video edit (source: https://www.youtube.com/watch?v=dDagv6
 Code assets used:
 original cutout shader effect - https://www.youtube.com/watch?v=GJVdWGvkWbk
 simplex noise shader code - https://github.com/ashima/webgl-noise/tree/master/src
+outer space shader - https://godotshaders.com/shader/space-background-parallax/
 controller icons addon - https://github.com/rsubtil/controller_icons/
 godot game engine 4.3 - https://godotengine.org/
 
