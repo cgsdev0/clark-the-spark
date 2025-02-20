@@ -77,7 +77,7 @@ func get_charge_time():
 		var t = unlerp(0.0, d[1], max(Events.score, 1.0))
 		return d[3] / clampf(t, 0.15, 0.9)
 	var t = unlerp(d[1], d[2], Events.score)
-	print("T: ", t)
+	# print("T: ", t)
 	return lerp(d[3], 0.25, t)
 	
 func kill():
@@ -159,7 +159,7 @@ func find_neighbor(direction: Vector2):
 		if l < min && l > 0.0 && l < 250.0:
 			who = candidate
 			min = l
-	print(min)
+	# print(min)
 	return who
 
 func move_on():
@@ -279,4 +279,4 @@ func _physics_process(delta):
 		else:
 			Events.multimeter_up = true
 		Events.iso_cam_hacky_do_not_use.target = target
-		print(target)
+		# print(target)

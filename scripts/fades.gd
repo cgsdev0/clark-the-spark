@@ -23,7 +23,8 @@ enum Electric {
 	GENERATOR,
 	RESISTOR,
 	BIG_RESISTOR,
-	CAPACITOR
+	CAPACITOR,
+	SHPOOBO,
 }
 
 var values = {
@@ -50,6 +51,7 @@ var values = {
 	Electric.RESISTOR: [2, 0, 50, 1.2],
 	Electric.BIG_RESISTOR: [5, 5, 50, 1.2],
 	Electric.CAPACITOR: [4, 1, 50, 2.3],
+	Electric.SHPOOBO: [1, 0, 100000, 1.5],
 }
 
 @export var type: Electric = Electric.GENERIC
@@ -89,7 +91,7 @@ func get_charge_time():
 		var t = unlerp(0.0, d[1], max(Events.score, 1.0))
 		return d[3] / clampf(t, 0.15, 0.9)
 	var t = unlerp(d[1], d[2], Events.score)
-	print("T: ", t)
+	# print("T: ", t)
 	return lerp(d[3], 0.25, t)
 	
 func kill():

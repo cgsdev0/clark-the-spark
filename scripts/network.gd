@@ -220,7 +220,7 @@ func find_nearest(pos: Vector3):
 
 func dx():
 	var d = max($PlayerPath/Player.progress - 0.05, 0.0)
-	print($PlayerPath/Player.progress)
+	# print($PlayerPath/Player.progress)
 	return to_global($PlayerPath.curve.sample_baked(d))
 	
 func grid_hop():
@@ -300,7 +300,7 @@ func _physics_process(delta):
 			charge_time = electrified.get_charge_time()
 			max_charge_time = electrified.get_max_charge_time()
 			is_possible = electrified.is_possible()
-			print("TIME: ", charge_time)
+			# print("TIME: ", charge_time)
 			if charge_time == 0.0:
 				if pop():
 					return
@@ -379,28 +379,28 @@ func _physics_process(delta):
 			if $Camera3D.target_rotation > PI / 3.0 && $Camera3D.target_rotation < 2 * PI / 3.0:
 				rotated = diff.z
 			elif $Camera3D.target_rotation >= PI / 6.0 && $Camera3D.target_rotation < PI / 3.0:
-				print("A")
+				# print("A")
 				rotated = -diff.x + diff.z # ???
 			elif $Camera3D.target_rotation >= 5 * PI / 6.0 && $Camera3D.target_rotation < 7 * PI / 6.0:
 				rotated = diff.x
 			elif $Camera3D.target_rotation >= 2 * PI / 3.0 && $Camera3D.target_rotation < 5 * PI / 6.0:
-				print("B")
+				# print("B")
 				rotated = diff.x + diff.z
 			elif $Camera3D.target_rotation >= 4 * PI / 3.0 && $Camera3D.target_rotation < 5 * PI / 3.0:
 				rotated = -diff.z
 			elif $Camera3D.target_rotation >= 7 * PI / 6.0 && $Camera3D.target_rotation < 4 * PI / 3.0:
-				print("C")
+				# print("C")
 				rotated = diff.x - diff.z # ???
 			elif $Camera3D.target_rotation >= 5 * PI / 3.0 && $Camera3D.target_rotation < 11 * PI / 6.0:
-				print("D")
+				# print("D")
 				rotated = -diff.x - diff.z
 			var adjusted = Vector2(rotated, diff.y).normalized()
 			if $Camera3D.ceiling:
-				print("we on ceilin")
+				# print("we on ceilin")
 				adjusted = Vector2(diff.z, -diff.x).normalized()
 			# print("considering ", n)
-			print(adjusted)
-			print(input)
+			# print(adjusted)
+			# print(input)
 			if adjusted.distance_squared_to(input) < 0.001 || connections[current].size() == 1:
 				if charging:
 					charging = false

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 Events="*res://scripts/events.gd"
+ShaderCache="*res://scripts/shader_cache.gd"
 
 [display]
 

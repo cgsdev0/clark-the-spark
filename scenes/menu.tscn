@@ -401,9 +401,18 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.248148
+anchor_right = 0.5
+anchor_bottom = 0.248148
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
 texture_filter = 1
-position = Vector2(487, 129)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_o4pb8")
 frame_progress = 0.940063
