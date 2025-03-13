@@ -970,7 +970,6 @@ text = "[rainbow freq=0.15 sat=0.8 val=0.8][wave amp=50.0 freq=5.0][center]YOU a
 process_mode = 3
 stream = SubResource("AudioStreamInteractive_aef5r")
 volume_db = -8.0
-autoplay = true
 bus = &"Music"
 script = ExtResource("52_1vmuq")
 

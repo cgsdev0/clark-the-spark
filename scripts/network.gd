@@ -60,6 +60,7 @@ func create_edge_mesh(a: Vector3, b: Vector3):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	InputManager.swipe.connect(on_swipe)
 	Events.teleport.connect(teleport)
 	var cube: MeshInstance3D = get_child(0)
 	var mesh: ArrayMesh = cube.mesh
@@ -271,12 +272,18 @@ func start_hardcut_timer():
 	await get_tree().create_timer(hard_cut_timer).timeout
 	Events.transition.emit()
 	
-func _input(event):
-	if event is InputEventSingleScreenSwipe:
-		var dir = int(round(fposmod(event.relative.angle(), 2 * PI) / PI * 2.0))
-		var input = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP][dir]
-		if buffered.size() < 1 && can_buffer:
-			buffered.push_back(input)
+func on_swipe(relative):
+	if !active:
+		return
+	if abs(relative.x) == abs(relative.y):
+		return
+	var input = Vector2.UP
+	if abs(relative.x) > abs(relative.y):
+		input = Vector2.RIGHT * sign(relative.x)
+	else:
+		input = Vector2.DOWN * sign(relative.y)
+	if buffered.size() < 1 && can_buffer:
+		buffered.push_back(input)
 			
 func _physics_process(delta):
 	if !active:

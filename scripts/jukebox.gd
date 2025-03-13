@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	play()
 	Events.space_song.connect(on_space)
 	Events.city_song.connect(on_city)
 	Events.cutscene.connect(on_cutscene)
