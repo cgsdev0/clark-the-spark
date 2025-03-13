@@ -1,56 +1,56 @@
 [gd_scene load_steps=88 format=4 uid="uid://cdyln7ny6tm1d"]
 
-[ext_resource type="Script" path="res://scripts/end_cam.gd" id="1_a4p1y"]
+[ext_resource type="Script" uid="uid://dlhmq6mwjpaj2" path="res://scripts/end_cam.gd" id="1_a4p1y"]
 [ext_resource type="PackedScene" uid="uid://dim2428cdap85" path="res://scenes/house.tscn" id="1_awue5"]
 [ext_resource type="Material" uid="uid://cmfe4mhhqtwpk" path="res://materials/power_pole.tres" id="1_fxtk2"]
-[ext_resource type="Script" path="res://scripts/network.gd" id="1_jqye8"]
+[ext_resource type="Script" uid="uid://c33pkculpagt" path="res://scripts/network.gd" id="1_jqye8"]
 [ext_resource type="PackedScene" uid="uid://fa7it7yoyoki" path="res://scenes/office.tscn" id="1_m4ami"]
-[ext_resource type="Script" path="res://scripts/earth.gd" id="1_rn37l"]
+[ext_resource type="Script" uid="uid://cbllp82oirgtj" path="res://scripts/earth.gd" id="1_rn37l"]
 [ext_resource type="PackedScene" uid="uid://ctww4njwphpx6" path="res://scenes/circuit.tscn" id="1_v6jmi"]
 [ext_resource type="Material" uid="uid://cpi2hyuptlf8j" path="res://models/Material.005.tres" id="1_vonts"]
 [ext_resource type="PackedScene" uid="uid://daelcbmmf7j6d" path="res://models/house/house_wires.gltf" id="2_43qd7"]
 [ext_resource type="PackedScene" uid="uid://b5s8h2gxt3npx" path="res://scenes/circuit_inert.tscn" id="2_70xbw"]
 [ext_resource type="PackedScene" uid="uid://boyunlyionm4m" path="res://models/house/wireframe.gltf" id="2_g10u3"]
-[ext_resource type="Shader" path="res://shaders/space.gdshader" id="2_uy6os"]
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
+[ext_resource type="Shader" uid="uid://b5m3nwwe27lj5" path="res://shaders/space.gdshader" id="2_uy6os"]
+[ext_resource type="Shader" uid="uid://dscs8yua787mx" path="res://shaders/dissolve.gdshader" id="3_e6etu"]
 [ext_resource type="AudioStream" uid="uid://bd3nkljq0hkjf" path="res://audio/sfx/you_win.ogg" id="4_0m0s4"]
-[ext_resource type="Script" path="res://scripts/guy.gd" id="4_8goul"]
+[ext_resource type="Script" uid="uid://cp22rq6yx6dws" path="res://scripts/guy.gd" id="4_8goul"]
 [ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="4_s1mw2"]
 [ext_resource type="AudioStream" uid="uid://blp2btvqq6ask" path="res://audio/sfx/planet.ogg" id="5_bjhce"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="5_ftnol"]
+[ext_resource type="Script" uid="uid://c1w7qgeriqh1y" path="res://scripts/camera_3d.gd" id="5_ftnol"]
 [ext_resource type="AudioStream" uid="uid://clkhmrpj3aqve" path="res://audio/sfx/yay.ogg" id="5_v718n"]
 [ext_resource type="Environment" uid="uid://cnl7cr84v6rj" path="res://environment.tres" id="7_1sx5j"]
 [ext_resource type="PackedScene" uid="uid://o32ll2twlx1f" path="res://scenes/city.tscn" id="7_2ij2j"]
-[ext_resource type="Script" path="res://scripts/zone.gd" id="7_fp1ht"]
+[ext_resource type="Script" uid="uid://ddip3n4brv136" path="res://scripts/zone.gd" id="7_fp1ht"]
 [ext_resource type="PackedScene" uid="uid://fiwjwn3i0yfo" path="res://models/house/circuit_wires.gltf" id="7_uiv23"]
 [ext_resource type="AudioStream" uid="uid://b1lolpi0yakw5" path="res://audio/sfx/charge.ogg" id="9_aee73"]
-[ext_resource type="Script" path="res://scripts/trail.gd" id="9_nwkxw"]
+[ext_resource type="Script" uid="uid://5qyhsnxythse" path="res://scripts/trail.gd" id="9_nwkxw"]
 [ext_resource type="AudioStream" uid="uid://mnogvlqkynih" path="res://audio/sfx/pop1.ogg" id="10_jev0h"]
 [ext_resource type="AudioStream" uid="uid://bwjmwoenejvhn" path="res://audio/sfx/fail.ogg" id="10_lwet4"]
 [ext_resource type="AudioStream" uid="uid://c4kq35ysyllit" path="res://audio/sfx/pop2.ogg" id="11_kcvd8"]
-[ext_resource type="Script" path="res://scripts/iso_cam.gd" id="13_3dgot"]
+[ext_resource type="Script" uid="uid://b8kyipfj3jokg" path="res://scripts/iso_cam.gd" id="13_3dgot"]
 [ext_resource type="PackedScene" uid="uid://bhtm3pt1tjd1a" path="res://scenes/meter.tscn" id="13_5ll0k"]
 [ext_resource type="PackedScene" uid="uid://cjwidnaabjnak" path="res://models/house/to_office.gltf" id="15_q6lad"]
 [ext_resource type="PackedScene" uid="uid://c11fyemminal8" path="res://models/house/office_wires.gltf" id="16_tsksg"]
 [ext_resource type="PackedScene" uid="uid://du75wqygal4v3" path="res://models/house/to_house.gltf" id="17_t2t27"]
-[ext_resource type="Shader" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
+[ext_resource type="Shader" uid="uid://idahtriwv7hp" path="res://shaders/hard_cut.gdshader" id="23_a5qjr"]
 [ext_resource type="AudioStream" uid="uid://daa46nnqratf1" path="res://audio/sfx/powerline.ogg" id="24_13j3q"]
-[ext_resource type="Script" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
-[ext_resource type="Script" path="res://scripts/sparks.gd" id="25_qkpe2"]
-[ext_resource type="Script" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
+[ext_resource type="Script" uid="uid://cggqf71ieo1id" path="res://scripts/hard_cut.gd" id="24_lh5yc"]
+[ext_resource type="Script" uid="uid://b1vqgyq26f0t8" path="res://scripts/sparks.gd" id="25_qkpe2"]
+[ext_resource type="Script" uid="uid://gep2rs61x1rs" path="res://scripts/thoughts3d.gd" id="27_q3d6h"]
 [ext_resource type="Material" uid="uid://c1sd8sk1b8sgv" path="res://materials/sparks.tres" id="28_ct0t7"]
 [ext_resource type="PackedScene" uid="uid://fan50cghwwv2" path="res://scenes/sparky.tscn" id="40_pvp5o"]
 [ext_resource type="PackedScene" uid="uid://0dur2qkrjnbr" path="res://scenes/thoughts.tscn" id="41_ctusk"]
 [ext_resource type="FontFile" uid="uid://doky3kdlpn4lm" path="res://fonts/Stacked pixel.ttf" id="41_scf7w"]
-[ext_resource type="VideoStream" path="res://knacktuah.ogv" id="42_o3i3g"]
-[ext_resource type="Script" path="res://scripts/meter_position.gd" id="42_qjn13"]
+[ext_resource type="VideoStream" uid="uid://dnqyka7rinixx" path="res://knacktuah.ogv" id="42_o3i3g"]
+[ext_resource type="Script" uid="uid://d3645iu4qajc1" path="res://scripts/meter_position.gd" id="42_qjn13"]
 [ext_resource type="PackedScene" uid="uid://cfkhvq2wn3f7x" path="res://scenes/menu.tscn" id="43_cwema"]
 [ext_resource type="AudioStream" uid="uid://cogiwebt2cmdq" path="res://audio/music/office.ogg" id="47_p0sh7"]
 [ext_resource type="AudioStream" uid="uid://dgvupihmcx7we" path="res://audio/music/main.ogg" id="49_wth0b"]
 [ext_resource type="AudioStream" uid="uid://obohs6shebnb" path="res://audio/music/cutscene.ogg" id="50_prm0i"]
 [ext_resource type="AudioStream" uid="uid://ccmy31oyu3cvk" path="res://audio/music/space.ogg" id="51_5rgat"]
 [ext_resource type="AudioStream" uid="uid://cpvrc0iwh6ba6" path="res://audio/music/city-intro.ogg" id="51_c5vpc"]
-[ext_resource type="Script" path="res://scripts/jukebox.gd" id="52_1vmuq"]
+[ext_resource type="Script" uid="uid://0iqdi2spdfm0" path="res://scripts/jukebox.gd" id="52_1vmuq"]
 [ext_resource type="AudioStream" uid="uid://b0tlr7uo2qyeq" path="res://audio/music/city-loop.ogg" id="52_lf46s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cvpae"]
@@ -242,31 +242,31 @@ clip_5/stream = ExtResource("47_p0sh7")
 clip_5/auto_advance = 0
 _transitions = {
 Vector2i(0, 1): {
-"fade_beats": 0,
+"fade_beats": 0.0,
 "fade_mode": 3,
 "from_time": 1,
 "to_time": 1
 },
 Vector2i(1, 5): {
-"fade_beats": 0,
+"fade_beats": 0.0,
 "fade_mode": 0,
 "from_time": 3,
 "to_time": 1
 },
 Vector2i(2, 3): {
-"fade_beats": 0,
+"fade_beats": 0.0,
 "fade_mode": 0,
 "from_time": 3,
 "to_time": 1
 },
 Vector2i(3, 4): {
-"fade_beats": 0,
+"fade_beats": 0.0,
 "fade_mode": 0,
 "from_time": 2,
 "to_time": 1
 },
 Vector2i(5, 2): {
-"fade_beats": 0,
+"fade_beats": 0.0,
 "fade_mode": 0,
 "from_time": 2,
 "to_time": 1

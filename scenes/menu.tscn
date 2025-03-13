@@ -1,9 +1,9 @@
 [gd_scene load_steps=41 format=3 uid="uid://cfkhvq2wn3f7x"]
 
-[ext_resource type="Shader" path="res://shaders/menu.gdshader" id="1_3fb0x"]
+[ext_resource type="Shader" uid="uid://b1iqg43610fcj" path="res://shaders/menu.gdshader" id="1_3fb0x"]
 [ext_resource type="FontFile" uid="uid://bh7kpk6fbm2dk" path="res://audio/music/Stacked pixel.ttf" id="1_jnxne"]
-[ext_resource type="Script" path="res://scripts/menu.gd" id="2_daxhn"]
-[ext_resource type="Script" path="res://scripts/menu_path.gd" id="3_pnpp8"]
+[ext_resource type="Script" uid="uid://bnow7gi827oc1" path="res://scripts/menu.gd" id="2_daxhn"]
+[ext_resource type="Script" uid="uid://bdelsx0hex0x4" path="res://scripts/menu_path.gd" id="3_pnpp8"]
 [ext_resource type="Texture2D" uid="uid://gu3ru4wkeis4" path="res://textures/title-sheet.png" id="5_dfs0h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1xxu"]

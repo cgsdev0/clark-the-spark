@@ -51,7 +51,7 @@ var values = {
 	Electric.RESISTOR: [2, 0, 50, 1.2],
 	Electric.BIG_RESISTOR: [5, 5, 50, 1.2],
 	Electric.CAPACITOR: [4, 1, 50, 2.3],
-	Electric.SHPOOBO: [1, 0, 100000, 1.5],
+	Electric.SHPOOBO: [10, 0, 100000, 1.5],
 }
 
 @export var type: Electric = Electric.GENERIC

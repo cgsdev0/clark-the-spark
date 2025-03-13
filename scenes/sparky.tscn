@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://fan50cghwwv2"]
 
 [ext_resource type="Texture2D" uid="uid://dbngydb6q7w1t" path="res://textures/ElectricSpriteBody.png" id="1_32jx4"]
-[ext_resource type="Script" path="res://scripts/sparky.gd" id="1_tgs33"]
+[ext_resource type="Script" uid="uid://din4iuevsu76i" path="res://scripts/sparky.gd" id="1_tgs33"]
 [ext_resource type="Texture2D" uid="uid://bn7sdpsrrqj21" path="res://textures/ElectricSpriteEyes.png" id="2_v3vqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgora"]

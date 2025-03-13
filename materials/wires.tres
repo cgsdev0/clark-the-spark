@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwics2uc3jref"]
 
-[ext_resource type="Shader" path="res://shaders/wires.gdshader" id="1_jlr2w"]
+[ext_resource type="Shader" uid="uid://26c0u8tl8nhd" path="res://shaders/wires.gdshader" id="1_jlr2w"]
 
 [resource]
 render_priority = 0

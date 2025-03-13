@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://0dur2qkrjnbr"]
 
-[ext_resource type="Script" path="res://scripts/thoughts.gd" id="1_dcom1"]
+[ext_resource type="Script" uid="uid://bp12cq58yjn7x" path="res://scripts/thoughts.gd" id="1_dcom1"]
 [ext_resource type="Texture2D" uid="uid://difnwjgm2rrh2" path="res://textures/button_bubble.png" id="2_d7fud"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ebcwy"]
+[ext_resource type="Script" uid="uid://bf46kk7akvbeb" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ebcwy"]
 [ext_resource type="Texture2D" uid="uid://cv25bxv4dr1ym" path="res://textures/hold_text.png" id="4_84542"]
 [ext_resource type="Texture2D" uid="uid://b4ohchxm0y8ai" path="res://textures/too_hard.png" id="4_c62l3"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://o32ll2twlx1f"]
 
 [ext_resource type="PackedScene" uid="uid://cfjm5asmwr4js" path="res://models/buildings/medium_building.gltf" id="1_xbhn4"]
-[ext_resource type="Script" path="res://scripts/building.gd" id="2_m5854"]
+[ext_resource type="Script" uid="uid://bu38qatlym7ix" path="res://scripts/building.gd" id="2_m5854"]
 [ext_resource type="PackedScene" uid="uid://dc01df17lgguh" path="res://models/buildings/city_house.gltf" id="3_ahw03"]
 [ext_resource type="PackedScene" uid="uid://dv78qyd6ja74x" path="res://models/buildings/skyscraper.gltf" id="4_g7pg2"]
 [ext_resource type="PackedScene" uid="uid://c2clhbukeveb7" path="res://models/buildings/smoke_stack.gltf" id="5_ocrr8"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://gnnthbps5agn" path="res://models/trees/small_tree.gltf" id="13_3dldo"]
 [ext_resource type="PackedScene" uid="uid://14j611a5c52u" path="res://models/trees/wide_tree.gltf" id="14_hbal6"]
 [ext_resource type="PackedScene" uid="uid://c6o8an206owhr" path="res://models/trees/tall_tree.gltf" id="15_nklqj"]
-[ext_resource type="Script" path="res://scripts/road.gd" id="16_dnj83"]
+[ext_resource type="Script" uid="uid://c3qv7wb7r86u8" path="res://scripts/road.gd" id="16_dnj83"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iucx5"]
 albedo_color = Color(0.14902, 0.360784, 0.258824, 1)

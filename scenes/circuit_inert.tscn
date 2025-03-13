@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5s8h2gxt3npx"]
 
 [ext_resource type="PackedScene" uid="uid://cy52xkm7s3d6x" path="res://models/house/circuit.gltf" id="1_ono6l"]
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_4ssml"]
+[ext_resource type="Shader" uid="uid://dscs8yua787mx" path="res://shaders/dissolve.gdshader" id="2_4ssml"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ots0x"]
 render_priority = 0

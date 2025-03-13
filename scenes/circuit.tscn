@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctww4njwphpx6"]
 
 [ext_resource type="PackedScene" uid="uid://cy52xkm7s3d6x" path="res://models/house/circuit.gltf" id="1_h5u23"]
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_xmc6p"]
-[ext_resource type="Script" path="res://scripts/fades.gd" id="3_jdof1"]
+[ext_resource type="Shader" uid="uid://dscs8yua787mx" path="res://shaders/dissolve.gdshader" id="2_xmc6p"]
+[ext_resource type="Script" uid="uid://b70y26gcqh7px" path="res://scripts/fades.gd" id="3_jdof1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ots0x"]
 render_priority = 0

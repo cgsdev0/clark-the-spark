@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://cmopiwmgjwjb8"]
 
-[ext_resource type="Script" path="res://demo/IconRemapper.gd" id="2"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ww1q8"]
+[ext_resource type="Script" uid="uid://c8edqf7leqnvv" path="res://demo/IconRemapper.gd" id="2"]
+[ext_resource type="Script" uid="uid://bf46kk7akvbeb" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ww1q8"]
 
 [sub_resource type="Texture2D" id="Texture2D_oaqcv"]
 resource_local_to_scene = false

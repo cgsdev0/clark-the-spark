@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhtm3pt1tjd1a"]
 
-[ext_resource type="Script" path="res://scripts/meter.gd" id="1_plq8u"]
+[ext_resource type="Script" uid="uid://ducbh65jo4fe8" path="res://scripts/meter.gd" id="1_plq8u"]
 [ext_resource type="Texture2D" uid="uid://2061krotxm6g" path="res://textures/meter.png" id="1_wbip5"]
 [ext_resource type="FontFile" uid="uid://6j1bdy8myck7" path="res://textures/digits.png" id="2_tnlhp"]
 
@@ -151,8 +151,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ugu6b"]
 _data = {
-"RESET": SubResource("Animation_621p1"),
-"error": SubResource("Animation_uo3ga")
+&"RESET": SubResource("Animation_621p1"),
+&"error": SubResource("Animation_uo3ga")
 }
 
 [sub_resource type="Animation" id="Animation_ejuur"]
@@ -188,8 +188,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jm6hx"]
 _data = {
-"RESET": SubResource("Animation_ejuur"),
-"flash": SubResource("Animation_5yc7t")
+&"RESET": SubResource("Animation_ejuur"),
+&"flash": SubResource("Animation_5yc7t")
 }
 
 [node name="Node2D" type="Node2D"]

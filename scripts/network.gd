@@ -55,7 +55,8 @@ func create_edge_mesh(a: Vector3, b: Vector3):
 	else:
 		$WireMesh.add_child(cube)
 	cube.position = (a + b) / 2.0
-	cube.look_at(cube.global_position + normal, Vector3.FORWARD)
+	if normal != Vector3.FORWARD && normal != Vector3.BACK && normal != Vector3.ZERO:
+		cube.look_at(cube.global_position + normal, Vector3.FORWARD)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -205,6 +206,8 @@ var max_charge_time = 2.9
 var is_possible = true
 var require_release = false
 
+var require_reset = false
+
 var radius = 2.0
 
 func find_nearest(pos: Vector3):
@@ -268,6 +271,13 @@ func start_hardcut_timer():
 	await get_tree().create_timer(hard_cut_timer).timeout
 	Events.transition.emit()
 	
+func _input(event):
+	if event is InputEventSingleScreenSwipe:
+		var dir = int(round(fposmod(event.relative.angle(), 2 * PI) / PI * 2.0))
+		var input = [Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT,Vector2.UP][dir]
+		if buffered.size() < 1 && can_buffer:
+			buffered.push_back(input)
+			
 func _physics_process(delta):
 	if !active:
 		return
@@ -365,7 +375,10 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("move_right"):
 		input = Vector2.RIGHT
 
-	if input != Vector2.ZERO:
+	var ii = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_down", "move_up"))
+	if ii == Vector2.ZERO && require_reset:
+		require_reset = false
+	if input != Vector2.ZERO && !require_reset:
 		if buffered.size() < 1 && can_buffer:
 			buffered.push_back(input)
 		
@@ -410,6 +423,7 @@ func _physics_process(delta):
 				start_hardcut_timer()
 				Events.multimeter_up = false
 				Events.hide_tooltip.emit()
+				require_reset = true
 				if electrified:
 					electrified.electrified = false
 					electrified = null

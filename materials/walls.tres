@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bomn7udu7xpsp"]
 
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="1_nnckb"]
+[ext_resource type="Shader" uid="uid://dscs8yua787mx" path="res://shaders/dissolve.gdshader" id="1_nnckb"]
 [ext_resource type="Texture2D" uid="uid://d248mkudlqbm2" path="res://textures/downstairs_walls.png" id="2_b85de"]
 
 [resource]

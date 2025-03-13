@@ -1,8 +1,8 @@
 [gd_scene load_steps=35 format=3 uid="uid://fa7it7yoyoki"]
 
 [ext_resource type="PackedScene" uid="uid://b36gij25sosps" path="res://models/house/office.gltf" id="1_hrl64"]
-[ext_resource type="Shader" path="res://shaders/dissolve.gdshader" id="2_fwxso"]
-[ext_resource type="Script" path="res://scripts/fades.gd" id="3_g5xqg"]
+[ext_resource type="Shader" uid="uid://dscs8yua787mx" path="res://shaders/dissolve.gdshader" id="2_fwxso"]
+[ext_resource type="Script" uid="uid://b70y26gcqh7px" path="res://scripts/fades.gd" id="3_g5xqg"]
 [ext_resource type="Material" uid="uid://mtnywgiqha1f" path="res://materials/fan_on.tres" id="3_mrqv7"]
 [ext_resource type="Material" uid="uid://dr2k245qyd52i" path="res://materials/light_on.tres" id="3_n3u2p"]
 [ext_resource type="Texture2D" uid="uid://bjjfog00bhysb" path="res://textures/office_walls.png" id="3_py6iv"]
