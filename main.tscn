@@ -859,6 +859,7 @@ environment = ExtResource("7_1sx5j")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-0.362972, 0.792697, -0.489778, 0.0741282, 0.548525, 0.832842, 0.928847, 0.265992, -0.25786, -12.1994, 4.05649, -4.52207)
+layers = 3
 light_energy = 0.7
 shadow_opacity = 0.53
 directional_shadow_split_1 = 0.08

@@ -42,7 +42,7 @@ func _on_hide():
 	
 var city = false
 var planet_destroyed = false
-var score: int = 0 if OS.is_debug_build() else 0
+var score: int = 40000 if OS.is_debug_build() else 0
 signal score_changed
 
 var charge = 0.0

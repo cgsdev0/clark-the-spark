@@ -53,6 +53,21 @@ var values = {
 
 var dead = false
 
+var buffered = []
+func on_swipe(relative):
+	if !selected:
+		return
+	relative = relative.rotated(PI / 4.0)
+	if abs(relative.x) == abs(relative.y):
+		return
+	var input = Vector2.UP
+	if abs(relative.x) > abs(relative.y):
+		input = Vector2.RIGHT * sign(relative.x)
+	else:
+		input = Vector2.DOWN * sign(relative.y)
+	if buffered.size() < 1:
+		buffered.push_back(input)
+
 func unlerp(from: float, to: float, value: float) -> float:
 	return (value - from) / (to - from)
 	
@@ -111,6 +126,7 @@ var aabb: AABB
 # Called when the node enters the scene tree for the first time.
 var mats = []
 func _ready():
+	InputManager.swipe.connect(on_swipe)
 	add_to_group("buildings")
 	aabb = calculate_spatial_bounds(self, false)
 	var meshes = find_children("*", "MeshInstance3D")
@@ -257,14 +273,17 @@ func _physics_process(delta):
 	for mat in mats:
 		mat.next_pass = preload("res://materials/electrified.tres")
 	var target
-	if Input.is_action_just_pressed("move_left"):
-		target = find_neighbor(Vector2(-1, 0))
-	elif Input.is_action_just_pressed("move_right"):
-		target = find_neighbor(Vector2(1, 0))
-	elif Input.is_action_just_pressed("move_up"):
-		target = find_neighbor(Vector2(0, -1))
-	elif Input.is_action_just_pressed("move_down"):
-		target = find_neighbor(Vector2(0, 1))
+	if buffered.size():
+		target = find_neighbor(buffered.pop_back())
+	else:
+		if Input.is_action_just_pressed("move_left"):
+			target = find_neighbor(Vector2(-1, 0))
+		elif Input.is_action_just_pressed("move_right"):
+			target = find_neighbor(Vector2(1, 0))
+		elif Input.is_action_just_pressed("move_up"):
+			target = find_neighbor(Vector2(0, -1))
+		elif Input.is_action_just_pressed("move_down"):
+			target = find_neighbor(Vector2(0, 1))
 	if target:
 		charging = false
 		require_release = false
