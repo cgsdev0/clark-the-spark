@@ -6,12 +6,31 @@ var h_tween
 
 var up = 300
 var down = 440
-var off_x = 684
+
+@onready var off_x = get_viewport().get_visible_rect().size.x * 0.8
+
+var right = true
 
 func _ready():
 	Events.meter_angry.connect(shake)
 	Events.pop.connect(bounce)
+	Events.touch_side.connect(update_side)
 	pass
+
+func update_side(is_right):
+	if is_right == right:
+		return
+	right = is_right
+	if right:
+		off_x = get_viewport().get_visible_rect().size.x * 0.85 - get_rect().size.x / 2.0
+	else:
+		off_x = get_viewport().get_visible_rect().size.x * 0.15 - get_rect().size.x / 2.0
+	if is_instance_valid(h_tween):
+		h_tween.kill()
+	h_tween = get_tree().create_tween()
+	h_tween.set_trans(Tween.TRANS_QUAD)
+	h_tween.set_ease(Tween.EASE_OUT)
+	h_tween.tween_method(func(v): position.x = v, position.x, off_x, 0.5)
 	
 func bounce():
 	var was = position.y

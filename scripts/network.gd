@@ -288,6 +288,11 @@ func on_swipe(relative):
 func _physics_process(delta):
 	if !active:
 		return
+	if Input.is_action_just_pressed("pop"):
+		var mouse_pos = get_viewport().get_mouse_position()
+		var window_size = get_viewport().get_visible_rect().size
+		var percentage = mouse_pos.x / window_size.x
+	
 	if Input.is_action_just_pressed("debug_hop2") && OS.is_debug_build():
 		grid_hop()
 		return
@@ -312,6 +317,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("pop") && !charging && Events.charge == 0.0:
 		if electrified && !is_instance_valid(tween) && !require_release:
 			Events.meter_calm.emit()
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				var mouse_pos = get_viewport().get_mouse_position()
+				var window_size = get_viewport().get_visible_rect().size
+				var percentage = mouse_pos.x / window_size.x
+				Events.touch_side.emit(percentage <= 0.5)
 			charging = true
 			charge_timer = 0.0
 			charge_time = electrified.get_charge_time()

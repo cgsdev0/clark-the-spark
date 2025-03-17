@@ -242,10 +242,10 @@ show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ugu6b")
+&"": SubResource("AnimationLibrary_ugu6b")
 }
 
 [node name="Flash" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jm6hx")
+&"": SubResource("AnimationLibrary_jm6hx")
 }
